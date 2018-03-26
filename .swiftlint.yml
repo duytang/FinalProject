@@ -4,7 +4,7 @@ opt_in_rules:
   - force_unwrapping
   - vertical_whitespace
   - empty_count
-  - closure_end_indentation
+  # - closure_end_indentation
   - closure_spacing
   - explicit_init
   - first_where

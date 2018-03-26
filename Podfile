@@ -11,8 +11,8 @@ target 'FinalProject' do
     pod 'ObjectMapper'
     pod 'IQKeyboardManagerSwift'
     pod 'MBProgressHUD'
-    pod 'Haneke'
     pod 'SwiftLint'
+    pod 'Kingfisher'
 
   target 'FinalProjectTests' do
     inherit! :search_paths

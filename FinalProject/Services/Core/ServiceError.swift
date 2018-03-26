@@ -23,7 +23,6 @@ struct APIError {
     }
 }
 
-
 enum HTTPStatusCode: Int, CustomStringConvertible {
     //1xx Informational
     case `continue` = 100

@@ -7,44 +7,37 @@
 //
 
 import UIKit
-import Haneke
+import Kingfisher
 import CoreGraphics
 
 extension UIImageView {
-
-    func setThumnailFormat() {
-        var format = HNKCache.shared().formats["thumbnail"] as? HNKCacheFormat
-        if format == nil {
-            format = HNKCacheFormat(name: "thumbnail")
-            guard let format = format else { return }
-            format.scaleMode = HNKScaleMode.aspectFill
-            format.compressionQuality = 0.5
-            format.diskCapacity = UInt64(2 * 1_024 * 1_024) // 2MB
-            format.preloadPolicy = HNKPreloadPolicy.lastSession
-            hnk_cacheFormat = format
-        }
-    }
-
     func downloadImage(fromURL string: String, placeHolder: UIImage, completionHandler: ((UIImage?) -> Void)? = nil) {
-        guard let url = URL(string: string) else {
+        guard let url = string.url else {
             return
         }
+
+        let resource = ImageResource(downloadURL: url as URL)
         if let completionHandler = completionHandler {
-            hnk_setImage(from: url, placeholder: placeHolder, success: completionHandler, failure: nil)
+            kf.setImage(with: resource, placeholder: placeHolder, options: [], completionHandler: { (image, _, _, _) in
+                completionHandler(image)
+            })
         } else {
-            hnk_setImage(from: url, placeholder: placeHolder)
+            kf.setImage(with: resource, placeholder: placeHolder)
         }
     }
 
     func downloadImage(fromURL string: String, completionHandler: ((UIImage?) -> Void)? = nil) {
-        guard let url = URL(string: string) else {
+        guard let url = string.url else {
             return
         }
+
+        let resource = ImageResource(downloadURL: url as URL)
         if let completionHandler = completionHandler {
-            hnk_setImage(from: url, placeholder: UIImage(), success: completionHandler, failure: nil)
+            kf.setImage(with: resource, options: [], completionHandler: { (image, _, _, _) in
+                completionHandler(image)
+            })
         } else {
-            hnk_setImage(from: url)
+            kf.setImage(with: resource)
         }
     }
-
 }
