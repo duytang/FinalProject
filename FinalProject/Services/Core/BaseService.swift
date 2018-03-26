@@ -22,13 +22,12 @@ class BaseService {
             completion(APIResult.failure(APIError.internetError))
             return
         }
-        
+
         if let accessToken = accessToken, input.useAccessToken {
             input.header?["access-token"] = accessToken
         }
 
-
-        let _ = api.request(input: input, completion: completion)
+        _ = api.request(input: input, completion: completion)
     }
 
     func requestService(input: BaseInputProtocol, completion: @escaping ServiceCompletion) -> DataRequest? {
@@ -44,5 +43,5 @@ class BaseService {
 
         return api.request(input: input, completion: completion)
     }
-    
+
 }

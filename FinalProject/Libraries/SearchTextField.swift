@@ -12,9 +12,9 @@ class SearchTextField: UITextField {
     var imageView: UIImageView! = nil
     var label: UILabel!
 
-    private var widthImageView:CGFloat = 20
+    private var widthImageView: CGFloat = 20
 
-    private var halfWidthImageView:CGFloat {
+    private var halfWidthImageView: CGFloat {
         return self.widthImageView / 2
     }
 
@@ -22,11 +22,12 @@ class SearchTextField: UITextField {
         return self.widthImageView + 8
     }
 
-
     override var placeholder: String? {
         didSet {
             label.text = placeholder
-            label.frame.size = label.sizeToFitCharacter(width: bounds.width)!
+            if let width = label.sizeToFitCharacter(width: bounds.width) {
+                label.frame.size = width
+            }
             changeColorPlaceholder()
         }
     }
@@ -55,11 +56,10 @@ class SearchTextField: UITextField {
         changeColorPlaceholder()
         insertSubview(label, at: 0)
 
-        imageView = UIImageView(image: UIImage(named: "icon_search"))
+        imageView = UIImageView(image: #imageLiteral(resourceName: "icon_search"))
         imageView.frame = CGRect(x: 0, y: 0, width: widthImageView, height: widthImageView)
         insertSubview(imageView, at: 0)
         calculatePosition(isEditting: false)
-
 
         //Actions input text
         addTarget(self, action: #selector(beginEditText(textField:)), for: .editingDidBegin)
@@ -121,11 +121,11 @@ class SearchTextField: UITextField {
     }
 
     private func changeColorPlaceholder() {
-        let attributed = NSMutableAttributedString(string: placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor : UIColor.clear])
+        let attributed = NSMutableAttributedString(string: placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor.clear])
         attributedPlaceholder = attributed
     }
 
-    //MARK: - Actions
+    // MARK: - Actions
     @objc private func editingChangedValue(textField: UITextField) {
 
         checkHiddenForLabel()
@@ -141,5 +141,4 @@ class SearchTextField: UITextField {
         checkHiddenForLabel()
         calculatePosition(isEditting: !value.isEmpty)
     }
-
 }

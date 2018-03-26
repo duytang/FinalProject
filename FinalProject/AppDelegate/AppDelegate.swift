@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     static var shared: AppDelegate {
-        return kApplication.delegate as! AppDelegate
+        guard let delegate = kApplication.delegate as? AppDelegate else { fatalError("Cannot cast the delegate") }
+        return delegate
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -26,4 +27,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

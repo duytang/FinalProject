@@ -62,7 +62,7 @@ extension Date {
 
     func timeAgo() -> String {
         let minuteInterval: TimeInterval = 60
-        let hourInterval: TimeInterval = 3600
+        let hourInterval: TimeInterval = 3_600
         let dayInterval: TimeInterval = hourInterval * 24
         let timeInterval = abs(self.timeIntervalSince(Date()))
         if timeInterval < hourInterval {
@@ -95,8 +95,8 @@ extension TimeInterval {
 
     var clock: String {
         var duration = Int(self)
-        let hour = duration / 3600
-        duration %= 3600
+        let hour = duration / 3_600
+        duration %= 3_600
         let mins = duration / 60
         duration %= 60
         let secs = duration
@@ -144,7 +144,10 @@ extension Date {
 // MARK: - TimeZone
 extension TimeZone {
     static func utcTimeZone() -> TimeZone {
-        return TimeZone(secondsFromGMT: 0)!
+        if let time = TimeZone(secondsFromGMT: 0) {
+            return time
+        }
+        return TimeZone.current
     }
 }
 
@@ -182,10 +185,7 @@ extension DateFormatter {
     }
 }
 
-
 struct DateRange {
     var start: Date!
     var end: Date!
 }
-
-

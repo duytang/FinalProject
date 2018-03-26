@@ -14,13 +14,12 @@ protocol AlertViewController { }
 protocol LoadingViewController { }
 
 extension AlertViewController where Self: UIViewController {
-    func showAlertView(title: String?, message: String?, cancelButton: String?, otherButtons: [String]? = nil, type: UIAlertControllerStyle = .alert, cancelAction: (() -> ())? = nil, otherAction: ((Int) -> ())? = nil) {
-        let alertViewController = UIAlertController(title: title,
-                                                    message: message,
-                                                    preferredStyle: .alert)
-
+    func showAlertView(title: String?, message: String?, cancelButton: String?,
+                       otherButtons: [String]? = nil, type: UIAlertControllerStyle = .alert,
+                       cancelAction: (() -> Void)? = nil, otherAction: ((Int) -> Void)? = nil) {
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if let cancelButton = cancelButton {
-            let cancelAction = UIAlertAction(title: cancelButton, style: .cancel, handler: { (action) in
+            let cancelAction = UIAlertAction(title: cancelButton, style: .cancel, handler: { (_) in
                 cancelAction?()
             })
             alertViewController.addAction(cancelAction)
@@ -29,20 +28,19 @@ extension AlertViewController where Self: UIViewController {
         if let otherButtons = otherButtons {
             for (index, otherButton) in otherButtons.enumerated() {
                 let otherAction = UIAlertAction(title: otherButton,
-                                                style: .default, handler: { (action) in
+                                                style: .default, handler: { (_) in
                                                     otherAction?(index)
                 })
                 alertViewController.addAction(otherAction)
             }
         }
-        
+
         DispatchQueue.main.async {
             self.present(alertViewController, animated: true, completion: nil)
         }
     }
 
-
-    func showErrorAlert(message:String?) {
+    func showErrorAlert(message: String?) {
         showAlertView(title: "Error", message: message, cancelButton: "OK")
     }
 
@@ -68,7 +66,6 @@ extension LoadingViewController where Self: UIViewController {
     }
 }
 
-
 class BaseViewController: UIViewController {
 
     var isLeftBarButtonHidden = false
@@ -92,7 +89,7 @@ class BaseViewController: UIViewController {
     }
 
     func setupUI() { }
-    
+
     func setupData() { }
 
     func setUpNavigation() {
@@ -109,7 +106,6 @@ class BaseViewController: UIViewController {
         }
 
     }
-
 
     func addLeftBarButton(image: UIImage, action: Selector) {
         let leftButton = UIBarButtonItem(image: image, style: .done, target: self, action: action)
@@ -132,19 +128,19 @@ class BaseViewController: UIViewController {
     }
 
     func addCloseButton() {
-        let closeBarButton = UIBarButtonItem(image: UIImage(named: "icon_close"), style: .done, target: self, action: #selector(close))
+        let closeBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_close"), style: .done, target: self, action: #selector(close))
         navigationItem.leftBarButtonItem = closeBarButton
     }
 
     func addBackButton() {
-        let backBarButton = UIBarButtonItem(image: UIImage(named: "icon_back"), style: .done, target: self, action: #selector(back))
+        let backBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_back"), style: .done, target: self, action: #selector(back))
         navigationItem.leftBarButtonItem = backBarButton
 
     }
 
     @IBAction func back() {
         view.endEditing(true)
-        let _ = navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
     @IBAction func close() {
@@ -155,6 +151,4 @@ class BaseViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
     }
-
 }
-

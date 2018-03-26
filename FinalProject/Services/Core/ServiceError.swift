@@ -112,7 +112,6 @@ enum HTTPStatusCode: Int, CustomStringConvertible {
     case networkReadTimeout = 598
     case networkConnectTimeout = 599
 
-
     var description: String {
         switch self {
         case .continue: // 100

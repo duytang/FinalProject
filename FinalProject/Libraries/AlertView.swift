@@ -16,11 +16,11 @@ enum AlertType {
     var icon: UIImage {
         switch self {
         case .success:
-            return UIImage(named: "icon_success")!
+            return #imageLiteral(resourceName: "icon_success")
         case .warning:
-            return UIImage(named: "icon_warning")!
+            return #imageLiteral(resourceName: "icon_warning")
         case .error:
-            return UIImage(named: "icon_error")!
+            return #imageLiteral(resourceName: "icon_error")
 
         }
     }
@@ -29,7 +29,7 @@ enum AlertType {
 class AlertView: UIView {
 
     static let height: CGFloat = 60
-    lazy private var messageLabel: UILabel =  {
+    lazy private var messageLabel: UILabel = {
         let width = kScreen.bounds.width - 40 - 10
         let label = UILabel(frame: CGRect(x: 40, y: 0, width: width, height: AlertView.height))
         label.numberOfLines = 0
@@ -82,20 +82,20 @@ class AlertView: UIView {
                                                 height: AlertView.height))
 
         alertView.backgroundColor = UIColor.white
-        let startPoint = CGPoint(x: 0, y:  -AlertView.height)
+        let startPoint = CGPoint(x: 0, y: -AlertView.height)
         let endPoint = CGPoint.zero
         alertView.message = message
         alertView.type = type
-        alertView.shadow(offset: CGSize(width: 0 ,height: 2), color:UIColor.black, radius: 2, opacity: 0.35, cornerRadius: 0)
+        alertView.shadow(offset: CGSize(width: 0, height: 2), color: .black, radius: 2, opacity: 0.35, cornerRadius: 0)
         view.addSubview(alertView)
 
-        UIView.animate(withDuration: 0.3, animations: { 
+        UIView.animate(withDuration: 0.3, animations: {
             alertView.frame.origin = endPoint
-        }, completion: { (completed) in
+        }, completion: { (_) in
             DispatchQueue.after(time: 2, {
                 UIView.animate(withDuration: 0.3, animations: {
                     alertView.frame.origin = startPoint
-                }, completion: { (completed) in
+                }, completion: { (_) in
                     alertView.removeFromSuperview()
                 })
             })
@@ -103,6 +103,3 @@ class AlertView: UIView {
     }
 
 }
-
-
-

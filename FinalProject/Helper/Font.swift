@@ -12,9 +12,9 @@ struct Font {
 }
 
 class HelveticaNeue: CustomFont {
-    
-    override var name: FontName! {
-        return .HelveticaNeue
+
+    override var name: FontName {
+        return .helveticaNeue
     }
 
     func normal(ofSize size: CGFloat) -> UIFont! {
@@ -26,15 +26,12 @@ class HelveticaNeue: CustomFont {
     }
 }
 
-
-
 // MARK: - Custom Font Table
 /*
  Example: label.font = Font(.Lato, .Bold, 12)
  */
 enum FontName: String {
-    case HelveticaNeue = "Helvetica Neue"
-
+    case helveticaNeue = "Helvetica Neue"
 
     var familyName: String {
         return "Helvetica Neue"
@@ -67,13 +64,12 @@ enum FontType: String {
 }
 
 enum PSDFontScale: CGFloat {
-    case Phone45 = 1.0
-    case Phone6 = 1.117
-    case Phone6p = 1.3
+    case iPhone45 = 1.0
+    case iPhone6 = 1.117
+    case iPhone6p = 1.3
 }
 
-
-let fontScale: PSDFontScale = (Helper.isiPhone4 || Helper.isiPhone5 ? .Phone45 : Helper.isiPhone6 ? .Phone6 : .Phone6p)
+let fontScale: PSDFontScale = (Helper.isiPhone4 || Helper.isiPhone5 ? .iPhone45 : Helper.isiPhone6 ? .iPhone6 : .iPhone6p)
 
 func CCFont(name: FontName, _ type: FontType, _ size: CGFloat) -> UIFont! {
     let fontName = name.rawValue + type.rawValue

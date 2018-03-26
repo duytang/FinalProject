@@ -16,40 +16,35 @@ extension UIImageView {
         var format = HNKCache.shared().formats["thumbnail"] as? HNKCacheFormat
         if format == nil {
             format = HNKCacheFormat(name: "thumbnail")
-            format?.scaleMode = HNKScaleMode.aspectFill
-            format?.compressionQuality = 0.5
-            format?.diskCapacity = UInt64(2 * 1024 * 1024) // 2MB
-            format?.preloadPolicy = HNKPreloadPolicy.lastSession
+            guard let format = format else { return }
+            format.scaleMode = HNKScaleMode.aspectFill
+            format.compressionQuality = 0.5
+            format.diskCapacity = UInt64(2 * 1_024 * 1_024) // 2MB
+            format.preloadPolicy = HNKPreloadPolicy.lastSession
+            hnk_cacheFormat = format
         }
-        hnk_cacheFormat = format!
     }
 
-    func downloadImage(fromURL string: String, placeHolder: UIImage, completionHandler: ((UIImage?) -> ())? = nil) {
+    func downloadImage(fromURL string: String, placeHolder: UIImage, completionHandler: ((UIImage?) -> Void)? = nil) {
         guard let url = URL(string: string) else {
             return
         }
-        if let _ = completionHandler {
-            hnk_setImage(from: url, placeholder: placeHolder, success: completionHandler!, failure: { (error) in
-
-            })
+        if let completionHandler = completionHandler {
+            hnk_setImage(from: url, placeholder: placeHolder, success: completionHandler, failure: nil)
         } else {
             hnk_setImage(from: url, placeholder: placeHolder)
         }
     }
 
-    func downloadImage(fromURL string: String, completionHandler: ((UIImage?) -> ())? = nil) {
+    func downloadImage(fromURL string: String, completionHandler: ((UIImage?) -> Void)? = nil) {
         guard let url = URL(string: string) else {
             return
         }
-        if let _ = completionHandler {
-            hnk_setImage(from: url, placeholder: UIImage(), success: completionHandler!, failure: { (error) in
-            })
+        if let completionHandler = completionHandler {
+            hnk_setImage(from: url, placeholder: UIImage(), success: completionHandler, failure: nil)
         } else {
             hnk_setImage(from: url)
         }
     }
 
 }
-
-
-

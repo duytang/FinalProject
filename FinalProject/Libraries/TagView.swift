@@ -31,11 +31,11 @@ class TagView: UIScrollView {
         super.init(coder: aDecoder)
     }
 
-    func addTag(text: String, target: AnyObject, tapAction: Selector? = nil, longPressAction: Selector? = nil, backgroundColor: UIColor = UIColor.white, textColor: UIColor =  UIColor.black) {
+    func addTag(text: String, target: AnyObject, tapAction: Selector? = nil, longPressAction: Selector? = nil, backgroundColor: UIColor = UIColor.white, textColor: UIColor = .black) {
         // instantiate label
         // you can customize your label here! but make sure everything fit. Default row height is 30.
         let label = UILabel()
-        label.layer.cornerRadius = (rowHeight)/2
+        label.layer.cornerRadius = rowHeight / 2
         label.clipsToBounds = true
         label.textColor = textColor
         label.backgroundColor = backgroundColor
@@ -133,7 +133,7 @@ class TagView: UIScrollView {
             return
         }
 
-        let animation: () -> () = {
+        let animation: () -> Void = {
             var rowNumber = self.getRowNumber(index: index)
             for i in index...self.tags.count - 1 {
                 self.tags[i].frame = self.generateFrameAtIndex(index: i, rowNumber: &rowNumber)
@@ -148,7 +148,7 @@ class TagView: UIScrollView {
             rowNumber += 1
             newPoint = CGPoint(x: self.hashtagsOffset.left, y: CGFloat(rowNumber) * rowHeight)
         }
-        newPoint = CGPoint(x: newPoint.x, y: newPoint.y +  CGFloat(rowNumber+1) * hashtagsOffset.top)
+        newPoint = CGPoint(x: newPoint.x, y: newPoint.y + CGFloat(rowNumber + 1) * hashtagsOffset.top)
         isOutofBounds(newPoint: newPoint, labelFrame: tags[index].frame)
         return CGRect(x: newPoint.x, y: newPoint.y, width: tags[index].frame.width, height: tags[index].frame.height)
     }
@@ -166,7 +166,5 @@ class TagView: UIScrollView {
         if let first = sortedArray.first {
             layoutTagsFromIndex(index: first)
         }
-        
     }
-    
 }

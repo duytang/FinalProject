@@ -21,7 +21,6 @@ extension UITableView {
         }
     }
 
-
     func removeHeaderTableView() {
         tableHeaderView = UIView()
     }
@@ -53,7 +52,8 @@ extension UITableView {
         }
         header.setNeedsLayout()
         header.layoutIfNeeded()
-        let height = header.systemLayoutSizeFitting(CGSize(width: bounds.width, height: 0), withHorizontalFittingPriority: UILayoutPriority.required, verticalFittingPriority: UILayoutPriority.fittingSizeLevel).height
+        let height = header.systemLayoutSizeFitting(CGSize(width: bounds.width, height: 0),
+                                                    withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
         var frame = header.frame
         frame.size.height = height
         header.frame = frame
@@ -66,7 +66,8 @@ extension UITableView {
         }
         footer.setNeedsLayout()
         footer.layoutIfNeeded()
-        let height = footer.systemLayoutSizeFitting(CGSize(width: bounds.width, height: 0), withHorizontalFittingPriority: UILayoutPriority.required, verticalFittingPriority: UILayoutPriority.fittingSizeLevel).height
+        let height = footer.systemLayoutSizeFitting(CGSize(width: bounds.width, height: 0),
+                                                    withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel).height
         var frame = footer.frame
         frame.size.height = height
         footer.frame = frame
@@ -83,16 +84,16 @@ extension UITableView {
         let offset = contentOffset.y
         scrollToRow(at: path, at: .top, animated: animated)
         let delay = (animated ? 0.2 : 0.0) * Double(NSEC_PER_SEC)
-        DispatchQueue.after(time: delay) { 
+        DispatchQueue.after(time: delay) {
             if self.contentOffset.y != offset {
                 self.scrollsToBottom(animated: false)
             }
         }
     }
 
-    func registerCell<T:UITableViewCell>(aClass: T.Type) {
+    func registerCell<T: UITableViewCell>(aClass: T.Type) {
         let className = String(describing: aClass)
-        let nibFile = UINib(nibName: className , bundle: nil)
+        let nibFile = UINib(nibName: className, bundle: nil)
         register(nibFile, forCellReuseIdentifier: className)
     }
 

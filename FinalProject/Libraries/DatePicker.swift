@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 @objc protocol DatePickerDelegate: class {
     func datePicker(datePicker: DatePicker, didSelectDate date: Date)
     func datePicker(datePicker: DatePicker, selectDoneDate date: Date)
@@ -49,22 +48,21 @@ class DatePicker: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-
     private func setup() {
         // DatePicker
         backgroundColor = UIColor.clear
         let mainRect = UIScreen.main.bounds
-        datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: mainRect.width, height: 216))
+        datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: mainRect.width, height: 216))
         datePicker.backgroundColor = UIColor.white
         datePicker.datePickerMode = UIDatePickerMode.date
         datePicker.date = date ?? Date()
         datePicker.addTarget(self, action: #selector(didChangeValueDate), for: .valueChanged)
 
         // ToolBar
-        dateToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: mainRect.width, height: heightToolbar))
+        dateToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: mainRect.width, height: heightToolbar))
         dateToolbar.barStyle = .default
         dateToolbar.isTranslucent = true
-        dateToolbar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        dateToolbar.tintColor = UIColor.colorRGBA(red: 92, green: 216, blue: 255, alpha: 1)
         dateToolbar.sizeToFit()
 
         // Adding Button ToolBar
@@ -127,7 +125,6 @@ class DatePicker: UIView {
         })
     }
 
-
     func hide(animated: Bool = true) {
         guard let view = self.superview else {
             return
@@ -138,19 +135,22 @@ class DatePicker: UIView {
                                             y: self.heightView,
                                             width: view.frame.width,
                                             height: self.heightToolbar)
-
-        }) { (completed) in
-            UIView.animate(withDuration: duration , animations: {
-                self.datePicker.frame = CGRect(x: 0,
-                                               y: self.heightView,
-                                               width: view.frame.width,
-                                               height: self.heightDatePicker)
-            }) { (completed) in
-                self.removeFromSuperview()
-            }
-        }
-        
+        }, completion: { (_) in
+            self.hideDatePicker(duration: duration)
+        })
     }
-    
-    
+
+    func hideDatePicker(duration: Double = 0) {
+        guard let view = self.superview else {
+            return
+        }
+        UIView.animate(withDuration: duration, animations: {
+            self.datePicker.frame = CGRect(x: 0,
+                                           y: self.heightView,
+                                           width: view.frame.width,
+                                           height: self.heightDatePicker)
+        }, completion: { (_) in
+            self.removeFromSuperview()
+        })
+    }
 }

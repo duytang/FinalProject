@@ -20,11 +20,8 @@ class LoginService: BaseService {
                 } else {
                     completion(APIResult.failure(APIError.jsonError))
                 }
-                break
             case .failure(let error):
                 completion(APIResult.failure(error))
-                break
-
             }
         }
     }
@@ -38,11 +35,8 @@ class LoginService: BaseService {
                 } else {
                     completion(APIResult.failure(APIError.jsonError))
                 }
-                break
             case .failure(let error):
                 completion(APIResult.failure(error))
-                break
-
             }
         }
     }
@@ -56,11 +50,8 @@ class LoginService: BaseService {
                 } else {
                     completion(APIResult.failure(APIError.jsonError))
                 }
-                break
             case .failure(let error):
                 completion(APIResult.failure(error))
-                break
-
             }
         }
     }
@@ -74,11 +65,8 @@ class LoginService: BaseService {
                 } else {
                     completion(APIResult.failure(APIError.jsonError))
                 }
-                break
             case .failure(let error):
                 completion(APIResult.failure(error))
-                break
-
             }
         }
     }
@@ -86,16 +74,11 @@ class LoginService: BaseService {
     func logout(input: BaseInput, completion: @escaping ServiceCompletion) {
         request(input: input) { (result) in
             switch result {
-            case .success( _):
+            case .success:
                 UserManager.shared.logout()
-                break
             case .failure(let error):
                 completion(APIResult.failure(error))
-                break
-
             }
         }
-
     }
-
 }

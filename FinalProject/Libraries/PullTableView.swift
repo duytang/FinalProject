@@ -11,8 +11,8 @@ import UIKit
 class PullTableView: UITableView {
 
     var startRefresh: ((RefreshControl) -> Void)?
-    var endRefresh: ((RefreshControl) -> ())?
-    var setupRefresh: ((RefreshControl) -> ())?
+    var endRefresh: ((RefreshControl) -> Void)?
+    var setupRefresh: ((RefreshControl) -> Void)?
 
     var refreshControlView: RefreshControl!
     var isRefresh: Bool = false

@@ -44,8 +44,6 @@
 		F34E00D420693078002D783D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008A20693077002D783D /* Font.swift */; };
 		F34E00D520693078002D783D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008B20693077002D783D /* Helper.swift */; };
 		F34E00D620693078002D783D /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008C20693077002D783D /* Localizable.swift */; };
-		F34E00D720693078002D783D /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008D20693077002D783D /* LocalNotificationManager.swift */; };
-		F34E00D820693078002D783D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008E20693077002D783D /* LocationManager.swift */; };
 		F34E00D920693078002D783D /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008F20693077002D783D /* Strings.swift */; };
 		F34E00DA20693078002D783D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E009220693077002D783D /* APIManager.swift */; };
 		F34E00DB20693078002D783D /* APIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E009320693077002D783D /* APIPath.swift */; };
@@ -140,8 +138,6 @@
 		F34E008A20693077002D783D /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F34E008B20693077002D783D /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F34E008C20693077002D783D /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
-		F34E008D20693077002D783D /* LocalNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
-		F34E008E20693077002D783D /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F34E008F20693077002D783D /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		F34E009220693077002D783D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F34E009320693077002D783D /* APIPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
@@ -273,8 +269,6 @@
 				F34E008A20693077002D783D /* Font.swift */,
 				F34E008B20693077002D783D /* Helper.swift */,
 				F34E008C20693077002D783D /* Localizable.swift */,
-				F34E008D20693077002D783D /* LocalNotificationManager.swift */,
-				F34E008E20693077002D783D /* LocationManager.swift */,
 				F34E008F20693077002D783D /* Strings.swift */,
 			);
 			path = Helper;
@@ -482,6 +476,7 @@
 				F34EFF7920692E17002D783D /* Resources */,
 				6E606FACAE851C250515BC48 /* [CP] Embed Pods Frameworks */,
 				E3CAA230E467C7AF7836C928 /* [CP] Copy Pods Resources */,
+				F34E011120693BC3002D783D /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -683,6 +678,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FinalProject/Pods-FinalProject-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F34E011120693BC3002D783D /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -716,7 +725,6 @@
 				F34E00D220693078002D783D /* UIView.swift in Sources */,
 				F34E00D320693078002D783D /* UIViewController.swift in Sources */,
 				F34E00CD20693078002D783D /* UINib.swift in Sources */,
-				F34E00D820693078002D783D /* LocationManager.swift in Sources */,
 				F34E00BC20693078002D783D /* Int.swift in Sources */,
 				F34E00BB20693078002D783D /* FileManager.swift in Sources */,
 				F34E00EC20693078002D783D /* LinearTextField.swift in Sources */,
@@ -727,7 +735,6 @@
 				F34E0109206932EC002D783D /* BaseCollectionViewCell.swift in Sources */,
 				F34E00F7206930AD002D783D /* AppDelegate.swift in Sources */,
 				F34E00CA20693078002D783D /* UIImageView.swift in Sources */,
-				F34E00D720693078002D783D /* LocalNotificationManager.swift in Sources */,
 				F34E00BA20693078002D783D /* DispatchQueue.swift in Sources */,
 				F34E00E520693078002D783D /* LoginService.swift in Sources */,
 				F34E00C220693078002D783D /* Regex.swift in Sources */,

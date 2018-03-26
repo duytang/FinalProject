@@ -24,4 +24,3 @@ extension Timer {
         return timer
     }
 }
-

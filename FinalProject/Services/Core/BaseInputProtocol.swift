@@ -14,9 +14,8 @@ protocol BaseInputProtocol: class {
     var header: Header? { get set }
     var parameter: Parameter? { get set }
     var method: HTTPMethod { get set }
-    var useAccessToken: Bool { get set}
+    var useAccessToken: Bool { get set }
 }
-
 
 class BaseInput: BaseInputProtocol {
     var url: URLConvertible = APIPath.EndPoint

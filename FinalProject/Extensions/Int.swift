@@ -24,7 +24,7 @@ extension Int {
     }
 
     func clamp(range: Range<Int>) -> Int {
-        return clamp(range.lowerBound,range.upperBound - 1)
+        return clamp(range.lowerBound, range.upperBound - 1)
     }
 
     func clamp(_ min: Int, _ max: Int) -> Int {
@@ -33,7 +33,7 @@ extension Int {
 
     var digits: [Int] {
         var result = [Int]()
-        for char in String(self).characters {
+        for char in String(self) {
             let string = String(char)
             if let toInt = Int(string) {
                 result.append(toInt)
@@ -70,7 +70,7 @@ extension Int {
         }
         return String(format: "%zd%@", self, suffix[index])
     }
-    
+
     static func random(min: Int = 0, max: Int) -> Int {
         return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
     }
@@ -85,4 +85,3 @@ extension FloatingPoint {
         return self * 180 / .pi
     }
 }
-

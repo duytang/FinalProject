@@ -24,15 +24,15 @@ enum CollectionViewKind: String {
 
 extension UICollectionView {
 
-    func registerCell<T:UICollectionViewCell>(aClass: T.Type) {
+    func registerCell<T: UICollectionViewCell>(aClass: T.Type) {
         let className = String(describing: aClass)
-        let nibFile = UINib(nibName: className , bundle: nil)
+        let nibFile = UINib(nibName: className, bundle: nil)
         register(nibFile, forCellWithReuseIdentifier: className)
     }
-    
-    func registerCell<T:UICollectionViewCell>(aClass: T.Type, kind: CollectionViewKind) {
+
+    func registerCell<T: UICollectionViewCell>(aClass: T.Type, kind: CollectionViewKind) {
         let className = String(describing: aClass)
-        let nibFile = UINib(nibName: className , bundle: nil)
+        let nibFile = UINib(nibName: className, bundle: nil)
         register(nibFile, forSupplementaryViewOfKind: kind.value, withReuseIdentifier: className)
     }
 
@@ -51,8 +51,6 @@ extension UICollectionView {
                                                           for: indexPath) as? T else {
                                                             fatalError("\(className) isn't register")
         }
-        
         return cell
     }
-    
 }

@@ -11,7 +11,7 @@ import Foundation
 extension String {
 
     var length: Int {
-        return characters.count
+        return self.count
     }
 
     subscript (i: Int) -> Character {
@@ -84,7 +84,7 @@ extension String {
 
     func contains(pattern: String, ignoreCase: Bool = false) -> Bool? {
         if let regex = NSRegularExpression.regex(pattern: pattern, ignoreCase: ignoreCase) {
-            let range = NSRange(location: 0, length: self.characters.count)
+            let range = NSRange(location: 0, length: self.count)
             return regex.firstMatch(in: self, options: [], range: range) != nil
         }
         return nil
@@ -92,7 +92,7 @@ extension String {
 
     func replace(pattern: String, withString replacementString: String, ignoreCase: Bool = false) -> String? {
         if let regex = NSRegularExpression.regex(pattern: pattern, ignoreCase: ignoreCase) {
-            let range = NSRange(location: 0, length: self.characters.count)
+            let range = NSRange(location: 0, length: self.count)
             return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replacementString)
         }
         return nil
@@ -132,6 +132,4 @@ extension String {
     var isEmail: Bool {
         return regex(pattern: Regex.email)
     }
-
-
 }

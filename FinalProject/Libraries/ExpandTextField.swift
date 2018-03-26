@@ -58,7 +58,7 @@ class ExpandTextField: UITextField {
         insertSubview(label, at: 0)
 
         securityButton = UIButton(type: .custom)
-        securityButton.frame =  CGRect(x: 0, y: 0, width: 50, height: 30)
+        securityButton.frame = CGRect(x: 0, y: 0, width: 50, height: 30)
         securityButton.titleLabel?.font = Font.helveticaNeue.normal(ofSize: 14)
         securityButton.setTitleColor(UIColor.blue, for: .normal)
         if isSecurity {
@@ -75,7 +75,7 @@ class ExpandTextField: UITextField {
     }
 
     private func changeColorPlaceholder() {
-        let attributed = NSMutableAttributedString(string: placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor : UIColor.clear])
+        let attributed = NSMutableAttributedString(string: placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor.clear])
         attributedPlaceholder = attributed
     }
 
@@ -84,13 +84,10 @@ class ExpandTextField: UITextField {
         securityButton.setTitle(text, for: .normal)
     }
 
-
-    //MARK: - Actions
+    // MARK: - Actions
     @objc private func editingChangedValue(textField: UITextField) {
         let value = textField.text ?? ""
         showAnimation(isExpand: !value.isEmpty)
-
-
     }
 
     @objc private func beginEditText(textField: UITextField) {}
@@ -111,12 +108,11 @@ class ExpandTextField: UITextField {
             CATransform3DMakeTranslation(0, 8, 0) :
             CATransform3DMakeTranslation(0, 0, 0)
 
-        let origin = isExpand ? CGPoint(x: 0,  y: -10) : CGPoint.zero
-
-        UIView.animate(withDuration: 0.25, animations: {
+        let origin = isExpand ? CGPoint(x: 0, y: -10) : .zero
+        UIView.animate(withDuration: 0.25) {
             self.label.transform = viewTransform
             self.label.frame.origin = origin
             self.layer.transform = layerTransform
-        }) { (completed) in }
+        }
     }
 }

@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import Reachability
 
-
 typealias ServiceResult = Alamofire.Result
 typealias JSObject = [String: Any]
 typealias JSArray = [JSObject]
@@ -23,7 +22,6 @@ enum ResponseStyle {
     case success
     case error
 }
-
 
 enum APIResult<T> {
     case success(T)
@@ -41,7 +39,6 @@ enum APIResult<T> {
     var isFailure: Bool {
         return !isSuccess
     }
-
 
     var value: T? {
         switch self {
@@ -62,8 +59,6 @@ enum APIResult<T> {
     }
 
 }
-
-
 
 let serialQueue: OperationQueue = {
     let queue = OperationQueue()
@@ -86,7 +81,6 @@ class APIManager {
     private var _taskCount = 0
     var log = true
 
-
     let validation: DataRequest.Validation = { ( request, result, data) -> DataRequest.ValidationResult in
         return Request.ValidationResult.success
     }
@@ -100,7 +94,6 @@ class APIManager {
         -> UploadRequest.ValidationResult in
         return UploadRequest.ValidationResult.success
     }
-
 
     var taskCount: Int {
         set {
@@ -153,7 +146,7 @@ class APIManager {
 
         var filePath: URL!
         taskCount += 1
-        let request = Alamofire.download(path) { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+        let request = Alamofire.download(path) { (url, _) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
             let link = NSTemporaryDirectory() + url.lastPathComponent
             filePath = URL(fileURLWithPath: link)
             return (filePath, DownloadRequest.DownloadOptions())
@@ -164,16 +157,14 @@ class APIManager {
                 DispatchQueue.main.async {
                     progress(Float(pro.completedUnitCount) / Float(pro.totalUnitCount))
                 }
-
             }
             }.validate(downloadValidation).responseJSON { (downloadRespone) in
                 self.taskCount -= 1
                 switch downloadRespone.result {
-                case .success( _):
+                case .success:
                     DispatchQueue.main.async {
                         completion(filePath, nil, nil)
                     }
-
                 case .failure(let error):
                     DispatchQueue.main.async {
                         completion(nil, error, nil)
@@ -181,9 +172,7 @@ class APIManager {
                 }
         }
         return request
-
     }
-
 
     func upload(path: URLConvertible,
                 data: Data,
@@ -199,7 +188,7 @@ class APIManager {
             multiData.append(data, withName: "image")
             if let parameter = parameter {
                 parameter.keys.forEach({ (key) in
-                    if let data = (parameter[key] as AnyObject).data(using:  String.Encoding.utf8.rawValue) {
+                    if let data = (parameter[key] as AnyObject).data(using: String.Encoding.utf8.rawValue) {
                         multiData.append(data, withName: key)
                     }
                 })
@@ -210,7 +199,7 @@ class APIManager {
            method: .post,
            headers: headers) { (result) in
             switch result {
-            case .success(let upload, _ , _):
+            case .success(let upload, _, _):
                 upload.validate(self.uploadValidation)
 
                 upload.uploadProgress(closure: { (pro) in
@@ -224,7 +213,7 @@ class APIManager {
                 upload.responseJSON { response in
                     self.taskCount -= 1
                     switch response.result {
-                    case .success( _):
+                    case .success:
                         DispatchQueue.main.async {
                             completion(nil, "Success")
                         }
@@ -251,8 +240,12 @@ class APIManager {
             print("\n---------------REQUEST---------------")
             print("✎ URL: \(input.url)")
             print("✎ Method: \(input.method)")
-            print("✎ Header: \(input.header!)")
-            print("✎ Parameter: \(input.parameter!)")
+            if let header = input.header {
+                print("✎ Header: \(header)")
+            }
+            if let parameter = input.parameter {
+                print("✎ Parameter: \(parameter)")
+            }
             print("-------------------------------------\n")
         }
     }
@@ -260,17 +253,23 @@ class APIManager {
     func logResponse(stype: ResponseStyle, response: HTTPURLResponse?, value: Any?, error: APIError?, timimg: TimeInterval) {
         if log {
             print("---------------RESPONSE--------------")
-            let time = String.init(format: "%0.2fs", timimg)
+            let time = String(format: "%0.2fs", timimg)
             print(stype == .success ? "😍 SUCCESS (\(time))" : "😭 ERROR (\(time))")
             if let response = response {
-                print("✎ URL: \(response.url!)")
+                if let url = response.url {
+                    print("✎ URL: \(url)")
+                }
                 print("✎ Status code: \(response.statusCode)")
                 print("✎ Header: \(response.allHeaderFields)")
             }
             if stype == .success {
-                print("✎ Body: \(value!)")
+                if let value = value {
+                    print("✎ Body: \(value)")
+                }
             } else {
-                print("✎ Error: \(error!.message)")
+                if let error = error {
+                    print("✎ Error: \(error.message)")
+                }
             }
             print("------------------------------------")
         }
@@ -295,4 +294,3 @@ extension URLSession {
         }
     }
 }
-

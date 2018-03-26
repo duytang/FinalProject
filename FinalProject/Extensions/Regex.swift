@@ -32,4 +32,3 @@ extension NSRegularExpression {
         return regex
     }
 }
-

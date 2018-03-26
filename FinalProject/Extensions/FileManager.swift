@@ -74,8 +74,7 @@ extension FileManager {
     }
 
     class func skipBackup() {
-        let _ = skipBackup(path: docDir)
-        let _ = skipBackup(path: libraryDir)
+        _ = skipBackup(path: docDir)
+        _ = skipBackup(path: libraryDir)
     }
 }
-

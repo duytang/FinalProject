@@ -15,8 +15,8 @@ class ChangePassInput: BaseInput {
         self.url = APIPath.Login.forgot + "/\(code.pin)"
         self.method = .put
         self.useAccessToken = false
-        self.parameter = ["phone_number" : code.phone,
+        self.parameter = ["phone_number": code.phone,
                           "password": newPass,
-                          "password_confirmation" : newPass]
+                          "password_confirmation": newPass]
     }
 }

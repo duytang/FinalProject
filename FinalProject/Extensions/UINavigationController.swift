@@ -14,6 +14,6 @@ extension UINavigationController {
     }
 
     func titleColor(color: UIColor) {
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : color]
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: color]
     }
 }

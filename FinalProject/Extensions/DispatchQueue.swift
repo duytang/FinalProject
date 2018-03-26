@@ -10,8 +10,8 @@ import UIKit
 
 extension DispatchQueue {
 
-    class func after(time: TimeInterval, _ block: @escaping () -> ()) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + time) { 
+    class func after(time: TimeInterval, _ block: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
             block()
         }
     }
@@ -20,19 +20,19 @@ extension DispatchQueue {
 class GCDGroup {
     var queue: DispatchQueue!
     var group: DispatchGroup!
-    var allCompletion: (() -> ())?
+    var allCompletion: (() -> Void)?
 
     init(thread: DispatchQueue) {
         queue = DispatchQueue(label: "DISPATCH_GROUP")
         queue.setTarget(queue: thread)
         group = DispatchGroup()
 
-        group.notify(queue: .main) { 
+        group.notify(queue: .main) {
             self.allCompletion?()
         }
     }
 
-    func addWork(_ work: @escaping (DispatchGroup) -> ()) {
+    func addWork(_ work: @escaping (DispatchGroup) -> Void) {
         group.enter()
         // please add group.leave() in work. If you use group for service
         queue.async(group: group, execute: {

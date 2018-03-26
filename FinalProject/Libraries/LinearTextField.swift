@@ -12,7 +12,7 @@ import UIKit
 class LinearTextField: UITextField {
 
     var lineLayer: CALayer!
-    
+
     @IBInspectable var normalColor: UIColor = UIColor.white
     @IBInspectable var editingColor: UIColor = UIColor.mainColor
     @IBInspectable var lineHeight: CGFloat = 1
@@ -26,7 +26,7 @@ class LinearTextField: UITextField {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         calculateLinearLayerFrame()
@@ -42,14 +42,13 @@ class LinearTextField: UITextField {
         addTarget(self, action: #selector(endEditText(textField:)), for: .editingDidEnd)
         addTarget(self, action: #selector(editingChangedValue(textField:)), for: .editingChanged)
     }
-    
+
     func calculateLinearLayerFrame() {
         let y = frame.height - lineHeight
         lineLayer.frame = CGRect(x: 0, y: y, width: frame.width, height: lineHeight)
     }
 
-
-    //MARK: - Actions
+    // MARK: - Actions
     @objc private func editingChangedValue(textField: UITextField) {
     }
 
@@ -61,9 +60,7 @@ class LinearTextField: UITextField {
         lineLayer.backgroundColor = normalColor.cgColor
     }
 
-
-
     private func showAnimation(isExpand: Bool) {
-        
+
     }
 }

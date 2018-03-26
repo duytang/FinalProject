@@ -13,7 +13,7 @@ extension UIColor {
     static let navigationColor = UIColor.colorRGB(red: 178, green: 81, blue: 83)
     static let backgroundTextField = UIColor.colorRGB(red: 234, green: 239, blue: 242)
     static let textColor = UIColor.colorRGB(red: 73, green: 73, blue: 73)
-    static let gradientColors = [UIColor.colorRGB(red: 0, green: 140, blue: 201),UIColor.colorRGB(red: 1, green: 158, blue: 168)]
+    static let gradientColors = [UIColor.colorRGB(red: 0, green: 140, blue: 201), UIColor.colorRGB(red: 1, green: 158, blue: 168)]
 
 }
 
@@ -22,7 +22,7 @@ extension UIColor {
         return colorRGBA(red: red, green: green, blue: blue, alpha: 1)
     }
 
-    class func colorRGBA(red: Int, green: Int , blue: Int, alpha: CGFloat) -> UIColor {
+    class func colorRGBA(red: Int, green: Int, blue: Int, alpha: CGFloat) -> UIColor {
         return UIColor(red: CGFloat(red) / 255.0,
                        green: CGFloat(green) / 255.0,
                        blue: CGFloat(blue) / 255.0,
@@ -31,9 +31,9 @@ extension UIColor {
 
     class func colorHex(_ hex: String, alpha: CGFloat) -> UIColor {
         let hexInt = UIColor.intFromHex(hex)
-        let color = UIColor(red: ((CGFloat) ((hexInt & 0xFF0000) >> 16))/255,
-                            green: ((CGFloat) ((hexInt & 0xFF00) >> 8))/255,
-                            blue: ((CGFloat) (hexInt & 0xFF))/255,
+        let color = UIColor(red: ((CGFloat) ((hexInt & 0xFF0000) >> 16)) / 255,
+                            green: ((CGFloat) ((hexInt & 0xFF00) >> 8)) / 255,
+                            blue: ((CGFloat) (hexInt & 0xFF)) / 255,
                             alpha: alpha)
         return color
     }
@@ -45,21 +45,25 @@ extension UIColor {
         ctx?.fillPath()
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return img!
+        if let img = img {
+            return img
+        } else {
+            return UIImage()
+        }
     }
 
     private class func intFromHex(_ hex: String) -> UInt32 {
-        var hexInt:UInt32 = 0
+        var hexInt: UInt32 = 0
         let scanner = Scanner(string: hex)
         scanner.charactersToBeSkipped = CharacterSet(charactersIn: "#")
         scanner.scanHexInt32(&hexInt)
         return hexInt
     }
 
-    func isDistinct(compare color:UIColor) -> Bool {
-        let mainComponents = self.cgColor.components!
-        let compareComponents = color.cgColor.components!
-        let threshold:CGFloat = 0.25
+    func isDistinct(compare color: UIColor) -> Bool {
+        guard let mainComponents = self.cgColor.components else { return false }
+        guard let compareComponents = color.cgColor.components else { return false }
+        let threshold: CGFloat = 0.25
 
         if fabs(mainComponents[0] - compareComponents[0]) > threshold ||
             fabs(mainComponents[1] - compareComponents[1]) > threshold ||
@@ -73,5 +77,4 @@ extension UIColor {
         }
         return false
     }
-
 }

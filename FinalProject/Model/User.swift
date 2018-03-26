@@ -20,22 +20,16 @@ enum UserType: String {
     case receptionist = "Receptionist"
 }
 
-
-
 class User: NSObject, Mappable, NSSecureCoding {
 
     var accessToken: String = ""
     var type: UserType {
-        get {
-            return UserType(rawValue: typeString) ?? .bussiness
-        }
+        return UserType(rawValue: typeString) ?? .bussiness
     }
     private var typeString: String = ""
     static var supportsSecureCoding: Bool = true
 
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
 
     func mapping(map: Map) {
         accessToken <- map["access_token"]
@@ -44,7 +38,7 @@ class User: NSObject, Mappable, NSSecureCoding {
 
     required init?(coder aDecoder: NSCoder) {
         if let accessToken = aDecoder.decodeObject(forKey: UserKey.accessToken.rawValue) as? String,
-           let type = aDecoder.decodeObject(forKey: UserKey.type.rawValue) as? String{
+           let type = aDecoder.decodeObject(forKey: UserKey.type.rawValue) as? String {
             self.accessToken = accessToken
             self.typeString = type
         }

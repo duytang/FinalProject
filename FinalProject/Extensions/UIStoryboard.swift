@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Storyboard : String {
+enum Storyboard: String {
     case main = "Main"
     case user = "User"
 }
@@ -20,8 +20,6 @@ extension UIStoryboard {
     static func userStoryboard(_ identifier: String = "") -> UIViewController {
         return identifier.isEmpty ? loadInitial(from: .user) : load(from: .user, identifier: identifier)
     }
-
-
 }
 
 extension UIStoryboard {

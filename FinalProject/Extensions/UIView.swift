@@ -22,10 +22,14 @@ extension UIView {
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         UIView.setAnimationsEnabled(true)
-        return image!
+        if let image = image {
+            return image
+        } else {
+            return UIImage()
+        }
     }
 
-    func shadow(offset: CGSize = CGSize(width: 0 ,height: -5), color: UIColor = UIColor.black, radius: CGFloat = 2, opacity: Float = 0.35, cornerRadius: CGFloat = 20) {
+    func shadow(offset: CGSize = CGSize(width: 0, height: -5), color: UIColor = UIColor.black, radius: CGFloat = 2, opacity: Float = 0.35, cornerRadius: CGFloat = 20) {
         let shadowLayer = layer
         shadowLayer.cornerRadius = cornerRadius
         shadowLayer.masksToBounds = false
@@ -42,7 +46,7 @@ extension UIView {
 
     func removeShadow() {
         let shadowLayer = self.layer
-        shadowLayer.shadowOffset = CGSize(width: 0 ,height: 0)
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 0)
         shadowLayer.shadowColor = UIColor.clear.cgColor
         shadowLayer.shadowRadius = 0
         shadowLayer.shadowOpacity = 0
@@ -57,7 +61,7 @@ extension UIView {
             gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
             gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         } else {
-            gradientLayer.locations = [0.0,1.0]
+            gradientLayer.locations = [0.0, 1.0]
         }
         gradientLayer.frame = bounds
         gradientLayer.colors = colors.map({ (color) -> CGColor in
@@ -68,8 +72,7 @@ extension UIView {
     }
 
     func removeGradient() {
-        let _ = layer.sublayers?.filter({ $0.name == "GradientBackground" }).map({ $0.removeFromSuperlayer() })
-//        layer.mask?.removeFromSuperlayer()
+        _ = layer.sublayers?.filter({ $0.name == "GradientBackground" }).map({ $0.removeFromSuperlayer() })
     }
 
     func corner(_ cornerRadius: CGFloat) {
@@ -84,7 +87,10 @@ extension UIView {
 
     class func loadXibView<T: UIView>(fromNib viewType: T.Type, owner: Any?) -> UIView {
         let nibName = String(describing: viewType)
-        return UINib.nib(named: nibName).instantiate(withOwner: owner, options: nil)[0] as! UIView
+        guard let view = UINib.nib(named: nibName).instantiate(withOwner: owner, options: nil)[0] as? UIView else {
+            fatalError("Can not load nib name: \(viewType)")
+        }
+        return view
     }
 
     class func loadView<T: UIView>(fromNib viewType: T.Type) -> T {
@@ -100,5 +106,3 @@ extension UIView {
         return view
     }
 }
-
-

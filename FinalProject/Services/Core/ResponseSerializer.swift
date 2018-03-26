@@ -22,9 +22,10 @@ extension DataRequest {
                     OperationQueue.main.addOperation {
                         completion(APIResult.failure(apiError))
                     }
-                    api.logResponse(stype: .error, response: response, value: nil, error: apiError,timimg: timing)
+                    api.logResponse(stype: .error, response: response, value: nil, error: apiError, timimg: timing)
                 } else {
-                    switch response!.statusCode {
+                    guard let response = response else { return }
+                    switch response.statusCode {
                     case 200...299:
                         if let object = result.value as? JSObject, let data = object["data"] as? JSObject {
                             OperationQueue.main.addOperation {
@@ -40,12 +41,11 @@ extension DataRequest {
                             }
                         }
                         api.logResponse(stype: .success, response: response, value: result.value, error: nil, timimg: timing)
-                        break
                     default:
-                        var apiError = APIError(code: -1, message:"Handling error")
-                        if let json =  result.value as? JSObject, let error = json["errors"] as? String {
+                        var apiError = APIError(code: -1, message: "Handling error")
+                        if let json = result.value as? JSObject, let error = json["errors"] as? String {
                             apiError.message = error
-                        } else if let status = HTTPStatusCode(rawValue: response!.statusCode) {
+                        } else if let status = HTTPStatusCode(rawValue: response.statusCode) {
                             apiError = status.error
                         }
 
@@ -53,7 +53,6 @@ extension DataRequest {
                             completion(APIResult.failure(apiError))
                         }
                         api.logResponse(stype: .error, response: response, value: nil, error: apiError, timimg: timing)
-                        break
                     }
                 }
             })
@@ -61,7 +60,7 @@ extension DataRequest {
     }
 
     func saveCookies(response: HTTPURLResponse) {
-        guard let headerFields = response.allHeaderFields as? [String : String] else { return }
+        guard let headerFields = response.allHeaderFields as? [String: String] else { return }
         guard let URL = response.url else { return }
         let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: URL)
         HTTPCookieStorage.shared.setCookies(cookies, for: URL, mainDocumentURL: nil)

@@ -30,12 +30,10 @@ extension Shake where Self: UIView {
         animation.duration = 0.4
         animation.isRemovedOnCompletion = false
         self.layer.add(animation, forKey: "shake")
-
     }
 }
 
 class Helper {
-
     static var isiPhone4: Bool {
         return kScreen.size.width == 320 && kScreen.size.height == 480
     }
@@ -65,7 +63,7 @@ class Helper {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 
-    class func readJSON(name:String) -> [String: Any]? {
+    class func readJSON(name: String) -> [String: Any]? {
         guard let path = Bundle.main.path(forResource: name, ofType: "json") else {
             return nil
         }
@@ -80,13 +78,12 @@ class Helper {
     class func convertStringToAccount(string: String) -> String {
         var index = 1
         var accountNumber = ""
-        string.characters.forEach { (character) in
+        string.forEach { (character) in
             if index % 4 == 0 {
                 accountNumber.append(character)
-                if index < string.characters.count  {
+                if index < string.count {
                     accountNumber.append(" ")
                 }
-
             } else {
                 accountNumber.append(character)
             }
@@ -98,11 +95,4 @@ class Helper {
     class func convertAccountToString(string: String) -> String {
         return string.replacingOccurrences(of: " ", with: "")
     }
-
-//    class func localizable(key: String, comment: String = "") -> String {
-//        return NSLocalizedString(key, comment: comment)
-//    }
-
 }
-
-

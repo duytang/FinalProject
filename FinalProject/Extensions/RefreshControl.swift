@@ -17,5 +17,4 @@ class RefreshControl: UIRefreshControl {
         super.endRefreshing()
         scrollView?.isScrollEnabled = scrollEnabled
     }
-    
 }

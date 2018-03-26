@@ -28,8 +28,8 @@ extension CGRect {
         }
     }
 
-    var halfWidth: CGFloat { return width/2 }
-    var halfHeight: CGFloat { return height/2 }
+    var halfWidth: CGFloat { return width / 2 }
+    var halfHeight: CGFloat { return height / 2 }
 
     var center: CGPoint {
         return CGPoint(x: width / 2, y: height / 2)
@@ -53,6 +53,4 @@ extension UIScreen {
     var iPhone6Or7PlusScren: CGSize {
         return CGSize(width: 414, height: 736)
     }
-
-
 }

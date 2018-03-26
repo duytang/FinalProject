@@ -19,7 +19,7 @@ protocol CollectionViewProvider {
 }
 
 protocol BaseControllerModelView: class {
-    var title:String  { get }
+    var title: String { get }
     var messageError: Dynamic<String> { get set }
     var isLoading: Dynamic<Bool> { get set }
 

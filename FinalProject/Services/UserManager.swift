@@ -13,7 +13,7 @@ class UserManager {
     static var shared = UserManager()
     private var user: User?
     var isLogin: Bool {
-        if let _ = user {
+        if user != nil {
             return true
         } else {
             return false
@@ -54,8 +54,8 @@ class UserManager {
 
     private func pathForUserDataFile() -> String {
 
-        let documentsFolderPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! + "/" + "user_data.file"
-        return documentsFolderPath
+        guard let documentsFolderPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else { return "" }
+        return documentsFolderPath + "/" + "user_data.file"
     }
 
     func getUser() -> User? {
@@ -71,5 +71,4 @@ class UserManager {
         api.logout()
         remove()
     }
-    
 }
