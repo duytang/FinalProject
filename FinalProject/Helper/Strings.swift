@@ -9,4 +9,13 @@
 import Foundation
 
 struct Strings {
+    
+}
+
+struct Title {
+    static let home = "Home"
+    static let trending = "Trending"
+    static let favorite = "Favorite"
+    static let playList = "PlayList"
+    static let history = "History"
 }

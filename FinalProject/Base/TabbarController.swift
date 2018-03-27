@@ -31,23 +31,23 @@ class TabbarController: UITabBarController {
     func configTabBar() {
         let homeVC = HomeViewController()
         let homeNavi = NavigationController(rootViewController: homeVC)
-        homeNavi.setAttributeForNavigation(title: "Home", image: #imageLiteral(resourceName: "ic_home"))
+        homeNavi.setAttributeForNavigation(title: Title.home, image: #imageLiteral(resourceName: "ic_home"))
 
         let trendingVC = TrendingViewController()
         let trendingNavi = NavigationController(rootViewController: trendingVC)
-        trendingNavi.setAttributeForNavigation(title: "Trending", image: #imageLiteral(resourceName: "ic_trending"))
+        trendingNavi.setAttributeForNavigation(title: Title.trending, image: #imageLiteral(resourceName: "ic_trending"))
 
         let favoriteVC = FavoriteViewController()
         let favoriteNavi = NavigationController(rootViewController: favoriteVC)
-        favoriteNavi.setAttributeForNavigation(title: "Favorite", image: #imageLiteral(resourceName: "ic_favorite"))
+        favoriteNavi.setAttributeForNavigation(title: Title.favorite, image: #imageLiteral(resourceName: "ic_favorite"))
 
         let playListVC = PlayListViewController()
         let playListNavi = NavigationController(rootViewController: playListVC)
-        playListNavi.setAttributeForNavigation(title: "PlayList", image: #imageLiteral(resourceName: "ic_chanel"))
+        playListNavi.setAttributeForNavigation(title: Title.playList, image: #imageLiteral(resourceName: "ic_chanel"))
 
         let historyVC = HistoryViewController()
         let historyNavi = NavigationController(rootViewController: historyVC)
-        historyNavi.setAttributeForNavigation(title: "History", image: #imageLiteral(resourceName: "ic_history"))
+        historyNavi.setAttributeForNavigation(title: Title.history, image: #imageLiteral(resourceName: "ic_history"))
 
         viewControllers = [homeNavi, trendingNavi, favoriteNavi, playListNavi, historyNavi]
     }

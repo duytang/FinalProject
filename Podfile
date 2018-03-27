@@ -15,6 +15,7 @@ target 'FinalProject' do
     pod 'Kingfisher'
     pod 'SnapKit'
     pod 'SwifterSwift'
+    pod 'MVVM-Swift', '~> 1.1.0'
 
   target 'FinalProjectTests' do
     inherit! :search_paths

@@ -17,31 +17,31 @@ enum ButtonItemType: Int {
 
     var nonSelectImage: UIImage {
         switch self {
-        case .favorite:
-            return #imageLiteral(resourceName: "ic_favorite")
         case .home:
             return #imageLiteral(resourceName: "ic_home")
         case .trending:
             return #imageLiteral(resourceName: "ic_trending")
-        case .history:
-            return #imageLiteral(resourceName: "ic_history")
+        case .favorite:
+            return #imageLiteral(resourceName: "ic_favorite")
         case .playlist:
             return #imageLiteral(resourceName: "ic_chanel")
+        case .history:
+            return #imageLiteral(resourceName: "ic_history")
         }
     }
 
     var selectImage: UIImage {
         switch self {
-        case .favorite:
-            return #imageLiteral(resourceName: "ic_selectfavorite")
         case .home:
             return #imageLiteral(resourceName: "ic_selecthome")
         case .trending:
             return #imageLiteral(resourceName: "ic_selecttrending")
-        case .history:
-            return #imageLiteral(resourceName: "ic_selecthistory")
+        case .favorite:
+            return #imageLiteral(resourceName: "ic_selectfavorite")
         case .playlist:
             return #imageLiteral(resourceName: "ic_selectchanel")
+        case .history:
+            return #imageLiteral(resourceName: "ic_selecthistory")
         }
     }
 
