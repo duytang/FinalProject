@@ -105,4 +105,24 @@ extension UIView {
         let view = loadView(fromNib: self)
         return view
     }
+
+    func findImageView() -> UIImageView? {
+        let imageViews = subviews.filter { (subView) -> Bool in
+            if subView is UIImageView {
+                return true
+            }
+            return false
+        }
+        return !imageViews.isEmpty ? imageViews.first as? UIImageView : nil
+    }
+
+    func findLabel() -> UILabel? {
+        let labels = subviews.filter { (subView) -> Bool in
+            if subView is UILabel {
+                return true
+            }
+            return false
+        }
+        return !labels.isEmpty ? labels.first as? UILabel : nil
+    }
 }

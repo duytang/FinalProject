@@ -8,12 +8,12 @@
 
 import UIKit
 
-class BaseNavigationController: UINavigationController {
+class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.isTranslucent = false
-        navigationBar.barTintColor = .navigationColor
+        navigationBar.barTintColor = Color.navBar
         navigationBar.tintColor = .white
 
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
@@ -25,5 +25,10 @@ class BaseNavigationController: UINavigationController {
 
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
+    }
+
+    func setAttributeForNavigation(title: String, image: UIImage) {
+        self.title = title
+        tabBarItem.image = image
     }
 }

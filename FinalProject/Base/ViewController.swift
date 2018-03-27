@@ -66,7 +66,7 @@ extension LoadingViewController where Self: UIViewController {
     }
 }
 
-class BaseViewController: UIViewController {
+class ViewController: UIViewController {
 
     var isLeftBarButtonHidden = false
 
@@ -85,7 +85,6 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         setupData()
         setupUI()
-        setUpNavigation()
     }
 
     func setupUI() { }

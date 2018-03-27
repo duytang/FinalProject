@@ -1,14 +1,14 @@
 //
-//  HomeViewController.swift
+//  HistoryViewController.swift
 //  FinalProject
 //
-//  Created by Duy Tang on 3/26/18.
+//  Created by Duy Tang on 3/27/18.
 //  Copyright © 2018 Duy Tang. All rights reserved.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HistoryViewController: ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -13,6 +13,8 @@ target 'FinalProject' do
     pod 'MBProgressHUD'
     pod 'SwiftLint'
     pod 'Kingfisher'
+    pod 'SnapKit'
+    pod 'SwifterSwift'
 
   target 'FinalProjectTests' do
     inherit! :search_paths
