@@ -31,25 +31,17 @@ class TabbarController: UITabBarController {
     func configTabBar() {
         let homeVC = HomeViewController()
         let homeNavi = NavigationController(rootViewController: homeVC)
-        homeNavi.setAttributeForNavigation(title: Title.home, image: #imageLiteral(resourceName: "ic_home"))
 
         let trendingVC = TrendingViewController()
         let trendingNavi = NavigationController(rootViewController: trendingVC)
-        trendingNavi.setAttributeForNavigation(title: Title.trending, image: #imageLiteral(resourceName: "ic_trending"))
 
         let favoriteVC = FavoriteViewController()
         let favoriteNavi = NavigationController(rootViewController: favoriteVC)
-        favoriteNavi.setAttributeForNavigation(title: Title.favorite, image: #imageLiteral(resourceName: "ic_favorite"))
-
-        let playListVC = PlayListViewController()
-        let playListNavi = NavigationController(rootViewController: playListVC)
-        playListNavi.setAttributeForNavigation(title: Title.playList, image: #imageLiteral(resourceName: "ic_chanel"))
 
         let historyVC = HistoryViewController()
         let historyNavi = NavigationController(rootViewController: historyVC)
-        historyNavi.setAttributeForNavigation(title: Title.history, image: #imageLiteral(resourceName: "ic_history"))
 
-        viewControllers = [homeNavi, trendingNavi, favoriteNavi, playListNavi, historyNavi]
+        viewControllers = [homeNavi, trendingNavi, favoriteNavi, historyNavi]
     }
 
 }

@@ -12,19 +12,16 @@ enum ButtonItemType: Int {
     case home = 0
     case trending
     case favorite
-    case playlist
     case history
 
     var nonSelectImage: UIImage {
         switch self {
+        case .favorite:
+            return #imageLiteral(resourceName: "ic_favorite")
         case .home:
             return #imageLiteral(resourceName: "ic_home")
         case .trending:
             return #imageLiteral(resourceName: "ic_trending")
-        case .favorite:
-            return #imageLiteral(resourceName: "ic_favorite")
-        case .playlist:
-            return #imageLiteral(resourceName: "ic_chanel")
         case .history:
             return #imageLiteral(resourceName: "ic_history")
         }
@@ -32,14 +29,12 @@ enum ButtonItemType: Int {
 
     var selectImage: UIImage {
         switch self {
+        case .favorite:
+            return #imageLiteral(resourceName: "ic_selectfavorite")
         case .home:
             return #imageLiteral(resourceName: "ic_selecthome")
         case .trending:
             return #imageLiteral(resourceName: "ic_selecttrending")
-        case .favorite:
-            return #imageLiteral(resourceName: "ic_selectfavorite")
-        case .playlist:
-            return #imageLiteral(resourceName: "ic_selectchanel")
         case .history:
             return #imageLiteral(resourceName: "ic_selecthistory")
         }
@@ -53,8 +48,6 @@ enum ButtonItemType: Int {
             return .trending
         case 2:
             return .favorite
-        case 3:
-            return .playlist
         default:
             return .history
         }
@@ -74,8 +67,9 @@ class TabBarView: UIView {
         willSet {
             let oldview = itemView[index]
             oldview.backgroundColor = .clear
-            let buttonType = ButtonItemType.type(index: index)
+
             if let imageView = oldview.findImageView(), let label = oldview.findLabel() {
+                let buttonType = ButtonItemType.type(index: index)
                 imageView.image = buttonType.nonSelectImage
                 label.textColor = Color.categoryText
             }
@@ -83,6 +77,7 @@ class TabBarView: UIView {
             let newView = itemView[newValue]
             newView.backgroundColor = Color.navBar
             if let imageView = newView.findImageView(), let label = newView.findLabel() {
+                let buttonType = ButtonItemType.type(index: newValue)
                 imageView.image = buttonType.selectImage
                 label.textColor = .white
             }

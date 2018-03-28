@@ -9,7 +9,7 @@
 import Foundation
 
 struct Strings {
-    
+
 }
 
 struct Title {

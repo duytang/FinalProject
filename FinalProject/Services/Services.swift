@@ -9,5 +9,4 @@
 import Foundation
 
 class Services {
-    static let loginService = LoginService()
 }

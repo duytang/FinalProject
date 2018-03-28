@@ -13,7 +13,7 @@ class TagView: UIScrollView {
     var numberOfRows = 0
     var currentRow = 0
     var tags: [UILabel] = [UILabel]()
-    var width: CGFloat = 0
+    var widdth: CGFloat = 0
     var hashtagsOffset: UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 0)
     var rowHeight: CGFloat = 26 // height of rows
     var tagHorizontalPadding: CGFloat = 10.0 // padding between tags horizontally
@@ -70,7 +70,7 @@ class TagView: UIScrollView {
             if currentRow < maxRow {
                 addSubview(label)
                 let height = label.frame.origin.y + label.frame.height + hashtagsOffset.top
-                contentSize = CGSize(width: width, height: height)
+                contentSize = CGSize(width: widdth, height: height)
             }
         }
     }
@@ -144,7 +144,7 @@ class TagView: UIScrollView {
 
     private func generateFrameAtIndex(index: Int, rowNumber: inout Int) -> CGRect {
         var newPoint = getPositionForIndex(index: index, rowNumber: rowNumber)
-        if (newPoint.x + tags[index].frame.width) >= width {
+        if (newPoint.x + tags[index].frame.width) >= widdth {
             rowNumber += 1
             newPoint = CGPoint(x: self.hashtagsOffset.left, y: CGFloat(rowNumber) * rowHeight)
         }
