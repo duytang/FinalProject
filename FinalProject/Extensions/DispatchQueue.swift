@@ -39,4 +39,8 @@ class GCDGroup {
             work(self.group)
         })
     }
+
+    func notify(action: @escaping () -> Void) {
+        group.notify(queue: .main, execute: action)
+    }
 }

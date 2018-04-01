@@ -8,37 +8,59 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
+import Realm
 
-final class Video: Mappable {
+final class Video: Object, Mappable {
     @objc dynamic var idVideo = ""
     @objc dynamic var idCategory = ""
-    @objc dynamic var title = ""
-    @objc dynamic var viewCount = ""
+    @objc dynamic var name = ""
+    @objc dynamic var numberView = ""
     @objc dynamic var duration = ""
     @objc dynamic var channelId = ""
-    @objc dynamic var channelTitle = ""
+    @objc dynamic var channelName = ""
     @objc dynamic var channelThumnail = ""
     @objc dynamic var descript = ""
     @objc dynamic var thumbnail = ""
     @objc dynamic var timeUpload = ""
 
-    init?(map: Map) { }
+    required init?(map: Map) {
+        super.init()
+    }
+
+    required init() {
+        super.init()
+    }
+
+    required init(value: Any, schema: RLMSchema) {
+        super.init(value: value, schema: schema)
+    }
+
+    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+        super.init(realm: realm, schema: schema)
+    }
 
     func mapping(map: Map) {
         var id = ""
+        var image = ""
         id <- map["id"]
         if id == "" {
             idVideo <- map["id.videoId"]
         } else {
             idVideo = id
         }
-        title <- map["snippet.title"]
+        name <- map["snippet.title"]
         channelId <- map["snippet.channelId"]
-        channelTitle <- map["snippet.channelTitle"]
+        channelName <- map["snippet.channelTitle"]
         descript <- map["snippet.description"]
         timeUpload <- map["snippet.publishedAt"]
-        thumbnail <- map["snippet.thumbnails.medium.url"]
+        image <- map["snippet.thumbnails.maxres.url"]
+        if image.isEmpty {
+            thumbnail <- map["snippet.thumbnails.high.url"]
+        } else {
+            thumbnail = image
+        }
         duration <- map["contentDetails.duration"]
-        viewCount <- map["statistics.viewCount"]
+        numberView <- map["statistics.viewCount"]
     }
 }

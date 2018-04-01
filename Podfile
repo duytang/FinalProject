@@ -16,6 +16,8 @@ target 'FinalProject' do
     pod 'SnapKit'
     pod 'SwifterSwift'
     pod 'MVVM-Swift', '~> 1.1.0'
+    pod 'RealmSwift'
+    pod 'Realm'
 
   target 'FinalProjectTests' do
     inherit! :search_paths

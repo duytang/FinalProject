@@ -56,6 +56,17 @@ extension FavoriteViewController: UICollectionViewDataSource {
     }
 }
 
+extension FavoriteViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            print("creeate new folder")
+        } else {
+            let favoriteListVC = FavoriteListViewController()
+            push(viewController: favoriteListVC)
+        }
+    }
+}
+
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2, height: collectionView.frame.width / 2)

@@ -8,12 +8,28 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
+import Realm
 
-final class Category: Mappable {
-    @objc dynamic var id = 0
+final class Category: Object, Mappable {
+    @objc dynamic var id = ""
     @objc dynamic var name = ""
 
-    init?(map: Map) { }
+    required init?(map: Map) {
+        super.init()
+    }
+
+    required init() {
+        super.init()
+    }
+
+    required init(value: Any, schema: RLMSchema) {
+        super.init(value: value, schema: schema)
+    }
+
+    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+        super.init(realm: realm, schema: schema)
+    }
 
     func mapping(map: Map) {
         id <- map["id"]

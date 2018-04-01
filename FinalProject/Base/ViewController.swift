@@ -87,6 +87,10 @@ class ViewController: UIViewController {
         setupUI()
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     func setupUI() { }
 
     func setupData() { }

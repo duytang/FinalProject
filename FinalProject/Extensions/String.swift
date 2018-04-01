@@ -120,9 +120,6 @@ extension String {
     func localized() -> String {
         return NSLocalizedString(self, comment: "")
     }
-}
-
-extension String {
 
     func regex(pattern: String) -> Bool {
         let regexText = NSPredicate(format: "SELF MATCHES %@", pattern)
@@ -131,5 +128,89 @@ extension String {
 
     var isEmail: Bool {
         return regex(pattern: Regex.email)
+    }
+
+    // MARK: - Get time of video
+    func convertDuration() -> String {
+        var duration = ""
+        if checkDurationVideo(text: self) {
+            guard let formattedDuration = self.replace(pattern: "PT", withString: "") else { return "-:-" }
+            guard let hour = formattedDuration.replace(pattern: "H", withString: ":") else { return "-:-" }
+            guard let minute = hour.replace(pattern: "M", withString: ":") else { return "-:-" }
+            guard let second = minute.replace(pattern: "S", withString: "") else { return "-:-" }
+            let components = second.components(separatedBy: ":")
+            for component in components {
+                duration = !duration.isEmpty ? duration + ":": duration
+                if component.count < 2 {
+                    duration += "0" + component
+                    continue
+                }
+                duration += component
+            }
+        } else {
+            duration = "-:-"
+        }
+        return duration
+    }
+
+    // MARK: - Validate time of Video
+    func checkDurationVideo(text: String) -> Bool {
+        let DURATION_REGEX_FULL = "^PT+[0-9]+H[0-9]+M[0-9]+S"
+        let DURATION_REGEX = "^PT+[0-9]+M[0-9]+S"
+        let durationTestFull = NSPredicate(format: "SELF MATCHES %@", DURATION_REGEX_FULL)
+        let durationTest = NSPredicate(format: "SELF MATCHES %@", DURATION_REGEX)
+        let test_REGEX_FULL = durationTestFull.evaluate(with: text)
+        let test_REGEX = durationTest.evaluate(with: text)
+        if test_REGEX_FULL || test_REGEX {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    // MARK: - Get time upload of video
+    func convertTimeUpload() -> String {
+        let date = toDate(format: DateFormat.TZDateTime3, localized: false)
+        let setComponent: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute, .second]
+        let diffDateComponent = Calendar.current.dateComponents(setComponent, from: date, to: Date())
+        if let year = diffDateComponent.year, year > 0 {
+            return year > 1 ? "\(year) years ago" : "\(year) year ago"
+        } else  if let month = diffDateComponent.month, month > 0 {
+            return month > 1 ? "\(month) months ago" : "\(month) month ago"
+        } else if let day = diffDateComponent.day, day > 0 {
+            return day > 1 ? "\(day) days ago" : "\(day) day ago"
+        } else if let hour = diffDateComponent.hour, hour > 0 {
+            return hour > 1 ? "\(hour) hours ago" : "\(hour) hour ago"
+        } else if let minute = diffDateComponent.minute, minute > 0 {
+            return minute > 1 ? "\(minute) minutes ago" : "\(minute) minute ago"
+        } else if let second = diffDateComponent.second, second > 0 {
+            return second > 1 ? "\(second) seconds ago" : "just now"
+        } else {
+            return ""
+        }
+    }
+
+    // MARK: - Show view count of video
+    func getNumberView() -> String {
+        var numberView = ""
+        if isEmpty {
+            numberView = "0 view"
+        } else {
+            guard let countView = Int(self) else { return "0 view" }
+            if countView > 1 {
+                if countView > 999_999 {
+                    numberView = String(countView / 1_000_000) + "M views"
+                } else {
+                    if 999_999 >= countView && countView > 999 {
+                        numberView = String(countView / 1_000) + "K views"
+                    } else {
+                        numberView += " views"
+                    }
+                }
+            } else {
+                numberView += " view"
+            }
+        }
+        return numberView
     }
 }

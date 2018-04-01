@@ -14,6 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="categoryNameLabel" destination="hS5-O8-tfW" id="TB6-8u-pwN"/>
                 <outlet property="tableView" destination="ClJ-Fr-jk4" id="q1e-mB-LS0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,22 +28,22 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOy-b8-ddx">
-                            <rect key="frame" x="94" y="72" width="187.5" height="29"/>
+                            <rect key="frame" x="63" y="72" width="250" height="29"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Film and Animation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS5-O8-tfW">
-                                    <rect key="frame" x="23" y="5" width="141.5" height="19.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS5-O8-tfW">
+                                    <rect key="frame" x="23.5" y="5" width="204" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_caret_white" translatesAutoresizingMaskIntoConstraints="NO" id="JSU-dH-Zry">
-                                    <rect key="frame" x="169.5" y="11.5" width="10" height="6"/>
+                                    <rect key="frame" x="232.5" y="11.5" width="10" height="6"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="JSU-dH-Zry" secondAttribute="height" multiplier="5:3" id="XhP-hn-LCH"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cla-2j-m2B">
-                                    <rect key="frame" x="0.0" y="0.0" width="188" height="29"/>
+                                    <rect key="frame" x="0.5" y="0.0" width="249.5" height="29"/>
                                     <connections>
                                         <action selector="selectCategoryButtonTappedWithSende:" destination="-1" eventType="touchUpInside" id="SmR-5V-pXX"/>
                                     </connections>
@@ -88,7 +89,7 @@
                         <constraint firstItem="t8b-8d-53f" firstAttribute="centerX" secondItem="o3U-mx-yso" secondAttribute="centerX" id="QHP-pS-ISi"/>
                         <constraint firstItem="GHn-RP-nsv" firstAttribute="centerY" secondItem="t8b-8d-53f" secondAttribute="centerY" id="Vj3-cL-H5i"/>
                         <constraint firstAttribute="bottom" secondItem="jOy-b8-ddx" secondAttribute="bottom" constant="8" id="Xcv-ju-IJz"/>
-                        <constraint firstItem="jOy-b8-ddx" firstAttribute="width" secondItem="o3U-mx-yso" secondAttribute="width" multiplier="1/2" id="nr1-PV-2yK"/>
+                        <constraint firstItem="jOy-b8-ddx" firstAttribute="width" secondItem="o3U-mx-yso" secondAttribute="width" multiplier="2/3" id="nr1-PV-2yK"/>
                         <constraint firstItem="jOy-b8-ddx" firstAttribute="top" secondItem="o3U-mx-yso" secondAttribute="top" constant="72" id="uTy-Ur-Vpr"/>
                     </constraints>
                 </view>
@@ -113,7 +114,7 @@
                 <constraint firstItem="ClJ-Fr-jk4" firstAttribute="top" secondItem="o3U-mx-yso" secondAttribute="bottom" id="zMI-zo-PT7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="33.5" y="54.5"/>
+            <point key="canvasLocation" x="-225" y="26"/>
         </view>
     </objects>
     <resources>

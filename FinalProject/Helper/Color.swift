@@ -18,4 +18,5 @@ struct Color {
     static let categoryText = UIColor.colorRGB(red: 154, green: 157, blue: 164)
     static let navBar = UIColor.colorRGB(red: 241, green: 93, blue: 81)
     static let title = UIColor.colorRGB(red: 0, green: 122, blue: 255)
+    static let popupBG = UIColor.colorRGBA(red: 0, green: 0, blue: 0, alpha: 0.4)
 }
