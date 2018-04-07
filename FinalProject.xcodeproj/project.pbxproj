@@ -130,6 +130,8 @@
 		F3F66695206A696200FCC803 /* TrendingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3F66693206A696200FCC803 /* TrendingViewController.xib */; };
 		F3F66699206A6CE100FCC803 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F66697206A6CE100FCC803 /* FavoriteViewController.swift */; };
 		F3F6669A206A6CE100FCC803 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3F66698206A6CE100FCC803 /* FavoriteViewController.xib */; };
+		F3F725B420711CDE004DE373 /* FavoriteVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F725B320711CDE004DE373 /* FavoriteVideo.swift */; };
+		F3F725B620711E19004DE373 /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F725B520711E19004DE373 /* FavoriteList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -274,6 +276,8 @@
 		F3F66693206A696200FCC803 /* TrendingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingViewController.xib; sourceTree = "<group>"; };
 		F3F66697206A6CE100FCC803 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F3F66698206A6CE100FCC803 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		F3F725B320711CDE004DE373 /* FavoriteVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteVideo.swift; sourceTree = "<group>"; };
+		F3F725B520711E19004DE373 /* FavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +451,8 @@
 				F305E703206BF44F00DE5495 /* Category.swift */,
 				F305E705206BF52A00DE5495 /* Video.swift */,
 				F37EAD57206FDB3300A64D8C /* Channel.swift */,
+				F3F725B320711CDE004DE373 /* FavoriteVideo.swift */,
+				F3F725B520711E19004DE373 /* FavoriteList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -999,6 +1005,7 @@
 				F305E6F3206BE27200DE5495 /* SearchViewModel.swift in Sources */,
 				F34E00C720693078002D783D /* UICollectionView.swift in Sources */,
 				F34E00D020693078002D783D /* UITableView.swift in Sources */,
+				F3F725B620711E19004DE373 /* FavoriteList.swift in Sources */,
 				F34E00F120693078002D783D /* RealmConfig.swift in Sources */,
 				F34E00B620693078002D783D /* CGRect.swift in Sources */,
 				F34E00C820693078002D783D /* UIColor.swift in Sources */,
@@ -1033,6 +1040,7 @@
 				F3F66694206A696200FCC803 /* TrendingViewController.swift in Sources */,
 				F34E0109206932EC002D783D /* CollectionViewCell.swift in Sources */,
 				F395497F206E6B3B00090D5F /* FavoriteListCell.swift in Sources */,
+				F3F725B420711CDE004DE373 /* FavoriteVideo.swift in Sources */,
 				F3B11C4B206F2C4F001FE066 /* ServiceError.swift in Sources */,
 				F3954989206E6DC700090D5F /* DetailVideoViewModel.swift in Sources */,
 				F3B05CB2206F857B00BAD308 /* VideoService.swift in Sources */,

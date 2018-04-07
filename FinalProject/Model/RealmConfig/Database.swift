@@ -26,12 +26,15 @@ class Database {
                         let categories = Mapper<Category>().mapArray(JSONObject: object["items"]) {
                         RealmManager.shared.write(action: { (realm) in
                             categories.forEach({ (category) in
-                                realm.add(category)
+                                if let id = Int(category.id) {
+                                    if id < 30 && id != 18 && id != 19 && id != 21 && id != 22 {
+                                        realm.add(category)
+                                    }
+                                }
                             })
                         })
                         completion(.success(categories))
                     }
-
                 case .failure(let error):
                     completion(.failure(error))
                 }

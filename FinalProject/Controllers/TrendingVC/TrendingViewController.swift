@@ -31,12 +31,21 @@ class TrendingViewController: ViewController, AlertViewController, LoadingViewCo
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
-        viewModel.getListTrending { (result) in
+        getListTrendingVideo()
+    }
+
+    private func getListTrendingVideo(isShowLoading: Bool = true) {
+        if isShowLoading {
+            showLoading()
+        }
+        viewModel.getListTrending { [weak self](result) in
+            guard let this = self else { return }
+            this.hideLoading()
             switch result {
             case .success:
-                self.tableView.reloadData()
+                this.tableView.reloadData()
             case .failure(let error):
-                self.showErrorAlert(message: error.message ?? "")
+                this.showErrorAlert(message: error.message ?? "")
             }
         }
     }
@@ -53,8 +62,20 @@ extension TrendingViewController: UITableViewDataSource {
         cell.viewModel = viewModel.viewModelForItem(at: indexPath)
         return cell
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let contentOffset = scrollView.contentOffset.y
+        let scrollMaxSize = scrollView.contentSize.height - scrollView.frame.height
+        if scrollMaxSize - contentOffset < 50 && viewModel.isLoadMore {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            getListTrendingVideo(isShowLoading: false)
+        }
+    }
 }
 
 extension TrendingViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVideoVC = DetailVideoViewController()
+        navigationController?.pushViewController(detailVideoVC)
+    }
 }

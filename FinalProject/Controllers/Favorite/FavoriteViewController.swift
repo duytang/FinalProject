@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteViewController: ViewController {
+class FavoriteViewController: ViewController, AlertViewController {
     // MARK: - Outlets
     @IBOutlet private  weak var collectionView: UICollectionView!
 
@@ -26,33 +26,22 @@ class FavoriteViewController: ViewController {
         title = Title.favorite
         collectionView.registerCell(aClass: CreateFolderCell.self)
         collectionView.registerCell(aClass: FavoriteCollectionViewCell.self)
-        addRightBarButton(image: #imageLiteral(resourceName: "ic_delete"), action: #selector(deleteAll))
     }
 
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
     }
-
-    // MARK: - Private func
-    @objc private func deleteAll() {
-
-    }
 }
 
 extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return viewModel.numberOfItems(inSection: section)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeueCell(aClass: CreateFolderCell.self, indexPath: indexPath)
-            return cell
-        } else {
-            let cell = collectionView.dequeueCell(aClass: FavoriteCollectionViewCell.self, indexPath: indexPath)
-            return cell
-        }
+        let cell = collectionView.dequeueCell(aClass: FavoriteCollectionViewCell.self, indexPath: indexPath)
+        return cell
     }
 }
 

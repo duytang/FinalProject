@@ -9,7 +9,7 @@
 import Foundation
 
 class TrendingInput: BaseInput {
-    init(region: String, limit: Int, pageToken: String?) {
+    init(region: String, limit: Int, pageToken: String) {
         super.init()
         self.url = APIPath.API.videos
         self.method = .get
@@ -18,7 +18,7 @@ class TrendingInput: BaseInput {
                           "regionCode": region,
                           "maxResults": limit,
                           "chart": "mostPopular",
-                          "pageToken": pageToken ?? "",
+                          "pageToken": pageToken,
                           "key": Key.apiKey]
     }
 }

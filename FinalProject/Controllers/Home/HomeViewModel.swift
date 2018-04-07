@@ -17,6 +17,7 @@ final class HomeViewModel: ViewModel {
     var title = ""
     var limit = 10
     var idCategory = "0"
+    var isLoadMore = false
 
     func numberOfItems(inSection section: Int) -> Int {
         return videos.count
@@ -67,13 +68,24 @@ final class HomeViewModel: ViewModel {
     }
 
     func getVideos(completion: @escaping DataResultCompletion) {
+        isLoadMore = false
         let input = VideoInput(id: idCategory, region: "VN", limit: limit, pageToken: nextPage)
-        Services.videoService.videoList(input: input) { (result) in
+        Services.videoService.videoList(input: input) { [weak self](result) in
+            guard let this = self else { return }
             switch result {
             case .success(let data):
-                if let object = data as? JSObject, let nextPage = object["nextPageToken"] as? String,
-                    let videos = Mapper<Video>().mapArray(JSONObject: object["items"]) {
-                    self.nextPage = nextPage
+                if this.nextPage.isEmpty {
+                    this.videos = []
+                }
+                if let object = data as? JSObject, let videos = Mapper<Video>().mapArray(JSONObject: object["items"]) {
+                    if let nextPage = object["nextPageToken"] as? String, !nextPage.isEmpty {
+                        this.nextPage = nextPage
+                        this.isLoadMore = true
+                    } else {
+                        this.nextPage = ""
+                        this.isLoadMore = false
+                    }
+
                     for video in videos {
                         let channelInput = ChannelInput(id: video.channelId)
                         Services.videoService.channelDetail(input: channelInput, completion: { (result) in
@@ -90,10 +102,13 @@ final class HomeViewModel: ViewModel {
                             }
                         })
                     }
-                    self.videos = videos
+                    this.videos.append(contentsOf: videos)
+                } else {
+                    let error = APIError(code: 400, message: "No data")
+                    completion(.failure(error))
                 }
             case .failure(let error):
-                print(error.message ?? "")
+                completion(.failure(error))
             }
         }
     }

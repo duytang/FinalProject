@@ -8,10 +8,9 @@
 
 import UIKit
 
-class CreateFolderCell: CollectionViewCell {
+final class CreateFolderCell: CollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
 }

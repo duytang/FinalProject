@@ -10,5 +10,9 @@ import Foundation
 import MVVM
 
 final class FavoriteViewModel: ViewModel {
+    var favoriteList: [FavoriteList] = []
 
+    func numberOfItems(inSection section: Int) -> Int {
+        return favoriteList.count
+    }
 }

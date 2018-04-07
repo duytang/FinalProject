@@ -9,7 +9,7 @@
 import UIKit
 import SwifterSwift
 
-final class FavoriteListViewController: ViewController {
+final class FavoriteListViewController: ViewController, AlertViewController {
     // MARK: - Outlets
      @IBOutlet private weak var tableView: UITableView!
 
@@ -24,11 +24,19 @@ final class FavoriteListViewController: ViewController {
         setUpNavigation()
         tableView.registerCell(aClass: FavoriteListCell.self)
         tableView.rowHeight = 72
+        addRightBarButton(image: #imageLiteral(resourceName: "ic_delete"), action: #selector(deleteAll))
     }
 
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
+    }
+
+    // MARK: - Private func
+    @objc private func deleteAll() {
+        showAlertView(title: "Note", message: "Do you wanna delete all videos?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, cancelAction: nil) { (_) in
+            print("Delete All")
+        }
     }
 }
 // MARK: - Extensions

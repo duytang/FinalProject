@@ -14,15 +14,27 @@ final class TrendingViewModel: ViewModel {
     var region = "VN"
     var videos: [Video] = []
     var nextPage = ""
+    var isLoadMore = false
 
     func getListTrending(completion: @escaping DataResultCompletion) {
-        let input = TrendingInput(region: "VN", limit: 10, pageToken: nil)
-        Services.videoService.trendingList(input: input) { (result) in
+        isLoadMore = false
+        let input = TrendingInput(region: "VN", limit: 10, pageToken: nextPage)
+        Services.videoService.trendingList(input: input) { [weak self](result) in
+            guard let this = self else { return }
             switch result {
             case .success(let data):
-                if let object = data as? JSObject, let nextPage = object["nextPageToken"] as? String,
-                    let videos = Mapper<Video>().mapArray(JSONObject: object["items"]) {
-                    self.nextPage = nextPage
+                if this.nextPage.isEmpty {
+                    this.videos = []
+                }
+                if let object = data as? JSObject, let videos = Mapper<Video>().mapArray(JSONObject: object["items"]) {
+                    if let nextPage = object["nextPageToken"] as? String, !nextPage.isEmpty {
+                        this.nextPage = nextPage
+                        this.isLoadMore = true
+                    } else {
+                        this.nextPage = ""
+                        this.isLoadMore = false
+                    }
+
                     for video in videos {
                         let channelInput = ChannelInput(id: video.channelId)
                         Services.videoService.channelDetail(input: channelInput, completion: { (result) in
@@ -39,7 +51,7 @@ final class TrendingViewModel: ViewModel {
                             }
                         })
                     }
-                    self.videos = videos
+                    this.videos.append(contentsOf: videos)
                 }
             case .failure(let error):
                 completion(.failure(error))

@@ -11,7 +11,7 @@ import ObjectMapper
 import RealmSwift
 import Realm
 
-final class Video: Object, Mappable {
+class Video: Object, Mappable {
     @objc dynamic var idVideo = ""
     @objc dynamic var idCategory = ""
     @objc dynamic var name = ""
