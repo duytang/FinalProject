@@ -9,13 +9,13 @@
 import Foundation
 
 class TrendingInput: BaseInput {
-    init(region: String, limit: Int, pageToken: String) {
+    init(limit: Int, pageToken: String) {
         super.init()
         self.url = APIPath.API.videos
         self.method = .get
         self.useAccessToken = false
         self.parameter = ["part": "snippet,contentDetails,statistics",
-                          "regionCode": region,
+                          "regionCode": App.regionCode,
                           "maxResults": limit,
                           "chart": "mostPopular",
                           "pageToken": pageToken,
@@ -36,17 +36,46 @@ class ChannelInput: BaseInput {
 }
 
 class VideoInput: BaseInput {
-    init(id: String, region: String, limit: Int, pageToken: String) {
+    init(id: String, limit: Int, pageToken: String) {
         super.init()
         self.url = APIPath.API.videos
         self.method = .get
         self.useAccessToken = false
         self.parameter = ["videoCategoryId": id,
                           "part": "snippet,contentDetails,statistics",
-                          "regionCode": region,
+                          "regionCode": App.regionCode,
                           "maxResults": limit,
                           "chart": "mostPopular",
                           "pageToken": pageToken,
                           "key": Key.apiKey]
+    }
+}
+
+class RelatedVideoInput: BaseInput {
+    init(idVideo: String, limit: Int, nextPage: String) {
+        super.init()
+        self.url = APIPath.API.relatedVideo
+        self.method = .get
+        self.useAccessToken = false
+        self.parameter = ["part": "snippet",
+                          "relatedToVideoId": idVideo,
+                          "type": "video",
+                          "pageToken": nextPage,
+                          "maxResults": limit,
+                          "key": Key.apiKey
+                         ]
+    }
+}
+
+class InfoVideoInput: BaseInput {
+    init(id: String) {
+        super.init()
+        self.url = APIPath.API.videos
+        self.method = .get
+        self.useAccessToken = false
+        self.parameter = ["part": "snippet,contentDetails,statistics",
+                          "id": id,
+                          "key": Key.apiKey
+        ]
     }
 }

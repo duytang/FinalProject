@@ -18,7 +18,7 @@ final class TrendingViewModel: ViewModel {
 
     func getListTrending(completion: @escaping DataResultCompletion) {
         isLoadMore = false
-        let input = TrendingInput(region: "VN", limit: 10, pageToken: nextPage)
+        let input = TrendingInput(limit: 10, pageToken: nextPage)
         Services.videoService.trendingList(input: input) { [weak self](result) in
             guard let this = self else { return }
             switch result {
@@ -37,15 +37,13 @@ final class TrendingViewModel: ViewModel {
 
                     for video in videos {
                         let channelInput = ChannelInput(id: video.channelId)
-                        Services.videoService.channelDetail(input: channelInput, completion: { (result) in
+                        Services.channelService.channelDetail(input: channelInput, completion: { (result) in
                             switch result {
-                            case .success(let data):
-                                if let object = data as? JSObject, let channels = Mapper<Channel>().mapArray(JSONObject: object["items"]) {
-                                    if let channel = channels.first {
-                                        video.channelThumnail = channel.imageUrl
-                                    }
-                                    completion(.success)
+                            case .success(let channels):
+                                if let channels = channels as? [Channel], !channels.isEmpty {
+                                    video.channelThumnail = channels[0].imageUrl
                                 }
+                                completion(.success)
                             case .failure(let error):
                                 completion(.failure(error))
                             }

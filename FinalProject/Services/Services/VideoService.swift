@@ -24,7 +24,7 @@ class VideoService: BaseService {
         }
     }
 
-    func channelDetail(input: BaseInput, completion: @escaping ServiceCompletion) {
+    func videoList(input: BaseInput, completion: @escaping ServiceCompletion) {
         request(input: input) { (result) in
             switch result {
             case .success(let response):
@@ -39,7 +39,7 @@ class VideoService: BaseService {
         }
     }
 
-    func videoList(input: BaseInput, completion: @escaping ServiceCompletion) {
+    func relateVideos(input: BaseInput, completion: @escaping ServiceCompletion) {
         request(input: input) { (result) in
             switch result {
             case .success(let response):

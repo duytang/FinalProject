@@ -18,5 +18,6 @@ class APIPath {
         static var category: String { return path + "videoCategories" }
         static var videos: String { return path + "videos" }
         static var channels: String { return path + "channels" }
+        static var relatedVideo: String { return path + "search" }
     }
 }

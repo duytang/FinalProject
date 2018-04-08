@@ -11,7 +11,7 @@ import UIKit
 
 struct Color {
     // MARK: - Define color
-    static let main = UIColor.colorRGB(red: 255, green: 37, blue: 21)
+    static let main = UIColor.colorRGB(red: 238, green: 28, blue: 46)
     static let background = UIColor.colorRGB(red: 249, green: 249, blue: 249)
     static let border = UIColor.colorRGB(red: 204, green: 24, blue: 30)
     static let subscribe = UIColor.colorRGB(red: 224, green: 14, blue: 69)

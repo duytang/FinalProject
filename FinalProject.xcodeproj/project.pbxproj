@@ -34,6 +34,16 @@
 		F305E711206BFF1400DE5495 /* CreateFolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E70F206BFF1400DE5495 /* CreateFolderCell.swift */; };
 		F305E712206BFF1400DE5495 /* CreateFolderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F305E710206BFF1400DE5495 /* CreateFolderCell.xib */; };
 		F305E714206C026D00DE5495 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E713206C026D00DE5495 /* HistoryViewModel.swift */; };
+		F3457F25207910FF00DA9BBA /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3457F23207910FF00DA9BBA /* InfoCell.swift */; };
+		F3457F26207910FF00DA9BBA /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3457F24207910FF00DA9BBA /* InfoCell.xib */; };
+		F3457F282079129000DA9BBA /* InfoCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3457F272079129000DA9BBA /* InfoCellModel.swift */; };
+		F3457F2C20791B8E00DA9BBA /* RelateVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3457F2A20791B8E00DA9BBA /* RelateVideoCell.swift */; };
+		F3457F2D20791B8E00DA9BBA /* RelateVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3457F2B20791B8E00DA9BBA /* RelateVideoCell.xib */; };
+		F3457F2F20791C2B00DA9BBA /* RelateVideoCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3457F2E20791C2B00DA9BBA /* RelateVideoCellModel.swift */; };
+		F3457F3220791DFC00DA9BBA /* DescriptionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3457F3120791DFC00DA9BBA /* DescriptionCellViewModel.swift */; };
+		F3457F3520791E1000DA9BBA /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3457F3320791E1000DA9BBA /* DescriptionCell.swift */; };
+		F3457F3620791E1000DA9BBA /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3457F3420791E1000DA9BBA /* DescriptionCell.xib */; };
+		F3457F3820792CC200DA9BBA /* ChannelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3457F3720792CC200DA9BBA /* ChannelService.swift */; };
 		F34E00B420693078002D783D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E006920693077002D783D /* Array.swift */; };
 		F34E00B520693078002D783D /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E006A20693077002D783D /* Bundle.swift */; };
 		F34E00B620693078002D783D /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E006B20693077002D783D /* CGRect.swift */; };
@@ -118,7 +128,6 @@
 		F3B11C52206F2D1D001FE066 /* CategoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C51206F2D1D001FE066 /* CategoryInput.swift */; };
 		F3B11C54206F2E00001FE066 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C53206F2E00001FE066 /* Constant.swift */; };
 		F3B11C56206F2E92001FE066 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C55206F2E92001FE066 /* CategoryService.swift */; };
-		F3B11C59206F6B1A001FE066 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C57206F6B19001FE066 /* Database.swift */; };
 		F3B11C5A206F6B1A001FE066 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C58206F6B1A001FE066 /* RealmManager.swift */; };
 		F3B11C5C206F77B7001FE066 /* VideoInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C5B206F77B7001FE066 /* VideoInput.swift */; };
 		F3F66683206A61B000FCC803 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F66681206A61B000FCC803 /* TabBarView.swift */; };
@@ -176,6 +185,16 @@
 		F305E70F206BFF1400DE5495 /* CreateFolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFolderCell.swift; sourceTree = "<group>"; };
 		F305E710206BFF1400DE5495 /* CreateFolderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateFolderCell.xib; sourceTree = "<group>"; };
 		F305E713206C026D00DE5495 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		F3457F23207910FF00DA9BBA /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		F3457F24207910FF00DA9BBA /* InfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
+		F3457F272079129000DA9BBA /* InfoCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCellModel.swift; sourceTree = "<group>"; };
+		F3457F2A20791B8E00DA9BBA /* RelateVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelateVideoCell.swift; sourceTree = "<group>"; };
+		F3457F2B20791B8E00DA9BBA /* RelateVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelateVideoCell.xib; sourceTree = "<group>"; };
+		F3457F2E20791C2B00DA9BBA /* RelateVideoCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelateVideoCellModel.swift; sourceTree = "<group>"; };
+		F3457F3120791DFC00DA9BBA /* DescriptionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCellViewModel.swift; sourceTree = "<group>"; };
+		F3457F3320791E1000DA9BBA /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		F3457F3420791E1000DA9BBA /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
+		F3457F3720792CC200DA9BBA /* ChannelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelService.swift; sourceTree = "<group>"; };
 		F34E006920693077002D783D /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		F34E006A20693077002D783D /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		F34E006B20693077002D783D /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
@@ -264,7 +283,6 @@
 		F3B11C51206F2D1D001FE066 /* CategoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInput.swift; sourceTree = "<group>"; };
 		F3B11C53206F2E00001FE066 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F3B11C55206F2E92001FE066 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
-		F3B11C57206F6B19001FE066 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		F3B11C58206F6B1A001FE066 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		F3B11C5B206F77B7001FE066 /* VideoInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInput.swift; sourceTree = "<group>"; };
 		F3F66681206A61B000FCC803 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -369,6 +387,46 @@
 			path = CreateFolderCell;
 			sourceTree = "<group>";
 		};
+		F3457F21207910D900DA9BBA /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				F3457F3020791DC300DA9BBA /* DescriptionCell */,
+				F3457F2920791AE200DA9BBA /* RelateVideoCell */,
+				F3457F22207910E500DA9BBA /* InfoCell */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		F3457F22207910E500DA9BBA /* InfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				F3457F23207910FF00DA9BBA /* InfoCell.swift */,
+				F3457F24207910FF00DA9BBA /* InfoCell.xib */,
+				F3457F272079129000DA9BBA /* InfoCellModel.swift */,
+			);
+			path = InfoCell;
+			sourceTree = "<group>";
+		};
+		F3457F2920791AE200DA9BBA /* RelateVideoCell */ = {
+			isa = PBXGroup;
+			children = (
+				F3457F2A20791B8E00DA9BBA /* RelateVideoCell.swift */,
+				F3457F2B20791B8E00DA9BBA /* RelateVideoCell.xib */,
+				F3457F2E20791C2B00DA9BBA /* RelateVideoCellModel.swift */,
+			);
+			path = RelateVideoCell;
+			sourceTree = "<group>";
+		};
+		F3457F3020791DC300DA9BBA /* DescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				F3457F3120791DFC00DA9BBA /* DescriptionCellViewModel.swift */,
+				F3457F3320791E1000DA9BBA /* DescriptionCell.swift */,
+				F3457F3420791E1000DA9BBA /* DescriptionCell.xib */,
+			);
+			path = DescriptionCell;
+			sourceTree = "<group>";
+		};
 		F34E006820693077002D783D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,7 +518,6 @@
 		F34E00AE20693077002D783D /* RealmConfig */ = {
 			isa = PBXGroup;
 			children = (
-				F3B11C57206F6B19001FE066 /* Database.swift */,
 				F3B11C58206F6B1A001FE066 /* RealmManager.swift */,
 				F34E00AF20693077002D783D /* RealmConfig.swift */,
 			);
@@ -620,6 +677,7 @@
 		F3954983206E6D8800090D5F /* DetailVideoVC */ = {
 			isa = PBXGroup;
 			children = (
+				F3457F21207910D900DA9BBA /* CustomView */,
 				F3954984206E6DAA00090D5F /* DetailVideoViewController.swift */,
 				F3954985206E6DAA00090D5F /* DetailVideoViewController.xib */,
 				F3954988206E6DC700090D5F /* DetailVideoViewModel.swift */,
@@ -666,6 +724,7 @@
 			children = (
 				F3B11C55206F2E92001FE066 /* CategoryService.swift */,
 				F3B05CB1206F857B00BAD308 /* VideoService.swift */,
+				F3457F3720792CC200DA9BBA /* ChannelService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -792,6 +851,7 @@
 				TargetAttributes = {
 					F34EFF7A20692E17002D783D = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					F34EFF8E20692E18002D783D = {
@@ -831,7 +891,9 @@
 				F305E6E6206BD3F200DE5495 /* ContentTableViewCell.xib in Resources */,
 				F305E700206BF3CD00DE5495 /* CategoryTableViewCell.xib in Resources */,
 				F3F6669A206A6CE100FCC803 /* FavoriteViewController.xib in Resources */,
+				F3457F26207910FF00DA9BBA /* InfoCell.xib in Resources */,
 				F36869D620707CD700DFAE14 /* CategoryViewController.xib in Resources */,
+				F3457F2D20791B8E00DA9BBA /* RelateVideoCell.xib in Resources */,
 				F305E6F8206BED2200DE5495 /* SearchTableViewCell.xib in Resources */,
 				F3954979206E68F200090D5F /* FavoriteListViewController.xib in Resources */,
 				F3954987206E6DAA00090D5F /* DetailVideoViewController.xib in Resources */,
@@ -842,6 +904,7 @@
 				F305E6F1206BE21A00DE5495 /* SearchViewController.xib in Resources */,
 				F305E6EC206BD41F00DE5495 /* HomeViewController.xib in Resources */,
 				F305E70B206BF77500DE5495 /* FavoriteCollectionViewCell.xib in Resources */,
+				F3457F3620791E1000DA9BBA /* DescriptionCell.xib in Resources */,
 				F3F66695206A696200FCC803 /* TrendingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,11 +947,13 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MVVM-Swift/MVVM.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/XCDYouTubeKit/XCDYouTubeKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -898,11 +963,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MVVM.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCDYouTubeKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -996,6 +1063,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3457F2C20791B8E00DA9BBA /* RelateVideoCell.swift in Sources */,
 				F34E00D420693078002D783D /* Font.swift in Sources */,
 				F34E00C520693078002D783D /* UIApplication.swift in Sources */,
 				F34E010C206932EC002D783D /* TabbarController.swift in Sources */,
@@ -1028,7 +1096,6 @@
 				F305E6FC206BF0DA00DE5495 /* FavoriteViewModel.swift in Sources */,
 				F34E00BC20693078002D783D /* Int.swift in Sources */,
 				F34E00BB20693078002D783D /* FileManager.swift in Sources */,
-				F3B11C59206F6B1A001FE066 /* Database.swift in Sources */,
 				F34E00EC20693078002D783D /* LinearTextField.swift in Sources */,
 				F34E010B206932EC002D783D /* BaseNibView.swift in Sources */,
 				F305E70D206BF7A500DE5495 /* FavoriteCollectionViewModel.swift in Sources */,
@@ -1049,6 +1116,7 @@
 				F3B11C50206F2C4F001FE066 /* Services.swift in Sources */,
 				F34E00CA20693078002D783D /* UIImageView.swift in Sources */,
 				F37EAD58206FDB3300A64D8C /* Channel.swift in Sources */,
+				F3457F2F20791C2B00DA9BBA /* RelateVideoCellModel.swift in Sources */,
 				F34E00BA20693078002D783D /* DispatchQueue.swift in Sources */,
 				F34E00C220693078002D783D /* Regex.swift in Sources */,
 				F3B11C5C206F77B7001FE066 /* VideoInput.swift in Sources */,
@@ -1058,6 +1126,7 @@
 				F34E00BE20693078002D783D /* NSLock.swift in Sources */,
 				F34E00F320693078002D783D /* DataProvider.swift in Sources */,
 				F34E00E820693078002D783D /* AlertView.swift in Sources */,
+				F3457F3520791E1000DA9BBA /* DescriptionCell.swift in Sources */,
 				F3954978206E68F200090D5F /* FavoriteListViewController.swift in Sources */,
 				F34E00CF20693078002D783D /* UIStoryboard.swift in Sources */,
 				F34E00EA20693078002D783D /* ExpandTextField.swift in Sources */,
@@ -1069,6 +1138,7 @@
 				F3B11C4D206F2C4F001FE066 /* UserInput.swift in Sources */,
 				F34E010A206932EC002D783D /* NavigationController.swift in Sources */,
 				F3B11C48206F2C4F001FE066 /* BaseInputProtocol.swift in Sources */,
+				F3457F282079129000DA9BBA /* InfoCellModel.swift in Sources */,
 				F305E706206BF52A00DE5495 /* Video.swift in Sources */,
 				F305E702206BF3EB00DE5495 /* CategoryTableCellViewModel.swift in Sources */,
 				F3954986206E6DAA00090D5F /* DetailVideoViewController.swift in Sources */,
@@ -1097,9 +1167,12 @@
 				F305E6F0206BE21A00DE5495 /* SearchViewController.swift in Sources */,
 				F305E70A206BF77500DE5495 /* FavoriteCollectionViewCell.swift in Sources */,
 				F34E00C620693078002D783D /* UIButton.swift in Sources */,
+				F3457F3820792CC200DA9BBA /* ChannelService.swift in Sources */,
 				F3954982206E6B5600090D5F /* FavoriteListCellViewModel.swift in Sources */,
+				F3457F3220791DFC00DA9BBA /* DescriptionCellViewModel.swift in Sources */,
 				F36869D520707CD700DFAE14 /* CategoryViewController.swift in Sources */,
 				F34E00EE20693078002D783D /* SearchTextField.swift in Sources */,
+				F3457F25207910FF00DA9BBA /* InfoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1245,6 +1318,7 @@
 			baseConfigurationReference = 0AD588313B0CC837467210CC /* Pods-FinalProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79ULVLGVJE;
 				INFOPLIST_FILE = FinalProject/Info.plist;
@@ -1252,6 +1326,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duytang.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1262,6 +1338,7 @@
 			baseConfigurationReference = AC4A5DE54F83CA8D594D56C7 /* Pods-FinalProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79ULVLGVJE;
 				INFOPLIST_FILE = FinalProject/Info.plist;
@@ -1269,6 +1346,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duytang.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

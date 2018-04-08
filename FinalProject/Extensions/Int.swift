@@ -6,7 +6,7 @@
 //  Copyright © 2017 Vo Nguyen Chi Phuong. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Int {
     func loop( block: () -> Void) {
@@ -73,6 +73,10 @@ extension Int {
 
     static func random(min: Int = 0, max: Int) -> Int {
         return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
+    }
+
+    var scaling: CGFloat {
+        return CGFloat(self) * App.ratio
     }
 }
 

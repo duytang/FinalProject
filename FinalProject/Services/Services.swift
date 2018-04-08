@@ -11,4 +11,5 @@ import Foundation
 class Services {
     static let categoryService = CategoryService()
     static let videoService = VideoService()
+    static let channelService = ChannelService()
 }

@@ -46,28 +46,25 @@ final class HomeViewController: ViewController, AlertViewController, LoadingView
         showLoading()
         viewModel.getCategories { [weak self](result) in
             guard let this = self else { return }
-            this.hideLoading()
             switch result {
             case .success:
                 this.categoryNameLabel.text = this.viewModel.title
-                this.tableView.reloadData()
+                this.loadVideo()
             case .failure(let error):
+                this.hideLoading()
                 this.showAlert(title: "Note", message: error.message)
             }
         }
     }
 
-    private func loadVideo(isShowLoading: Bool = true) {
-        if isShowLoading {
-            showLoading()
-        }
+    private func loadVideo() {
         viewModel.getVideos { [weak self](result) in
             guard let this = self else { return }
             this.hideLoading()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             switch result {
             case .success:
                 this.tableView.reloadData()
-                this.tableView.scrollToTop()
             case .failure(let error):
                 this.showAlert(title: "Note", message: error.message)
             }
@@ -105,7 +102,7 @@ extension HomeViewController: UITableViewDataSource {
         let scrollMaxSize = scrollView.contentSize.height - scrollView.frame.height
         if scrollMaxSize - contentOffset < 50 && viewModel.isLoadMore {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            loadVideo(isShowLoading: false)
+            loadVideo()
         }
     }
 }
@@ -113,6 +110,7 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVideoVC = DetailVideoViewController()
+        detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
         push(viewController: detailVideoVC)
     }
 }

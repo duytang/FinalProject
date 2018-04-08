@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import SwifterSwift
 
 struct Key {
     static let apiKey = "AIzaSyD7OxV7X1a_82cBvmuNXfBmJiGLVFY5Fgs"
+}
+
+struct App {
+    static let regionCode = "VN"
+    static let ratio = SwifterSwift.screenWidth / 375
 }

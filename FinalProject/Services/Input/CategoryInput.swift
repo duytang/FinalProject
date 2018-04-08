@@ -9,12 +9,12 @@
 import Foundation
 
 class CategoryInput: BaseInput {
-    init(region: String) {
+    override init() {
         super.init()
         self.url = APIPath.API.category
         self.method = .get
         self.useAccessToken = false
-        self.parameter = ["part": "snippet", "regionCode": region,
+        self.parameter = ["part": "snippet", "regionCode": App.regionCode,
                           "key": Key.apiKey]
     }
 }
