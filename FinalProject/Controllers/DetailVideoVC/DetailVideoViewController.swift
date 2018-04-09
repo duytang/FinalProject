@@ -9,6 +9,7 @@
 import UIKit
 import XCDYouTubeKit
 import PureLayout
+import SwifterSwift
 
 final class DetailVideoViewController: ViewController, AlertViewController, LoadingViewController {
     // MARK: - Outlets
@@ -19,6 +20,7 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     var viewModel = DetailVideoViewModel()
     var playerVideoVC: XCDYouTubeVideoPlayerViewController?
     private var viewPlayer = UIView()
+    var stateLabel = true
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -27,7 +29,11 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = true
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 
     // MARK: - Setup UI
@@ -36,8 +42,11 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         setUpNavigation()
         tableView.registerCell(aClass: InfoCell.self)
         tableView.registerCell(aClass: DescriptionCell.self)
+        tableView.registerCell(aClass: AutoNextVideoCell.self)
         tableView.registerCell(aClass: RelateVideoCell.self)
-        tableView.rowHeight = 120
+        tableView.removeHeaderTableView()
+
+        configNotification()
     }
 
     // MARK: - Setup Data
@@ -54,6 +63,32 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         }
     }
 
+    private func configNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+
+    @objc private func rotatedDevice() {
+        let orientation = UIDevice.current.orientation
+        if orientation == .landscapeLeft || orientation == .landscapeRight || orientation == .portraitUpsideDown {
+            contentView.frame = CGRect(x: 0, y: 0, width: SwifterSwift.screenHeight, height: SwifterSwift.screenWidth)
+            playerVideoVC?.moviePlayer.setFullscreen(true, animated: true)
+        } else {
+            if orientation == .portrait {
+                playerVideoVC?.moviePlayer.setFullscreen(false, animated: true)
+            } else if orientation == .faceDown {
+                playerVideoVC?.moviePlayer.pause()
+            } else {
+                playerVideoVC?.moviePlayer.play()
+            }
+        }
+    }
+
+    // MARK: - Private func
+    @IBAction private func dismissButtonTapped(sender: UIButton) {
+        playerVideoVC?.moviePlayer.pause()
+        dismiss(animated: true, completion: nil)
+    }
+
     // MARK: - Private func
     private func prepareForPlay() {
         viewPlayer = UIView(frame: CGRect(x: 0, y: 0,
@@ -64,7 +99,7 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         playerVideoVC = XCDYouTubeVideoPlayerViewController(videoIdentifier: video.idVideo)
         guard let playerVideoVC = playerVideoVC else { return }
         playerVideoVC.present(in: viewPlayer)
-        playerVideoVC.moviePlayer.controlStyle = .none
+        playerVideoVC.moviePlayer.controlStyle = .embedded
         playerVideoVC.moviePlayer.play()
         contentView.addSubview(viewPlayer)
     }
@@ -84,11 +119,17 @@ extension DetailVideoViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueCell(aClass: DescriptionCell.self)
+            cell.descriptionLabel.delegate = self
+            cell.descriptionLabel.numberOfLines = 2
+            cell.descriptionLabel.collapsed = stateLabel
             cell.viewModel = DescriptionCellViewModel(description: viewModel.video?.descript ?? "")
+            return cell
+        case 2:
+            let cell = tableView.dequeueCell(aClass: AutoNextVideoCell.self)
             return cell
         default:
             let cell = tableView.dequeueCell(aClass: RelateVideoCell.self)
-            cell.viewModel = RelateVideoCellModel(video: viewModel.relatedVideos[indexPath.row - 2])
+            cell.viewModel = RelateVideoCellModel(video: viewModel.relatedVideos[indexPath.row - 3])
             return cell
         }
     }
@@ -96,5 +137,44 @@ extension DetailVideoViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension DetailVideoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 120
+        case 1:
+            if stateLabel {
+                return 70
+            } else {
+                return UITableViewAutomaticDimension
+            }
+        case 2:
+            return 40
+        default:
+            return 90
+        }
+    }
+}
 
+extension DetailVideoViewController: FVReadMoreLabelDelegate {
+    func willExpandLabel(_ label: FVReadMoreLabel) {
+        tableView.beginUpdates()
+    }
+
+    func didExpandLabel(_ label: FVReadMoreLabel) {
+        stateLabel = !stateLabel
+        tableView.endUpdates()
+    }
+
+    func willCollapseLabel(_ label: FVReadMoreLabel) {
+        tableView.beginUpdates()
+    }
+
+    func didCollapseLabel(_ label: FVReadMoreLabel) {
+        stateLabel = !stateLabel
+        tableView.endUpdates()
+    }
+
+    func shouldCollapseLabel(_ label: FVReadMoreLabel) -> Bool {
+        return true
+    }
 }

@@ -91,6 +91,7 @@ final class HomeViewModel: ViewModel {
                                 case .success(let channels):
                                     if let channels = channels as? [Channel], !channels.isEmpty {
                                         video.channelThumnail = channels[0].imageUrl
+                                        video.channelPublishedAt = channels[0].publishedAt
                                     }
                                     completion(.success)
                                 case .failure(let error):

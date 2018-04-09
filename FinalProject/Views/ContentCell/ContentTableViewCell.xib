@@ -24,7 +24,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chanel" translatesAutoresizingMaskIntoConstraints="NO" id="u96-1T-ODv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="175.5"/>
                     </imageView>
-                    <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDl-PP-6ID">
+                    <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDl-PP-6ID">
                         <rect key="frame" x="0.0" y="175.5" width="320" height="76"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_hari" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-dA-e8B">

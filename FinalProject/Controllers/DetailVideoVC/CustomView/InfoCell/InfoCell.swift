@@ -26,8 +26,9 @@ class InfoCell: TableViewCell {
 
     private func updateUI() {
         videoNameLabel.text = viewModel.videoName
-        numberViewLabel.text = viewModel.numberView.getNumberView()
+        numberViewLabel.text = viewModel.numberView.convertNumberView()
         channelImageView.downloadImage(fromURL: viewModel.channelImage, placeHolder: #imageLiteral(resourceName: "ic_chanel"))
         channelNameLabel.text = viewModel.channelName
+        numberSubscribeLabel.text = viewModel.publicAt
     }
 }

@@ -27,7 +27,7 @@ class RelateVideoCell: TableViewCell {
     private func updateUI() {
         videoImageView?.downloadImage(fromURL: viewModel.image, placeHolder: #imageLiteral(resourceName: "ic_chanel"))
         nameLabel.text = viewModel.name
-        channelLabel.text = viewModel.numberView
-        durationLabel.text = viewModel.duration
+        channelLabel.text = viewModel.channelTitle + "・" + viewModel.numberView.convertNumberView()
+        durationLabel.text = viewModel.duration.convertDuration()
     }
 }

@@ -16,6 +16,7 @@ final class Channel: Object, Mappable {
     @objc dynamic var id = ""
     @objc dynamic var name = ""
     @objc dynamic var imageUrl = ""
+    @objc dynamic var publishedAt = ""
 
     required init?(map: Map) {
         super.init()
@@ -37,5 +38,6 @@ final class Channel: Object, Mappable {
         id <- map["id"]
         name <- map["snippet.localized.title"]
         imageUrl <- map["snippet.thumbnails.high.url"]
+        publishedAt <- map["snippet.publishedAt"]
     }
 }

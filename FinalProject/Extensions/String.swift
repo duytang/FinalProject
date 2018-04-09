@@ -191,7 +191,7 @@ extension String {
     }
 
     // MARK: - Show view count of video
-    func getNumberView() -> String {
+    func convertNumberView() -> String {
         var numberView = ""
         if isEmpty {
             numberView = "0 view"

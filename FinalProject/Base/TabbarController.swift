@@ -26,6 +26,7 @@ class TabbarController: UITabBarController {
             make.height.equalTo(60)
         }
         tabBarView.index = 0
+        configTabBar()
     }
 
     func configTabBar() {

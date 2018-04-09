@@ -23,7 +23,7 @@ final class DetailVideoViewModel: ViewModel {
     }
 
     func numberOfItems(inSection section: Int) -> Int {
-        return relatedVideos.count + 2
+        return relatedVideos.count + 3
     }
 
     func viewModelForInfoCell(at indexPath: IndexPath) -> InfoCellModel {

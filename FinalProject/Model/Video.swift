@@ -20,6 +20,7 @@ class Video: Object, Mappable {
     @objc dynamic var channelId = ""
     @objc dynamic var channelName = ""
     @objc dynamic var channelThumnail = ""
+    @objc dynamic var channelPublishedAt = ""
     @objc dynamic var descript = ""
     @objc dynamic var thumbnail = ""
     @objc dynamic var timeUpload = ""

@@ -36,7 +36,7 @@ class ContentTableViewCell: TableViewCell {
         channelImageView.downloadImage(fromURL: viewModel.channelImage)
         videoNameLabel.text = viewModel.name
         channelNameLabel.text = viewModel.channelName
-        viewNumberLabel.text = viewModel.numberView.getNumberView() + "・" + viewModel.timeUpload.convertTimeUpload()
+        viewNumberLabel.text = viewModel.numberView.convertNumberView() + "・" + viewModel.timeUpload.convertTimeUpload()
         durationLabel.text = viewModel.duration.convertDuration()
     }
 }

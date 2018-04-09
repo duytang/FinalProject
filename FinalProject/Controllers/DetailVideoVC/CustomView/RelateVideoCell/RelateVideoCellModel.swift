@@ -12,6 +12,7 @@ final class RelateVideoCellModel {
     var name = ""
     var image = ""
     var duration = ""
+    var channelTitle = ""
     var numberView = ""
 
     init() {}
@@ -20,6 +21,7 @@ final class RelateVideoCellModel {
         name = video.name
         image = video.thumbnail
         duration = video.duration
+        channelTitle = video.channelName
         numberView = video.numberView
     }
 }

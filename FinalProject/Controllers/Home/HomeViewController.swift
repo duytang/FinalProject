@@ -111,7 +111,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVideoVC = DetailVideoViewController()
         detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
-        push(viewController: detailVideoVC)
+        navigationController?.present(detailVideoVC, animated: true, completion: nil)
     }
 }
 

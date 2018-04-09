@@ -24,7 +24,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ClP-bz-Kid">
                     <rect key="frame" x="0.0" y="0.0" width="94" height="60"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home" translatesAutoresizingMaskIntoConstraints="NO" id="EpR-ee-FLa">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-home" translatesAutoresizingMaskIntoConstraints="NO" id="EpR-ee-FLa">
                             <rect key="frame" x="35.5" y="13" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="CIR-Iy-onI"/>
@@ -61,7 +61,7 @@
                 <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BV3-NU-7K2">
                     <rect key="frame" x="94" y="0.0" width="93.5" height="60"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_trending" translatesAutoresizingMaskIntoConstraints="NO" id="zKU-oC-Fk3">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-trending" translatesAutoresizingMaskIntoConstraints="NO" id="zKU-oC-Fk3">
                             <rect key="frame" x="35" y="13" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="PSP-an-mSd"/>
@@ -99,7 +99,7 @@
                 <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2L0-BW-dM4">
                     <rect key="frame" x="187.5" y="0.0" width="94" height="60"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_favorite" translatesAutoresizingMaskIntoConstraints="NO" id="JBx-8d-8Tk">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-favorite" translatesAutoresizingMaskIntoConstraints="NO" id="JBx-8d-8Tk">
                             <rect key="frame" x="35.5" y="13" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="7Aj-fR-4YI"/>
@@ -137,7 +137,7 @@
                 <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZnO-xl-row">
                     <rect key="frame" x="281.5" y="0.0" width="93.5" height="60"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_history" translatesAutoresizingMaskIntoConstraints="NO" id="aah-vY-DMz">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-history" translatesAutoresizingMaskIntoConstraints="NO" id="aah-vY-DMz">
                             <rect key="frame" x="35" y="13" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="FhW-0M-3F6"/>
@@ -174,7 +174,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sO4-l6-qaT">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                    <color key="backgroundColor" red="1" green="0.2940336516" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.10980392160000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="B0t-ug-iJr"/>
                     </constraints>
@@ -209,9 +209,9 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_favorite" width="33" height="33"/>
-        <image name="ic_history" width="33" height="33"/>
-        <image name="ic_home" width="33" height="33"/>
-        <image name="ic_trending" width="33" height="33"/>
+        <image name="ic-favorite" width="22" height="22"/>
+        <image name="ic-history" width="22" height="22"/>
+        <image name="ic-home" width="22" height="22"/>
+        <image name="ic-trending" width="22" height="22"/>
     </resources>
 </document>

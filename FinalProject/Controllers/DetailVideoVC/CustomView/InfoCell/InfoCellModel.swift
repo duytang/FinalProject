@@ -13,7 +13,7 @@ final class InfoCellModel {
     var numberView = ""
     var channelImage = ""
     var channelName = ""
-    var numberSubscribe = ""
+    var publicAt = ""
 
     init() {}
 
@@ -23,5 +23,6 @@ final class InfoCellModel {
         numberView = video.numberView
         channelName = video.channelName
         channelImage = video.channelThumnail
+        publicAt = video.channelPublishedAt
     }
 }

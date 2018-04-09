@@ -22,11 +22,11 @@ extension UITableView {
     }
 
     func removeHeaderTableView() {
-        tableHeaderView = UIView()
+        tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: kScreen.bounds.width, height: CGFloat.leastNonzeroMagnitude))
     }
 
     func removeFooterTableView() {
-        tableFooterView = UIView()
+        tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: kScreen.bounds.width, height: CGFloat.leastNonzeroMagnitude))
     }
 
     func addEmptyView(string: String =

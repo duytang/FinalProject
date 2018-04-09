@@ -11,7 +11,7 @@ import UIKit
 final class DescriptionCell: TableViewCell {
 
     // MARK: - Outlet
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: FVReadMoreLabel!
 
     // MARK: - Property
     var viewModel = DescriptionCellViewModel() {
@@ -22,6 +22,8 @@ final class DescriptionCell: TableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        descriptionLabel.collapsed = true
+        descriptionLabel.text = nil
     }
 
     // MARK: - Private func

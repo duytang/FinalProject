@@ -76,6 +76,7 @@ extension TrendingViewController: UITableViewDataSource {
 extension TrendingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVideoVC = DetailVideoViewController()
-        navigationController?.pushViewController(detailVideoVC)
+        detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
+        navigationController?.present(detailVideoVC, animated: true, completion: nil)
     }
 }

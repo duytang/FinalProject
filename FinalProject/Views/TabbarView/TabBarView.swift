@@ -17,26 +17,26 @@ enum ButtonItemType: Int {
     var nonSelectImage: UIImage {
         switch self {
         case .favorite:
-            return #imageLiteral(resourceName: "ic_favorite")
+            return #imageLiteral(resourceName: "ic-favorite")
         case .home:
-            return #imageLiteral(resourceName: "ic_home")
+            return #imageLiteral(resourceName: "ic-home")
         case .trending:
-            return #imageLiteral(resourceName: "ic_trending")
+            return #imageLiteral(resourceName: "ic-trending")
         case .history:
-            return #imageLiteral(resourceName: "ic_history")
+            return #imageLiteral(resourceName: "ic-history")
         }
     }
 
     var selectImage: UIImage {
         switch self {
         case .favorite:
-            return #imageLiteral(resourceName: "ic_selectfavorite")
+            return #imageLiteral(resourceName: "ic-favorite-select")
         case .home:
-            return #imageLiteral(resourceName: "ic_selecthome")
+            return #imageLiteral(resourceName: "ic-home-select")
         case .trending:
-            return #imageLiteral(resourceName: "ic_selecttrending")
+            return #imageLiteral(resourceName: "ic-trending-select")
         case .history:
-            return #imageLiteral(resourceName: "ic_selecthistory")
+            return #imageLiteral(resourceName: "ic-history-select")
         }
     }
 
@@ -66,7 +66,6 @@ class TabBarView: UIView {
     var index: Int = 0 {
         willSet {
             let oldview = itemView[index]
-            oldview.backgroundColor = .clear
 
             if let imageView = oldview.findImageView(), let label = oldview.findLabel() {
                 let buttonType = ButtonItemType.type(index: index)
@@ -75,11 +74,10 @@ class TabBarView: UIView {
             }
 
             let newView = itemView[newValue]
-            newView.backgroundColor = Color.navBar
             if let imageView = newView.findImageView(), let label = newView.findLabel() {
                 let buttonType = ButtonItemType.type(index: newValue)
                 imageView.image = buttonType.selectImage
-                label.textColor = .white
+                label.textColor = Color.main
             }
         }
     }
