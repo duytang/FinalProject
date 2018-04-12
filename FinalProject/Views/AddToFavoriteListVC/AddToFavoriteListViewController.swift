@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddToFavoriteListViewControllerDelegate: class {
-    func favoriteList(controller: AddToFavoriteListViewController, didSelectIndex index: Int)
+    func favoriteList(controller: AddToFavoriteListViewController, nameList: String)
 }
 
 class AddToFavoriteListViewController: ViewController, AlertViewController {
@@ -115,8 +115,9 @@ extension AddToFavoriteListViewController: UITableViewDelegate {
         guard let video = viewModel.video else { return }
         RealmManager.shared.write { (_) in
             self.viewModel.favoriteList[indexPath.row].listVideo.append(video)
+            self.delegate?.favoriteList(controller: self,
+                                        nameList: self.viewModel.favoriteList[indexPath.row].name)
         }
         hideAnimation()
-        print(viewModel.favoriteList[indexPath.row])
     }
 }

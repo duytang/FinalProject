@@ -13,6 +13,7 @@ import ObjectMapper
 final class DetailVideoViewModel: ViewModel {
     var video: Video?
     var limit = 10
+    var isFavorite = false
 
     var relatedVideos: [Video] = []
 
@@ -20,6 +21,7 @@ final class DetailVideoViewModel: ViewModel {
 
     init(video: Video) {
         self.video = video
+        self.isFavorite = checkFavorite()
     }
 
     func numberOfItems(inSection section: Int) -> Int {
@@ -48,6 +50,10 @@ final class DetailVideoViewModel: ViewModel {
             return true
         }
         return false
+    }
+
+    func videoFavorite(from id: String) -> Video? {
+        return RealmManager.shared.video(from: id)
     }
 
     func getRelatedVideos(completion: @escaping DataResultCompletion) {

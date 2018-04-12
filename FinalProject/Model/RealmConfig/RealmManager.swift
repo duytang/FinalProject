@@ -40,6 +40,12 @@ class RealmManager {
 //        return Array(realm.objects(type))
 //    }
 
+    func video(from id: String) -> Video? {
+        let videos = Array(realm.objects(Video.self).filter("idVideo=%@", id))
+        guard !videos.isEmpty, let video = videos.first else { return nil }
+        return video
+    }
+
     func add(object: Object) {
         do {
             try realm.write {

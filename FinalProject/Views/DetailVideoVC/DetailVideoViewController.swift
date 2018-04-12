@@ -114,12 +114,18 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     }
 
     @IBAction private func favoriteButtonTapped(sender: UIButton) {
-        let addToFavoriteListVC = AddToFavoriteListViewController()
-        if let video = viewModel.video {
+        guard  let video = viewModel.video else { return }
+        if viewModel.isFavorite {
+            viewModel.isFavorite = false
+            favoriteButton.image = #imageLiteral(resourceName: "ic-heart")
+            guard let video = viewModel.videoFavorite(from: video.idVideo) else { return }
+            RealmManager.shared.delete(object: video)
+        } else {
+            let addToFavoriteListVC = AddToFavoriteListViewController()
             addToFavoriteListVC.viewModel = AddToFavoriteListViewModel(video: video)
+            guard let window = AppDelegate.shared.window else { return }
+            addToFavoriteListVC.showPopup(inView: window, controller: self, delegate: self)
         }
-        guard let window = AppDelegate.shared.window else { return }
-        addToFavoriteListVC.showPopup(inView: window, controller: self, delegate: self)
     }
 }
 
@@ -204,7 +210,9 @@ extension DetailVideoViewController: FVReadMoreLabelDelegate {
 }
 
 extension DetailVideoViewController: AddToFavoriteListViewControllerDelegate {
-    func favoriteList(controller: AddToFavoriteListViewController, didSelectIndex index: Int) {
-        print(index)
+    func favoriteList(controller: AddToFavoriteListViewController, nameList: String) {
+        viewModel.isFavorite = true
+        favoriteButton.image = #imageLiteral(resourceName: "icon-heart-select")
+        showAlertView(title: "YouTube", message: "The video has been saved to the \(nameList) list", cancelButton: "OK")
     }
 }

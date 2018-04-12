@@ -24,7 +24,6 @@ class FavoriteViewController: ViewController, AlertViewController {
     override func setupUI() {
         super.setupUI()
         title = Title.favorite
-        collectionView.registerCell(aClass: CreateFolderCell.self)
         collectionView.registerCell(aClass: FavoriteCollectionViewCell.self)
     }
 
