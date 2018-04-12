@@ -41,23 +41,22 @@ extension FavoriteViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(aClass: FavoriteCollectionViewCell.self, indexPath: indexPath)
+        cell.viewModel = viewModel.viewModelForItem(at: indexPath)
         return cell
     }
 }
 
 extension FavoriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            print("creeate new folder")
-        } else {
-            let favoriteListVC = FavoriteListViewController()
-            push(viewController: favoriteListVC)
-        }
+        let favoriteListVC = FavoriteListViewController()
+        let favorite = viewModel.favoriteList[indexPath.row]
+        favoriteListVC.viewModel = FavoriteListViewModel(title: favorite.name, videos: Array(favorite.listVideo))
+        push(viewController: favoriteListVC)
     }
 }
 
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2, height: collectionView.frame.width / 2)
+        return CGSize(width: collectionView.frame.width / 2 - 8, height: collectionView.frame.width / 2 + 32 )
     }
 }

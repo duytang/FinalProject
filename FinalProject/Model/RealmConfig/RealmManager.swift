@@ -40,6 +40,14 @@ class RealmManager {
 //        return Array(realm.objects(type))
 //    }
 
+    func add(object: Object) {
+        do {
+            try realm.write {
+                realm.add(object)
+            }
+        } catch { }
+    }
+
     func write(action: (Realm) -> Void) {
         do {
             try realm.write {
@@ -48,6 +56,14 @@ class RealmManager {
         } catch {
 
         }
+    }
+
+    func delete(object: Object) {
+        do {
+            try realm.write {
+                realm.delete(object)
+            }
+        } catch { }
     }
 
     func cleanAllData() {

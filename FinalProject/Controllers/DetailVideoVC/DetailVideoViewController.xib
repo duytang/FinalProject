@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailVideoViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="N92-HX-7it" id="JUf-Dj-PD8"/>
+                <outlet property="favoriteButton" destination="eJd-JI-kYE" id="X4d-IM-kV1"/>
                 <outlet property="tableView" destination="sha-Md-3Io" id="hbR-sm-LkN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,6 +52,9 @@
                                 <constraint firstAttribute="width" secondItem="eJd-JI-kYE" secondAttribute="height" id="G7P-1o-D69"/>
                             </constraints>
                             <state key="normal" image="ic-heart"/>
+                            <connections>
+                                <action selector="favoriteButtonTappedWithSender:" destination="-1" eventType="touchUpInside" id="YPH-Q4-J4i"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

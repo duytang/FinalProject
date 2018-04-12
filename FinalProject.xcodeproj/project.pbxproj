@@ -134,6 +134,21 @@
 		F3B11C56206F2E92001FE066 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C55206F2E92001FE066 /* CategoryService.swift */; };
 		F3B11C5A206F6B1A001FE066 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C58206F6B1A001FE066 /* RealmManager.swift */; };
 		F3B11C5C206F77B7001FE066 /* VideoInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C5B206F77B7001FE066 /* VideoInput.swift */; };
+		F3DD8430207D01BC001F570B /* AddToFavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD842E207D01BC001F570B /* AddToFavoriteListViewController.swift */; };
+		F3DD8431207D01BC001F570B /* AddToFavoriteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3DD842F207D01BC001F570B /* AddToFavoriteListViewController.xib */; };
+		F3DD843F207D0993001F570B /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8433207D0993001F570B /* Roboto-Black.ttf */; };
+		F3DD8440207D0993001F570B /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8434207D0993001F570B /* Roboto-BlackItalic.ttf */; };
+		F3DD8441207D0993001F570B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8435207D0993001F570B /* Roboto-Bold.ttf */; };
+		F3DD8442207D0993001F570B /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8436207D0993001F570B /* Roboto-BoldItalic.ttf */; };
+		F3DD8443207D0993001F570B /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8437207D0993001F570B /* Roboto-Italic.ttf */; };
+		F3DD8444207D0993001F570B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8438207D0993001F570B /* Roboto-Light.ttf */; };
+		F3DD8445207D0993001F570B /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8439207D0993001F570B /* Roboto-LightItalic.ttf */; };
+		F3DD8446207D0993001F570B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD843A207D0993001F570B /* Roboto-Medium.ttf */; };
+		F3DD8447207D0993001F570B /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD843B207D0993001F570B /* Roboto-MediumItalic.ttf */; };
+		F3DD8448207D0993001F570B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD843C207D0993001F570B /* Roboto-Regular.ttf */; };
+		F3DD8449207D0993001F570B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD843D207D0993001F570B /* Roboto-Thin.ttf */; };
+		F3DD844A207D0993001F570B /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD843E207D0993001F570B /* Roboto-ThinItalic.ttf */; };
+		F3E93F6D207D1410003E09E5 /* AddToFavoriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E93F6C207D1410003E09E5 /* AddToFavoriteListViewModel.swift */; };
 		F3F66683206A61B000FCC803 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F66681206A61B000FCC803 /* TabBarView.swift */; };
 		F3F66684206A61B000FCC803 /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3F66682206A61B000FCC803 /* TabBarView.xib */; };
 		F3F66686206A63C600FCC803 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F66685206A63C600FCC803 /* Color.swift */; };
@@ -293,6 +308,21 @@
 		F3B11C55206F2E92001FE066 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		F3B11C58206F6B1A001FE066 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		F3B11C5B206F77B7001FE066 /* VideoInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInput.swift; sourceTree = "<group>"; };
+		F3DD842E207D01BC001F570B /* AddToFavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavoriteListViewController.swift; sourceTree = "<group>"; };
+		F3DD842F207D01BC001F570B /* AddToFavoriteListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToFavoriteListViewController.xib; sourceTree = "<group>"; };
+		F3DD8433207D0993001F570B /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		F3DD8434207D0993001F570B /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		F3DD8435207D0993001F570B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		F3DD8436207D0993001F570B /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		F3DD8437207D0993001F570B /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		F3DD8438207D0993001F570B /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		F3DD8439207D0993001F570B /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		F3DD843A207D0993001F570B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		F3DD843B207D0993001F570B /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		F3DD843C207D0993001F570B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		F3DD843D207D0993001F570B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		F3DD843E207D0993001F570B /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		F3E93F6C207D1410003E09E5 /* AddToFavoriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavoriteListViewModel.swift; sourceTree = "<group>"; };
 		F3F66681206A61B000FCC803 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		F3F66682206A61B000FCC803 /* TabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
 		F3F66685206A63C600FCC803 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -516,6 +546,7 @@
 		F34E00AB20693077002D783D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F3DD8432207D0993001F570B /* Fonts */,
 				F34E00F8206930B5002D783D /* Assets.xcassets */,
 				F34E00F9206930B5002D783D /* Base.lproj */,
 			);
@@ -585,6 +616,7 @@
 		F34E0105206932EC002D783D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F3DD842D207D0197001F570B /* AddToFavoriteListVC */,
 				F36869D220707CC000DFAE14 /* CategoryVC */,
 				F3954983206E6D8800090D5F /* DetailVideoVC */,
 				F305E6ED206BE1FD00DE5495 /* SearchVC */,
@@ -749,6 +781,35 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		F3DD842D207D0197001F570B /* AddToFavoriteListVC */ = {
+			isa = PBXGroup;
+			children = (
+				F3DD842E207D01BC001F570B /* AddToFavoriteListViewController.swift */,
+				F3DD842F207D01BC001F570B /* AddToFavoriteListViewController.xib */,
+				F3E93F6C207D1410003E09E5 /* AddToFavoriteListViewModel.swift */,
+			);
+			path = AddToFavoriteListVC;
+			sourceTree = "<group>";
+		};
+		F3DD8432207D0993001F570B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F3DD8433207D0993001F570B /* Roboto-Black.ttf */,
+				F3DD8434207D0993001F570B /* Roboto-BlackItalic.ttf */,
+				F3DD8435207D0993001F570B /* Roboto-Bold.ttf */,
+				F3DD8436207D0993001F570B /* Roboto-BoldItalic.ttf */,
+				F3DD8437207D0993001F570B /* Roboto-Italic.ttf */,
+				F3DD8438207D0993001F570B /* Roboto-Light.ttf */,
+				F3DD8439207D0993001F570B /* Roboto-LightItalic.ttf */,
+				F3DD843A207D0993001F570B /* Roboto-Medium.ttf */,
+				F3DD843B207D0993001F570B /* Roboto-MediumItalic.ttf */,
+				F3DD843C207D0993001F570B /* Roboto-Regular.ttf */,
+				F3DD843D207D0993001F570B /* Roboto-Thin.ttf */,
+				F3DD843E207D0993001F570B /* Roboto-ThinItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		F3F6667F206A61B000FCC803 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,24 +968,37 @@
 			files = (
 				F34E00FD206930B5002D783D /* LaunchScreen.storyboard in Resources */,
 				F34E00FC206930B5002D783D /* Assets.xcassets in Resources */,
+				F3DD8449207D0993001F570B /* Roboto-Thin.ttf in Resources */,
+				F3DD8445207D0993001F570B /* Roboto-LightItalic.ttf in Resources */,
 				F36869DD207084F400DFAE14 /* TitleCell.xib in Resources */,
 				F305E6E6206BD3F200DE5495 /* ContentTableViewCell.xib in Resources */,
 				F305E700206BF3CD00DE5495 /* CategoryTableViewCell.xib in Resources */,
+				F3DD8431207D01BC001F570B /* AddToFavoriteListViewController.xib in Resources */,
 				F3F6669A206A6CE100FCC803 /* FavoriteViewController.xib in Resources */,
 				F3457F26207910FF00DA9BBA /* InfoCell.xib in Resources */,
+				F3DD844A207D0993001F570B /* Roboto-ThinItalic.ttf in Resources */,
 				F36869D620707CD700DFAE14 /* CategoryViewController.xib in Resources */,
+				F3DD8442207D0993001F570B /* Roboto-BoldItalic.ttf in Resources */,
+				F3DD8446207D0993001F570B /* Roboto-Medium.ttf in Resources */,
+				F3DD8448207D0993001F570B /* Roboto-Regular.ttf in Resources */,
+				F3DD8447207D0993001F570B /* Roboto-MediumItalic.ttf in Resources */,
 				F3457F2D20791B8E00DA9BBA /* RelateVideoCell.xib in Resources */,
 				F305E6F8206BED2200DE5495 /* SearchTableViewCell.xib in Resources */,
+				F3DD843F207D0993001F570B /* Roboto-Black.ttf in Resources */,
 				F3954979206E68F200090D5F /* FavoriteListViewController.xib in Resources */,
 				F3954987206E6DAA00090D5F /* DetailVideoViewController.xib in Resources */,
+				F3DD8441207D0993001F570B /* Roboto-Bold.ttf in Resources */,
 				F3F66684206A61B000FCC803 /* TabBarView.xib in Resources */,
 				F3954980206E6B3B00090D5F /* FavoriteListCell.xib in Resources */,
 				F305E712206BFF1400DE5495 /* CreateFolderCell.xib in Resources */,
+				F3DD8444207D0993001F570B /* Roboto-Light.ttf in Resources */,
+				F3DD8440207D0993001F570B /* Roboto-BlackItalic.ttf in Resources */,
 				F3F6668D206A693E00FCC803 /* HistoryViewController.xib in Resources */,
 				F305E6F1206BE21A00DE5495 /* SearchViewController.xib in Resources */,
 				F305E6EC206BD41F00DE5495 /* HomeViewController.xib in Resources */,
 				F305E70B206BF77500DE5495 /* FavoriteCollectionViewCell.xib in Resources */,
 				F3457F3620791E1000DA9BBA /* DescriptionCell.xib in Resources */,
+				F3DD8443207D0993001F570B /* Roboto-Italic.ttf in Resources */,
 				F3F66695206A696200FCC803 /* TrendingViewController.xib in Resources */,
 				F328403E207A140700F4C976 /* AutoNextVideoCell.xib in Resources */,
 			);
@@ -1139,6 +1213,7 @@
 				F3B11C50206F2C4F001FE066 /* Services.swift in Sources */,
 				F34E00CA20693078002D783D /* UIImageView.swift in Sources */,
 				F37EAD58206FDB3300A64D8C /* Channel.swift in Sources */,
+				F3DD8430207D01BC001F570B /* AddToFavoriteListViewController.swift in Sources */,
 				F3457F2F20791C2B00DA9BBA /* RelateVideoCellModel.swift in Sources */,
 				F34E00BA20693078002D783D /* DispatchQueue.swift in Sources */,
 				F34E00C220693078002D783D /* Regex.swift in Sources */,
@@ -1156,6 +1231,7 @@
 				F3F66686206A63C600FCC803 /* Color.swift in Sources */,
 				F34E010D206932EC002D783D /* TableViewCell.swift in Sources */,
 				F34E00D520693078002D783D /* Helper.swift in Sources */,
+				F3E93F6D207D1410003E09E5 /* AddToFavoriteListViewModel.swift in Sources */,
 				F34E00BD20693078002D783D /* Label.swift in Sources */,
 				F34E00C920693078002D783D /* UIImage.swift in Sources */,
 				F3B11C4D206F2C4F001FE066 /* UserInput.swift in Sources */,

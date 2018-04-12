@@ -9,5 +9,11 @@
 import Foundation
 
 final class FavoriteListCellViewModel {
+    var video: Video?
 
+    init() { }
+
+    init(video: Video) {
+        self.video = video
+    }
 }

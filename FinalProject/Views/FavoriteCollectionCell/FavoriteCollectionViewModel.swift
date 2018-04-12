@@ -9,5 +9,11 @@
 import Foundation
 
 final class FavoriteCollectionViewModel {
+    var favoriteList: FavoriteList?
 
+    init() {}
+
+    init(favoriteList: FavoriteList) {
+        self.favoriteList = favoriteList
+    }
 }

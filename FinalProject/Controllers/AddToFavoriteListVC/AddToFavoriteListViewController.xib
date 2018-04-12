@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddToFavoriteListViewController" customModule="FinalProject" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="u5B-eQ-ft9" id="UxT-FG-0Xm"/>
+                <outlet property="tableView" destination="P1d-Ow-T7C" id="BWM-MN-Sp0"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5B-eQ-ft9">
+                    <rect key="frame" x="37.5" y="95.5" width="300" height="476"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-oV-RBb">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="47"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nk0-HQ-TmD">
+                                    <rect key="frame" x="113" y="11.5" width="74" height="24"/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wI-Om-WgP">
+                                    <rect key="frame" x="265" y="11" width="25" height="25"/>
+                                    <state key="normal" image="ic_add"/>
+                                    <connections>
+                                        <action selector="createNewFavoriteListButtonTappedWithSender:" destination="-1" eventType="touchUpInside" id="GN3-oP-i6c"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.93333333330000001" green="0.10980392160000001" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="AOh-oV-RBb" secondAttribute="height" multiplier="300:47" id="3TY-OR-WQR"/>
+                                <constraint firstItem="7wI-Om-WgP" firstAttribute="centerY" secondItem="AOh-oV-RBb" secondAttribute="centerY" id="Rip-p0-Rqn"/>
+                                <constraint firstItem="nk0-HQ-TmD" firstAttribute="centerX" secondItem="AOh-oV-RBb" secondAttribute="centerX" id="Ufq-Jb-AdW"/>
+                                <constraint firstItem="nk0-HQ-TmD" firstAttribute="centerY" secondItem="AOh-oV-RBb" secondAttribute="centerY" id="bfs-YW-nwu"/>
+                                <constraint firstAttribute="trailing" secondItem="7wI-Om-WgP" secondAttribute="trailing" constant="10" id="sMU-zc-ezX"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P1d-Ow-T7C">
+                            <rect key="frame" x="0.0" y="47" width="300" height="429"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="WHY-Kr-cB0"/>
+                                <outlet property="delegate" destination="-1" id="CKF-KJ-Aer"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="P1d-Ow-T7C" firstAttribute="leading" secondItem="u5B-eQ-ft9" secondAttribute="leading" id="1gN-m5-fxi"/>
+                        <constraint firstAttribute="trailing" secondItem="AOh-oV-RBb" secondAttribute="trailing" id="GIG-1x-a6k"/>
+                        <constraint firstAttribute="trailing" secondItem="P1d-Ow-T7C" secondAttribute="trailing" id="UGN-Le-pOf"/>
+                        <constraint firstItem="AOh-oV-RBb" firstAttribute="top" secondItem="u5B-eQ-ft9" secondAttribute="top" id="eJp-Oj-GVX"/>
+                        <constraint firstItem="P1d-Ow-T7C" firstAttribute="top" secondItem="AOh-oV-RBb" secondAttribute="bottom" id="ffK-Dr-zQz"/>
+                        <constraint firstItem="AOh-oV-RBb" firstAttribute="leading" secondItem="u5B-eQ-ft9" secondAttribute="leading" id="jd5-eT-D0z"/>
+                        <constraint firstAttribute="bottom" secondItem="P1d-Ow-T7C" secondAttribute="bottom" id="vBF-6j-v55"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="u5B-eQ-ft9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JAo-W4-6fN"/>
+                <constraint firstItem="u5B-eQ-ft9" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="5/7" id="r71-qc-VwC"/>
+                <constraint firstItem="u5B-eQ-ft9" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="4/5" id="s3m-o4-Yb7"/>
+                <constraint firstItem="u5B-eQ-ft9" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="wBh-ji-2qc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_add" width="25" height="25"/>
+    </resources>
+</document>

@@ -15,6 +15,7 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     // MARK: - Outlets
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var favoriteButton: UIButton!
 
     // MARK: - Properties
     var viewModel = DetailVideoViewModel()
@@ -36,6 +37,14 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         return true
     }
 
+    // MARK: - Setup Data
+    override func setupData() {
+        super.setupData()
+        prepareForPlay()
+        loadData()
+        print(viewModel.checkFavorite())
+    }
+
     // MARK: - Setup UI
     override func setupUI() {
         super.setupUI()
@@ -45,18 +54,18 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         tableView.registerCell(aClass: AutoNextVideoCell.self)
         tableView.registerCell(aClass: RelateVideoCell.self)
         tableView.removeHeaderTableView()
-
         configNotification()
+        favoriteButton.image = viewModel.checkFavorite() ? #imageLiteral(resourceName: "icon-heart-select") : #imageLiteral(resourceName: "ic-favorite")
     }
 
-    // MARK: - Setup Data
-    override func setupData() {
-        super.setupData()
-        prepareForPlay()
+    private func loadData() {
+        showLoading()
         viewModel.getRelatedVideos { (result) in
+            self.hideLoading()
             switch result {
             case .success:
                 self.tableView.reloadData()
+                self.tableView.scrollToTop()
             case .failure(let error):
                 self.showErrorAlert(message: error.message)
             }
@@ -84,12 +93,6 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     }
 
     // MARK: - Private func
-    @IBAction private func dismissButtonTapped(sender: UIButton) {
-        playerVideoVC?.moviePlayer.pause()
-        dismiss(animated: true, completion: nil)
-    }
-
-    // MARK: - Private func
     private func prepareForPlay() {
         viewPlayer = UIView(frame: CGRect(x: 0, y: 0,
                                           width: contentView.width * App.ratio,
@@ -102,6 +105,21 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         playerVideoVC.moviePlayer.controlStyle = .embedded
         playerVideoVC.moviePlayer.play()
         contentView.addSubview(viewPlayer)
+    }
+
+    // MARK: - Actions
+    @IBAction private func dismissButtonTapped(sender: UIButton) {
+        playerVideoVC?.moviePlayer.pause()
+        dismiss(animated: true, completion: nil)
+    }
+
+    @IBAction private func favoriteButtonTapped(sender: UIButton) {
+        let addToFavoriteListVC = AddToFavoriteListViewController()
+        if let video = viewModel.video {
+            addToFavoriteListVC.viewModel = AddToFavoriteListViewModel(video: video)
+        }
+        guard let window = AppDelegate.shared.window else { return }
+        addToFavoriteListVC.showPopup(inView: window, controller: self, delegate: self)
     }
 }
 
@@ -132,6 +150,12 @@ extension DetailVideoViewController: UITableViewDataSource {
             cell.viewModel = RelateVideoCellModel(video: viewModel.relatedVideos[indexPath.row - 3])
             return cell
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.video = viewModel.relatedVideos[indexPath.row - 3]
+        prepareForPlay()
+        loadData()
     }
 }
 
@@ -176,5 +200,11 @@ extension DetailVideoViewController: FVReadMoreLabelDelegate {
 
     func shouldCollapseLabel(_ label: FVReadMoreLabel) -> Bool {
         return true
+    }
+}
+
+extension DetailVideoViewController: AddToFavoriteListViewControllerDelegate {
+    func favoriteList(controller: AddToFavoriteListViewController, didSelectIndex index: Int) {
+        print(index)
     }
 }

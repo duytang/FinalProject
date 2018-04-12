@@ -19,5 +19,8 @@ class APIPath {
         static var videos: String { return path + "videos" }
         static var channels: String { return path + "channels" }
         static var relatedVideo: String { return path + "search" }
+        static var completeSearch: String {
+            return "https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox"
+        }
     }
 }

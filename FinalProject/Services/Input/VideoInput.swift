@@ -52,7 +52,7 @@ class VideoInput: BaseInput {
 }
 
 class RelatedVideoInput: BaseInput {
-    init(idVideo: String, limit: Int, nextPage: String) {
+    init(idVideo: String, limit: Int) {
         super.init()
         self.url = APIPath.API.relatedVideo
         self.method = .get
@@ -60,7 +60,6 @@ class RelatedVideoInput: BaseInput {
         self.parameter = ["part": "snippet",
                           "relatedToVideoId": idVideo,
                           "type": "video",
-                          "pageToken": nextPage,
                           "maxResults": limit,
                           "key": Key.apiKey
                          ]

@@ -57,7 +57,7 @@ open class FVReadMoreLabel: UILabel {
 
     /// Set the link name (and attributes) that is shown when collapsed.
     /// The default value is "More". Cannot be nil.
-    @IBInspectable var collapsedAttributedLink: NSAttributedString! {
+    var collapsedAttributedLink: NSAttributedString! {
         didSet {
             self.collapsedAttributedLink = collapsedAttributedLink.copyWithAddedFontAttribute(fontText)
         }
@@ -65,7 +65,7 @@ open class FVReadMoreLabel: UILabel {
 
     /// Set the link name (and attributes) that is shown when expanded.
     /// The default value is "Less". Can be nil.
-    @IBInspectable var expandedAttributedLink: NSAttributedString?
+    var expandedAttributedLink: NSAttributedString?
 
     /// Set the ellipsis that appears just after the text and before the link.
     /// The default value is "...". Can be nil.

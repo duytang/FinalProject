@@ -12,5 +12,9 @@ import RealmSwift
 final class FavoriteList: Object {
     @objc dynamic var id = 0
     @objc  dynamic var name = ""
-    var listVideo = List<FavoriteVideo>()
+    var listVideo = List<Video>()
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

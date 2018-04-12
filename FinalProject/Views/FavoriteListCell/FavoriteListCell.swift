@@ -9,12 +9,27 @@
 import UIKit
 
 final class FavoriteListCell: TableViewCell {
+    // MARK: - Outlets
+    @IBOutlet weak var videoImageView: UIImageView!
+    @IBOutlet weak var videoNameLabel: UILabel!
+    @IBOutlet weak var channelLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    // MARK: - Property
+    var viewModel = FavoriteListCellViewModel() {
+        didSet {
+            updateUI()
+        }
     }
 
     override func setup() {
         super.setup()
+    }
+
+    // MARK: - Private func
+    private func updateUI() {
+        guard let video = viewModel.video else { return }
+        videoImageView.downloadImage(fromURL: video.thumbnail, placeHolder: #imageLiteral(resourceName: "ic_chanel"))
+        videoNameLabel.text = video.name
+        channelLabel.text = video.channelName
     }
 }

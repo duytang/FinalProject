@@ -11,14 +11,19 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FavoriteCollectionViewCell" customModule="FinalProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="128" height="126"/>
+            <rect key="frame" x="0.0" y="0.0" width="128" height="160"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="128" height="126"/>
+                <rect key="frame" x="0.0" y="0.0" width="128" height="160"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_hari" translatesAutoresizingMaskIntoConstraints="NO" id="iYF-7g-qYe">
@@ -26,44 +31,83 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="iYF-7g-qYe" secondAttribute="height" multiplier="1:1" id="gKh-zu-Rwy"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_video" translatesAutoresizingMaskIntoConstraints="NO" id="eyq-rC-kB1">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chanel" translatesAutoresizingMaskIntoConstraints="NO" id="eyq-rC-kB1">
                         <rect key="frame" x="64" y="0.0" width="64" height="64"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chanel" translatesAutoresizingMaskIntoConstraints="NO" id="QWk-og-0uI">
-                        <rect key="frame" x="64" y="62" width="64" height="64"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chanel" translatesAutoresizingMaskIntoConstraints="NO" id="q5Y-dp-e0f">
+                        <rect key="frame" x="0.0" y="64" width="64" height="64"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_history" translatesAutoresizingMaskIntoConstraints="NO" id="q5Y-dp-e0f">
-                        <rect key="frame" x="0.0" y="62" width="64" height="64"/>
-                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGc-gZ-VBj">
+                        <rect key="frame" x="64" y="64" width="64" height="64"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="30"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7r5-Ct-Wx9">
+                        <rect key="frame" x="3" y="128" width="122" height="27"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="0.38447131849315069" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="iYF-7g-qYe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="06n-Vp-R0d"/>
                 <constraint firstItem="iYF-7g-qYe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1C6-RC-PqO"/>
                 <constraint firstItem="q5Y-dp-e0f" firstAttribute="width" secondItem="iYF-7g-qYe" secondAttribute="width" id="1TR-QX-VBM"/>
                 <constraint firstItem="q5Y-dp-e0f" firstAttribute="height" secondItem="iYF-7g-qYe" secondAttribute="height" id="3TG-Rv-Mzp"/>
+                <constraint firstAttribute="trailing" secondItem="tGc-gZ-VBj" secondAttribute="trailing" id="4Mm-L5-5Iv"/>
                 <constraint firstItem="eyq-rC-kB1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4jA-bD-Wkh"/>
                 <constraint firstItem="eyq-rC-kB1" firstAttribute="leading" secondItem="iYF-7g-qYe" secondAttribute="trailing" id="7Re-fB-4vL"/>
-                <constraint firstAttribute="bottom" secondItem="QWk-og-0uI" secondAttribute="bottom" id="KZf-we-glb"/>
+                <constraint firstAttribute="bottom" secondItem="7r5-Ct-Wx9" secondAttribute="bottom" constant="5" id="Cxe-c5-pf8"/>
+                <constraint firstItem="7r5-Ct-Wx9" firstAttribute="top" secondItem="q5Y-dp-e0f" secondAttribute="bottom" id="E1b-fo-UXY"/>
+                <constraint firstItem="tGc-gZ-VBj" firstAttribute="leading" secondItem="q5Y-dp-e0f" secondAttribute="trailing" id="Fce-LB-pSN"/>
+                <constraint firstItem="tGc-gZ-VBj" firstAttribute="top" secondItem="eyq-rC-kB1" secondAttribute="bottom" id="HP1-VV-9pf"/>
                 <constraint firstItem="eyq-rC-kB1" firstAttribute="height" secondItem="iYF-7g-qYe" secondAttribute="height" id="Lz3-vr-hAJ"/>
-                <constraint firstItem="QWk-og-0uI" firstAttribute="width" secondItem="eyq-rC-kB1" secondAttribute="width" id="Oi8-ev-FDK"/>
-                <constraint firstAttribute="trailing" secondItem="QWk-og-0uI" secondAttribute="trailing" id="UR4-CB-ozP"/>
-                <constraint firstItem="QWk-og-0uI" firstAttribute="height" secondItem="eyq-rC-kB1" secondAttribute="height" id="aob-YU-reB"/>
+                <constraint firstAttribute="trailing" secondItem="7r5-Ct-Wx9" secondAttribute="trailing" constant="3" id="S9D-3s-oZL"/>
+                <constraint firstItem="7r5-Ct-Wx9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="aUK-J1-27U"/>
                 <constraint firstAttribute="trailing" secondItem="eyq-rC-kB1" secondAttribute="trailing" id="c5X-6H-ZhY"/>
                 <constraint firstItem="iYF-7g-qYe" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="1/2" id="nxg-sO-khc"/>
-                <constraint firstAttribute="bottom" secondItem="q5Y-dp-e0f" secondAttribute="bottom" id="vLL-Je-b5Q"/>
+                <constraint firstItem="tGc-gZ-VBj" firstAttribute="height" secondItem="q5Y-dp-e0f" secondAttribute="height" id="rC7-eZ-1ij"/>
                 <constraint firstItem="q5Y-dp-e0f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vxu-EH-gN8"/>
+                <constraint firstItem="q5Y-dp-e0f" firstAttribute="top" secondItem="iYF-7g-qYe" secondAttribute="bottom" id="zVb-X4-IAC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="128" height="126"/>
-            <point key="canvasLocation" x="73" y="92"/>
+            <size key="customSize" width="128" height="160"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="favoriteListNameLabel" destination="7r5-Ct-Wx9" id="KY5-gm-SbA"/>
+                <outlet property="firstVideoImageView" destination="iYF-7g-qYe" id="kRC-ce-FS4"/>
+                <outlet property="moreVideoLabel" destination="tGc-gZ-VBj" id="Y1w-Kl-GWw"/>
+                <outlet property="secondVideoImageView" destination="eyq-rC-kB1" id="PLm-6L-a5m"/>
+                <outlet property="thirdVideoImageView" destination="q5Y-dp-e0f" id="Oka-VE-fvt"/>
+            </connections>
+            <point key="canvasLocation" x="-9" y="83"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="bg_video" width="242" height="158"/>
         <image name="ic_chanel" width="33" height="33"/>
         <image name="ic_hari" width="160" height="120"/>
-        <image name="ic_history" width="33" height="33"/>
     </resources>
 </document>

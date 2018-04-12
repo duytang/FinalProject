@@ -12,7 +12,16 @@ import MVVM
 final class FavoriteViewModel: ViewModel {
     var favoriteList: [FavoriteList] = []
 
+    init() {
+        favoriteList = Array(RealmManager.shared.objects(FavoriteList.self))
+    }
+
     func numberOfItems(inSection section: Int) -> Int {
         return favoriteList.count
+    }
+
+    func viewModelForItem(at indexPath: IndexPath) -> FavoriteCollectionViewModel {
+        let viewModel = FavoriteCollectionViewModel(favoriteList: favoriteList[indexPath.row])
+        return viewModel
     }
 }

@@ -40,6 +40,35 @@ extension AlertViewController where Self: UIViewController {
         }
     }
 
+    func showInputDialog(title: String? = nil,
+                         subtitle: String? = nil,
+                         actionTitle: String? = "Add",
+                         cancelTitle: String? = "Cancel",
+                         inputPlaceholder: String? = nil,
+                         inputKeyboardType: UIKeyboardType = .default,
+                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = inputPlaceholder
+            textField.keyboardType = inputKeyboardType
+        }
+        alert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (_) in
+            guard let textField = alert.textFields?.first else {
+                actionHandler?(nil)
+                return
+            }
+            actionHandler?(textField.text)
+        }))
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+
+    }
+
     func showErrorAlert(message: String?) {
         showAlertView(title: "Error", message: message, cancelButton: "OK")
     }

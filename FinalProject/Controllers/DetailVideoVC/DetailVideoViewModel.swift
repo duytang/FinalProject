@@ -12,7 +12,7 @@ import ObjectMapper
 
 final class DetailVideoViewModel: ViewModel {
     var video: Video?
-    var nextPage = ""
+    var limit = 10
 
     var relatedVideos: [Video] = []
 
@@ -41,20 +41,25 @@ final class DetailVideoViewModel: ViewModel {
         return relateVideoCellModel
     }
 
+    func checkFavorite() -> Bool {
+        let videos = Array(RealmManager.shared.objects(Video.self))
+        guard let video = video else { return false }
+        for item in videos where item.idVideo == video.idVideo {
+            return true
+        }
+        return false
+    }
+
     func getRelatedVideos(completion: @escaping DataResultCompletion) {
         guard let video = video else { return }
-        let input = RelatedVideoInput(idVideo: video.idVideo, limit: 10, nextPage: nextPage)
+        let input = RelatedVideoInput(idVideo: video.idVideo, limit: limit)
         Services.videoService.relateVideos(input: input) { [weak self](result) in
             guard let this = self else { return }
-            if this.nextPage.isEmpty {
-                this.relatedVideos = []
-            }
+            this.relatedVideos = []
             switch result {
             case .success(let data):
                 if let object = data as? JSObject,
-                    let nextPage = object["nextPageToken"] as? String,
                     let videos = Mapper<Video>().mapArray(JSONObject: object["items"]) {
-                    this.nextPage = !nextPage.isEmpty ? nextPage : ""
                     videos.forEach {
                         this.getDetailVideo(id: $0.idVideo, completion: { (result) in
                             switch result {

@@ -155,17 +155,13 @@ extension String {
 
     // MARK: - Validate time of Video
     func checkDurationVideo(text: String) -> Bool {
-        let DURATION_REGEX_FULL = "^PT+[0-9]+H[0-9]+M[0-9]+S"
-        let DURATION_REGEX = "^PT+[0-9]+M[0-9]+S"
-        let durationTestFull = NSPredicate(format: "SELF MATCHES %@", DURATION_REGEX_FULL)
-        let durationTest = NSPredicate(format: "SELF MATCHES %@", DURATION_REGEX)
-        let test_REGEX_FULL = durationTestFull.evaluate(with: text)
-        let test_REGEX = durationTest.evaluate(with: text)
-        if test_REGEX_FULL || test_REGEX {
-            return true
-        } else {
-            return false
-        }
+        let durationRegexFull = "^PT+[0-9]+H[0-9]+M[0-9]+S"
+        let durationRegex = "^PT+[0-9]+M[0-9]+S"
+        let durationTestFull = NSPredicate(format: "SELF MATCHES %@", durationRegexFull)
+        let durationTest = NSPredicate(format: "SELF MATCHES %@", durationRegex)
+        let testRegexFull = durationTestFull.evaluate(with: text)
+        let textRegex = durationTest.evaluate(with: text)
+        return testRegexFull || textRegex ? true : false
     }
 
     // MARK: - Get time upload of video
