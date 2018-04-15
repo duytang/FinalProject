@@ -16,12 +16,16 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var dismissButton: UIButton!
 
     // MARK: - Properties
     var viewModel = DetailVideoViewModel()
     var playerVideoVC: XCDYouTubeVideoPlayerViewController?
     private var viewPlayer = UIView()
     var stateLabel = true
+
+    var handlePan: ((_ panGestureRecognizer: UIPanGestureRecognizer) -> Void)?
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -37,12 +41,15 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         return true
     }
 
+    deinit {
+        kNotification.removeObserver(self)
+    }
+
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
         prepareForPlay()
         loadData()
-        print(viewModel.checkFavorite())
     }
 
     // MARK: - Setup UI
@@ -120,12 +127,17 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
             favoriteButton.image = #imageLiteral(resourceName: "ic-heart")
             guard let video = viewModel.videoFavorite(from: video.idVideo) else { return }
             RealmManager.shared.delete(object: video)
+            kNotification.post(name: NSNotification.Name(rawValue: NoticationName.reloadFavoriteList), object: nil)
+            showAlertView(title: "YouTube", message: "The video has been deleted from the favorite list", cancelButton: "OK")
         } else {
             let addToFavoriteListVC = AddToFavoriteListViewController()
             addToFavoriteListVC.viewModel = AddToFavoriteListViewModel(video: video)
             guard let window = AppDelegate.shared.window else { return }
             addToFavoriteListVC.showPopup(inView: window, controller: self, delegate: self)
         }
+    }
+    @IBAction func handlePanAction(_ sender: UIPanGestureRecognizer) {
+        handlePan?(sender)
     }
 }
 
@@ -159,9 +171,11 @@ extension DetailVideoViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.video = viewModel.relatedVideos[indexPath.row - 3]
-        prepareForPlay()
-        loadData()
+        if indexPath.row >= 3 {
+            viewModel.video = viewModel.relatedVideos[indexPath.row - 3]
+            prepareForPlay()
+            loadData()
+        }
     }
 }
 
@@ -214,5 +228,7 @@ extension DetailVideoViewController: AddToFavoriteListViewControllerDelegate {
         viewModel.isFavorite = true
         favoriteButton.image = #imageLiteral(resourceName: "icon-heart-select")
         showAlertView(title: "YouTube", message: "The video has been saved to the \(nameList) list", cancelButton: "OK")
+        kNotification.post(name: NSNotification.Name(NoticationName.reloadFavoriteList),
+                           object: nil)
     }
 }

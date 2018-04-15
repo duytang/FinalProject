@@ -42,4 +42,11 @@ final class AddToFavoriteListViewModel: ViewModel {
             return last.id + 1
         }
     }
+
+    func checkExist(id: String, videos: [Video]) -> Bool {
+        for video in videos where video.idVideo == id {
+                return true
+        }
+        return false
+    }
 }

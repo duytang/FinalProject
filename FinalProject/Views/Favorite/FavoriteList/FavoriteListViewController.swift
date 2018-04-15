@@ -34,6 +34,10 @@ final class FavoriteListViewController: ViewController, AlertViewController {
         tableView.registerCell(aClass: FavoriteListCell.self)
         tableView.rowHeight = 72
         addRightBarButton(image: #imageLiteral(resourceName: "ic_delete"), action: #selector(deleteAll))
+        kNotification.addObserver(self,
+                                  selector: #selector(loadData),
+                                  name: NSNotification.Name(NoticationName.reloadFavoriteList),
+                                  object: nil)
     }
 
     // MARK: - Private func
@@ -41,6 +45,9 @@ final class FavoriteListViewController: ViewController, AlertViewController {
         showAlertView(title: "Note", message: "Do you wanna delete all videos?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, cancelAction: nil) { (_) in
             print("Delete All")
         }
+    }
+    @objc private func loadData() {
+        print("-----------------reload")
     }
 }
 // MARK: - Extensions

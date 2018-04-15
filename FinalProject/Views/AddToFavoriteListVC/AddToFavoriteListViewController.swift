@@ -113,10 +113,16 @@ extension AddToFavoriteListViewController: UITableViewDataSource {
 extension AddToFavoriteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let video = viewModel.video else { return }
-        RealmManager.shared.write { (_) in
-            self.viewModel.favoriteList[indexPath.row].listVideo.append(video)
-            self.delegate?.favoriteList(controller: self,
-                                        nameList: self.viewModel.favoriteList[indexPath.row].name)
+        viewModel.getData()
+        if !viewModel.checkExist(id: video.idVideo,
+                                videos: Array(viewModel.favoriteList[indexPath.row].listVideo)) {
+            RealmManager.shared.write { (_) in
+                self.viewModel.favoriteList[indexPath.row].listVideo.append(video)
+                self.delegate?.favoriteList(controller: self,
+                                            nameList: self.viewModel.favoriteList[indexPath.row].name)
+            }
+        } else {
+            showAlert(title: "Youtube", message: "Video has been exist on the list")
         }
         hideAnimation()
     }

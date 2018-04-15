@@ -25,11 +25,20 @@ class FavoriteViewController: ViewController, AlertViewController {
         super.setupUI()
         title = Title.favorite
         collectionView.registerCell(aClass: FavoriteCollectionViewCell.self)
+        kNotification.addObserver(self,
+                                  selector: #selector(loadData),
+                                  name: NSNotification.Name(NoticationName.reloadFavoriteList),
+                                  object: nil)
     }
 
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
+    }
+
+   @objc private func loadData() {
+        viewModel.getData()
+        collectionView.reloadData()
     }
 }
 

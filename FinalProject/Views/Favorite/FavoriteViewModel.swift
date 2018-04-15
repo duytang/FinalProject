@@ -16,6 +16,10 @@ final class FavoriteViewModel: ViewModel {
         favoriteList = Array(RealmManager.shared.objects(FavoriteList.self))
     }
 
+    func getData() {
+        favoriteList = Array(RealmManager.shared.objects(FavoriteList.self))
+    }
+
     func numberOfItems(inSection section: Int) -> Int {
         return favoriteList.count
     }

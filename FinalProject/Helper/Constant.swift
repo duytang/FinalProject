@@ -17,3 +17,7 @@ struct App {
     static let regionCode = "VN"
     static let ratio = SwifterSwift.screenWidth / 375
 }
+
+struct NoticationName {
+    static let reloadFavoriteList = "ReloadFavoriteList"
+}
