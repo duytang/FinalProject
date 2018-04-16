@@ -2,8 +2,8 @@
 //  TabBarView.swift
 //  YouTube
 //
-//  Created by Duy Tang on 8/29/16.
-//  Copyright © 2016 Duy Tang. All rights reserved.
+//  Created by Kieu Nhi on 8/29/16.
+//  Copyright © 2016 Kieu Nhi. All rights reserved.
 //
 
 import UIKit

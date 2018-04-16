@@ -2,8 +2,8 @@
 //  HomeViewController.swift
 //  FinalProject
 //
-//  Created by Duy Tang on 3/26/18.
-//  Copyright © 2018 Duy Tang. All rights reserved.
+//  Created by Kieu Nhi on 3/26/18.
+//  Copyright © 2018 Kieu Nhi. All rights reserved.
 //
 
 import UIKit
@@ -15,10 +15,16 @@ final class HomeViewController: ViewController, AlertViewController, LoadingView
 
     // MARK: - Properties
     var viewModel = HomeViewModel()
+    var dragVideo: DraggalbeVideoManager!
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let parent = parent {
+            dragVideo = DraggalbeVideoManager(rootViewController: parent)
+            dragVideo.draggbleProgress()
+            dragVideo.addActionToView()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +117,8 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVideoVC = DetailVideoViewController()
         detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
-        navigationController?.present(detailVideoVC, animated: true, completion: nil)
+//        navigationController?.present(detailVideoVC, animated: true, completion: nil)
+        dragVideo.prensetDetailVideoController(video: viewModel.videos[indexPath.row])
     }
 }
 

@@ -20,6 +20,8 @@
 		F305E704206BF44F00DE5495 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E703206BF44F00DE5495 /* Category.swift */; };
 		F305E706206BF52A00DE5495 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E705206BF52A00DE5495 /* Video.swift */; };
 		F305E714206C026D00DE5495 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E713206C026D00DE5495 /* HistoryViewModel.swift */; };
+		F31636AF2083B91200437D38 /* AICustomViewControllerTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31636AD2083B91200437D38 /* AICustomViewControllerTransition.swift */; };
+		F31636B02083B91200437D38 /* DragVideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31636AE2083B91200437D38 /* DragVideoManager.swift */; };
 		F328403D207A140700F4C976 /* AutoNextVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328403B207A140700F4C976 /* AutoNextVideoCell.swift */; };
 		F328403E207A140700F4C976 /* AutoNextVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F328403C207A140700F4C976 /* AutoNextVideoCell.xib */; };
 		F3284040207A202500F4C976 /* NSContraintExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328403F207A202500F4C976 /* NSContraintExtension.swift */; };
@@ -185,6 +187,8 @@
 		F305E703206BF44F00DE5495 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F305E705206BF52A00DE5495 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		F305E713206C026D00DE5495 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		F31636AD2083B91200437D38 /* AICustomViewControllerTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AICustomViewControllerTransition.swift; sourceTree = "<group>"; };
+		F31636AE2083B91200437D38 /* DragVideoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragVideoManager.swift; sourceTree = "<group>"; };
 		F328403B207A140700F4C976 /* AutoNextVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoNextVideoCell.swift; sourceTree = "<group>"; };
 		F328403C207A140700F4C976 /* AutoNextVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutoNextVideoCell.xib; sourceTree = "<group>"; };
 		F328403F207A202500F4C976 /* NSContraintExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSContraintExtension.swift; sourceTree = "<group>"; };
@@ -377,6 +381,15 @@
 			path = SearchVC;
 			sourceTree = "<group>";
 		};
+		F31636AC2083B91200437D38 /* DraggableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F31636AD2083B91200437D38 /* AICustomViewControllerTransition.swift */,
+				F31636AE2083B91200437D38 /* DragVideoManager.swift */,
+			);
+			path = DraggableViewController;
+			sourceTree = "<group>";
+		};
 		F328403A207A13D200F4C976 /* AutoNextVideoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +572,7 @@
 		F34E00A220693077002D783D /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F31636AC2083B91200437D38 /* DraggableViewController */,
 				F3AD0D9C2079D2FD00038638 /* FVReadMoreLabel.swift */,
 				F34E00A320693077002D783D /* AlertView.swift */,
 				F34E00A420693077002D783D /* DatePicker.swift */,
@@ -1114,7 +1128,7 @@
 		};
 		F34E011120693BC3002D783D /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -1122,9 +1136,10 @@
 			name = Swiftlint;
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1142,6 +1157,7 @@
 				F34E00B420693078002D783D /* Array.swift in Sources */,
 				F3492112207FC135001B8E31 /* ContentTableCellViewModel.swift in Sources */,
 				F34E010E206932EC002D783D /* ViewController.swift in Sources */,
+				F31636B02083B91200437D38 /* DragVideoManager.swift in Sources */,
 				F305E6F3206BE27200DE5495 /* SearchViewModel.swift in Sources */,
 				F34E00C720693078002D783D /* UICollectionView.swift in Sources */,
 				F34E00D020693078002D783D /* UITableView.swift in Sources */,
@@ -1175,6 +1191,7 @@
 				F34E00D920693078002D783D /* Strings.swift in Sources */,
 				F3F66694206A696200FCC803 /* TrendingViewController.swift in Sources */,
 				F34E0109206932EC002D783D /* CollectionViewCell.swift in Sources */,
+				F31636AF2083B91200437D38 /* AICustomViewControllerTransition.swift in Sources */,
 				F3284040207A202500F4C976 /* NSContraintExtension.swift in Sources */,
 				F3F725B420711CDE004DE373 /* FavoriteVideo.swift in Sources */,
 				F3B11C4B206F2C4F001FE066 /* ServiceError.swift in Sources */,

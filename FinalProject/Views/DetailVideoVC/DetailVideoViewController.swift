@@ -2,8 +2,8 @@
 //  DetailVideoViewController.swift
 //  FinalProject
 //
-//  Created by Duy Tang on 3/30/18.
-//  Copyright © 2018 Duy Tang. All rights reserved.
+//  Created by Kieu Nhi on 3/30/18.
+//  Copyright © 2018 Kieu Nhi. All rights reserved.
 //
 
 import UIKit
@@ -114,9 +114,18 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         contentView.addSubview(viewPlayer)
     }
 
+    func showButton(alpha: CGFloat) {
+        backgroundView.alpha = 1.0
+//        dismissButton.alpha = alpha
+//        favoriteButton.alpha = alpha
+//        playButton.alpha = alpha
+//        nextButton.alpha = alpha
+//        previousButton.alpha = alpha
+    }
+
     // MARK: - Actions
     @IBAction private func dismissButtonTapped(sender: UIButton) {
-        playerVideoVC?.moviePlayer.pause()
+//        playerVideoVC?.moviePlayer.pause()
         dismiss(animated: true, completion: nil)
     }
 

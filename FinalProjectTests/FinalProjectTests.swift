@@ -2,8 +2,8 @@
 //  FinalProjectTests.swift
 //  FinalProjectTests
 //
-//  Created by Duy Tang on 3/26/18.
-//  Copyright © 2018 Duy Tang. All rights reserved.
+//  Created by Kieu Nhi on 3/26/18.
+//  Copyright © 2018 Kieu Nhi. All rights reserved.
 //
 
 import XCTest

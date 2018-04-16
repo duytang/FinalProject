@@ -2,8 +2,8 @@
 //  FVReadMoreLabel.swift
 //  Emic_User
 //
-//  Created by Duy Tang on 4/7/18.
-//  Copyright © 2017 Duy Tang. All rights reserved.
+//  Created by Kieu Nhi on 4/7/18.
+//  Copyright © 2017 Kieu Nhi. All rights reserved.
 //
 
 typealias LineIndexTuple = (line: CTLine, index: Int)

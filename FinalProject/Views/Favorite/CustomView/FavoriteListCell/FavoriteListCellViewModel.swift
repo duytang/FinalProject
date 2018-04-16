@@ -2,8 +2,8 @@
 //  FavoriteListCellViewModel.swift
 //  FinalProject
 //
-//  Created by Duy Tang on 3/30/18.
-//  Copyright © 2018 Duy Tang. All rights reserved.
+//  Created by Kieu Nhi on 3/30/18.
+//  Copyright © 2018 Kieu Nhi. All rights reserved.
 //
 
 import Foundation
