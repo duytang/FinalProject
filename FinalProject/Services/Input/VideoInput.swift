@@ -78,3 +78,18 @@ class InfoVideoInput: BaseInput {
         ]
     }
 }
+
+class SearchVideoInput: BaseInput {
+    init(keyword: String, nextPage: String) {
+        super.init()
+        self.url = APIPath.API.relatedVideo
+        self.method = .get
+        self.useAccessToken = false
+        self.parameter = ["part": "snippet",
+                          "maxResults": 10,
+                          "pageToken": nextPage,
+                          "q": keyword,
+                          "key": Key.apiKey
+                         ]
+    }
+}

@@ -10,9 +10,13 @@ import Foundation
 import MVVM
 import Alamofire
 import SwifterSwift
+import ObjectMapper
 
 final class SearchViewModel: ViewModel {
     var suggestKeys: [String] = []
+    var keyword = ""
+    var videos: [Video] = []
+    var nextPage = ""
 
     var searchRequest: Alamofire.Request?
 
@@ -47,5 +51,32 @@ final class SearchViewModel: ViewModel {
                 this.suggestKeys = listName
                 completion(.success)
             })
+    }
+
+    func searchVideo(from key: String, nextPage: String, completion: @escaping DataResultCompletion) {
+        let input = SearchVideoInput(keyword: key, nextPage: nextPage)
+        Services.videoService.relateVideos(input: input) { (result) in
+            switch result {
+            case .success(let data):
+                if let object = data as? JSObject,
+                    let videos = Mapper<Video>().mapArray(JSONObject: object["items"]), !videos.isEmpty {
+                    let channelInput = ChannelInput(id: videos[0].idVideo)
+                    Services.channelService.channelDetail(input: channelInput, completion: { (result) in
+                        switch result {
+                        case .success(let channels):
+                            if let channels = channels as? [Channel], !channels.isEmpty {
+                                videos[0].channelThumnail = channels[0].imageUrl
+                            }
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
+                    })
+                    self.videos = videos
+                    completion(.success)
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

@@ -2,8 +2,8 @@
 //  Optional.swift
 //  Blank Project
 //
-//  Created by framgia on 6/6/17.
-//  Copyright © 2017 Vo Nguyen Chi Phuong. All rights reserved.
+//  Created by Kieu Nhi on 6/6/17.
+//  Copyright © 2017 Kieu Nhi. All rights reserved.
 //
 
 import Foundation

@@ -20,8 +20,8 @@ final class HomeViewController: ViewController, AlertViewController, LoadingView
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let parent = parent {
-            dragVideo = DraggalbeVideoManager(rootViewController: parent)
+        if let tabBarController = tabBarController {
+            dragVideo = DraggalbeVideoManager(rootViewController: tabBarController)
             dragVideo.draggbleProgress()
             dragVideo.addActionToView()
         }
@@ -32,6 +32,10 @@ final class HomeViewController: ViewController, AlertViewController, LoadingView
         navigationController?.isNavigationBarHidden = true
     }
 
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
     // MARK: - Setup UI
     override func setupUI() {
         super.setupUI()
@@ -117,8 +121,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVideoVC = DetailVideoViewController()
         detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
-//        navigationController?.present(detailVideoVC, animated: true, completion: nil)
-        dragVideo.prensetDetailVideoController(video: viewModel.videos[indexPath.row])
+        dragVideo.prensentDetailVideoVC(video: viewModel.videos[indexPath.row])
     }
 }
 

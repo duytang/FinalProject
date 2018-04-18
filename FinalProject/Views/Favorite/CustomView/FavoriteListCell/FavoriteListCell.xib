@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="111.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_hari" translatesAutoresizingMaskIntoConstraints="NO" id="ZsX-Ua-xAy">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chanel" translatesAutoresizingMaskIntoConstraints="NO" id="ZsX-Ua-xAy">
                         <rect key="frame" x="16" y="8" width="96" height="95.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ZsX-Ua-xAy" secondAttribute="height" multiplier="1:1" id="VYB-qX-DLk"/>
@@ -71,6 +71,6 @@ Anh cu di di</string>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_hari" width="160" height="120"/>
+        <image name="ic_chanel" width="33" height="33"/>
     </resources>
 </document>

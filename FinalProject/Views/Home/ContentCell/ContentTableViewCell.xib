@@ -27,7 +27,7 @@
                     <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDl-PP-6ID">
                         <rect key="frame" x="0.0" y="175.5" width="320" height="76"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_hari" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-dA-e8B">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chanel" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-dA-e8B">
                                 <rect key="frame" x="10" y="13" width="50.5" height="50.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rTN-dA-e8B" secondAttribute="height" id="iUF-Pr-V9t"/>
@@ -109,6 +109,5 @@ Anh cu di di</string>
     </objects>
     <resources>
         <image name="ic_chanel" width="33" height="33"/>
-        <image name="ic_hari" width="160" height="120"/>
     </resources>
 </document>

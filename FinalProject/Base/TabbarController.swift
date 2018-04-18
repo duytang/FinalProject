@@ -2,8 +2,8 @@
 //  BaseTabbarController.swift
 //  Blank Project
 //
-//  Created by framgia on 6/5/17.
-//  Copyright © 2017 Vo Nguyen Chi Phuong. All rights reserved.
+//  Created by Kieu Nhi on 6/5/17.
+//  Copyright © 2017 Kieu Nhi. All rights reserved.
 //
 
 import UIKit
@@ -30,18 +30,11 @@ class TabbarController: UITabBarController {
     }
 
     func configTabBar() {
-        let homeVC = HomeViewController()
-        let homeNavi = NavigationController(rootViewController: homeVC)
-
-        let trendingVC = TrendingViewController()
-        let trendingNavi = NavigationController(rootViewController: trendingVC)
-
-        let favoriteVC = FavoriteViewController()
-        let favoriteNavi = NavigationController(rootViewController: favoriteVC)
-
-        let historyVC = HistoryViewController()
-        let historyNavi = NavigationController(rootViewController: historyVC)
-
+        let homeNavi = NavigationController(rootViewController: HomeViewController())
+        let trendingNavi = NavigationController(rootViewController: TrendingViewController())
+        let favoriteNavi = NavigationController(rootViewController: FavoriteViewController())
+        let historyNavi = NavigationController(rootViewController: HistoryViewController())
+        setViewControllers([homeNavi, trendingNavi, favoriteNavi, historyNavi], animated: true)
         viewControllers = [homeNavi, trendingNavi, favoriteNavi, historyNavi]
     }
 

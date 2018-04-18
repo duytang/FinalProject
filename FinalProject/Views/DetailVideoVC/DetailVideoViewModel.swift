@@ -93,7 +93,7 @@ final class DetailVideoViewModel: ViewModel {
             case .success(let data):
                 if let object = data as? JSObject,
                     let videos = Mapper<Video>().mapArray(JSONObject: object["items"]), !videos.isEmpty {
-                    let channelInput = ChannelInput(id: videos[0].idVideo)
+                    let channelInput = ChannelInput(id: videos[0].channelId)
                     Services.channelService.channelDetail(input: channelInput, completion: { (result) in
                         switch result {
                         case .success(let channels):

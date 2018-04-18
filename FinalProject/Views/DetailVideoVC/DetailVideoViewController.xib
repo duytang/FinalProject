@@ -18,6 +18,7 @@
                 <outlet property="dismissButton" destination="hwV-Rc-gj7" id="WvY-Kr-taF"/>
                 <outlet property="favoriteButton" destination="eJd-JI-kYE" id="X4d-IM-kV1"/>
                 <outlet property="tableView" destination="sha-Md-3Io" id="hbR-sm-LkN"/>
+                <outlet property="topView" destination="Dpk-P2-UKA" id="6Mu-0D-56w"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

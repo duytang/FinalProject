@@ -2,7 +2,7 @@
 //  RealmManager.swift
 //  GODI Business
 //
-//  Created by framgia on 7/17/17.
+//  Created by Kieu Nhi on 7/17/17.
 //  Copyright © 2017 GODI. All rights reserved.
 //
 

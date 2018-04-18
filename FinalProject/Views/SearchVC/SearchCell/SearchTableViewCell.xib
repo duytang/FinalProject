@@ -25,27 +25,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xl9-4u-vaC">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search_history" translatesAutoresizingMaskIntoConstraints="NO" id="Xl9-4u-vaC">
                         <rect key="frame" x="16" y="8" width="27.5" height="27.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Xl9-4u-vaC" secondAttribute="height" multiplier="1:1" id="IgU-1V-Scs"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Si-vo-yDC">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_simple_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="9Si-vo-yDC">
                         <rect key="frame" x="276.5" y="8" width="27.5" height="27.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="9Si-vo-yDC" secondAttribute="height" multiplier="1:1" id="vWi-fI-eMh"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQ4-D9-jO2">
-                        <rect key="frame" x="48.5" y="11" width="223" height="21.5"/>
+                        <rect key="frame" x="53.5" y="11" width="213" height="21.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="YQ4-D9-jO2" firstAttribute="leading" secondItem="Xl9-4u-vaC" secondAttribute="trailing" constant="5" id="1JE-rs-z8a"/>
+                    <constraint firstItem="YQ4-D9-jO2" firstAttribute="leading" secondItem="Xl9-4u-vaC" secondAttribute="trailing" constant="10" id="1JE-rs-z8a"/>
                     <constraint firstItem="9Si-vo-yDC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="2Qd-hg-dcE"/>
                     <constraint firstItem="Xl9-4u-vaC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="FnE-wn-kRu"/>
                     <constraint firstAttribute="trailing" secondItem="9Si-vo-yDC" secondAttribute="trailing" constant="16" id="JM7-b4-FAp"/>
@@ -53,7 +53,7 @@
                     <constraint firstItem="YQ4-D9-jO2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YUi-lS-xuk"/>
                     <constraint firstAttribute="bottom" secondItem="9Si-vo-yDC" secondAttribute="bottom" constant="8" id="gm0-bT-XWx"/>
                     <constraint firstItem="Xl9-4u-vaC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="jbQ-9a-Ebm"/>
-                    <constraint firstItem="9Si-vo-yDC" firstAttribute="leading" secondItem="YQ4-D9-jO2" secondAttribute="trailing" constant="5" id="rEB-r3-2w5"/>
+                    <constraint firstItem="9Si-vo-yDC" firstAttribute="leading" secondItem="YQ4-D9-jO2" secondAttribute="trailing" constant="10" id="rEB-r3-2w5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -62,4 +62,8 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_search_history" width="22" height="22"/>
+        <image name="ic_simple_arrow" width="22" height="22"/>
+    </resources>
 </document>

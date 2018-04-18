@@ -14,10 +14,16 @@ class TrendingViewController: ViewController, AlertViewController, LoadingViewCo
 
     // MARK: - Properties
     var viewModel = TrendingViewModel()
+    var dragVideo: DraggalbeVideoManager!
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let tabBarController = tabBarController {
+            dragVideo = DraggalbeVideoManager(rootViewController: tabBarController)
+            dragVideo.draggbleProgress()
+            dragVideo.addActionToView()
+        }
     }
 
     // MARK: - Setup UI
@@ -77,6 +83,6 @@ extension TrendingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVideoVC = DetailVideoViewController()
         detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
-        navigationController?.present(detailVideoVC, animated: true, completion: nil)
+        dragVideo.prensentDetailVideoVC(video: viewModel.videos[indexPath.row])
     }
 }

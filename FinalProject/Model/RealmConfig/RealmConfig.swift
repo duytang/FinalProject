@@ -2,7 +2,7 @@
 //  RealmConfig.swift
 //  Coffee Bussiness
 //
-//  Created by framgia on 6/15/17.
+//  Created by Kieu Nhi on 6/15/17.
 //  Copyright © 2017 Coffee. All rights reserved.
 //
 

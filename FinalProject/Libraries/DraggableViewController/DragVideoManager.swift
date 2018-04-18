@@ -8,12 +8,21 @@
 
 import UIKit
 
+enum VideoPositionType {
+    case leftTop
+    case rightTop
+    case leftBottom
+    case rightBottom
+}
+
 class DraggalbeVideoManager {
 
-    private var thumbnailVideoContainerView: UIView? = AppDelegate.shared.thumbnailView
+    private var thumbnailView: UIView? = AppDelegate.shared.thumbnailView
     let delegate: InteractiveTransitioningDelegate = InteractiveTransitioningDelegate()
     private var parentVC: UIViewController!
-    lazy var videoPlayerViewController: DetailVideoViewController = {
+    var lastPoint: CGPoint = .zero
+
+    lazy var videoPlayerVC: DetailVideoViewController = {
         let vc = AppDelegate.shared.videoDetailVC
         vc.modalPresentationStyle = .custom
         vc.transitioningDelegate = delegate
@@ -25,7 +34,7 @@ class DraggalbeVideoManager {
                 self.delegate.beginDismissing(viewController: vc)
                 self.lastVideoPlayerOriginY = vc.view.frame.origin.y
             case .changed:
-                guard let thumbnail = self.thumbnailVideoContainerView else { return }
+                guard let thumbnail = self.thumbnailView else { return }
                 let ratio = max(min(((self.lastVideoPlayerOriginY + translatedPoint.y) / thumbnail.frame.minY), 1), 0)
                 self.lastPanRatio = ratio
                 self.delegate.update(self.lastPanRatio)
@@ -41,7 +50,7 @@ class DraggalbeVideoManager {
     private let panRatioThreshold: CGFloat = 0.3
     private var lastPanRatio: CGFloat = 0.0
     private var lastVideoPlayerOriginY: CGFloat = 0.0
-    private var videoPlayerViewControllerInitialFrame: CGRect?
+    private var initialFrame: CGRect?
 
     init(rootViewController: UIViewController) {
         self.parentVC = rootViewController
@@ -53,10 +62,10 @@ class DraggalbeVideoManager {
             guard let this = self else { return }
             guard let videoPlayerVC = toViewController as? DetailVideoViewController else { return }
             if case .simple = transitionType {
-                if this.videoPlayerViewControllerInitialFrame != nil {
-                    guard let thumbnail = this.videoPlayerViewControllerInitialFrame else { return }
+                if this.initialFrame != nil {
+                    guard let thumbnail = this.initialFrame else { return }
                     videoPlayerVC.view.frame = thumbnail
-                    this.videoPlayerViewControllerInitialFrame = nil
+                    this.initialFrame = nil
                 } else {
                     videoPlayerVC.view.frame = containerView.bounds.offsetBy(dx: 0,
                                                                              dy: videoPlayerVC.view.frame.height)
@@ -81,7 +90,7 @@ class DraggalbeVideoManager {
             guard let this = self else { return }
             guard let videoPlayerVC = fromViewController as? DetailVideoViewController else { return }
             let videoPlayerBounds = videoPlayerVC.view.bounds
-            guard let thumbnail = this.thumbnailVideoContainerView else { return }
+            guard let thumbnail = this.thumbnailView else { return }
             let finalTransform = CGAffineTransform(scaleX: thumbnail.bounds.width / videoPlayerBounds.width,
                                                    y: thumbnail.bounds.height * 3 / videoPlayerBounds.height)
 
@@ -112,12 +121,12 @@ class DraggalbeVideoManager {
             containerView: UIView) in
 
             guard let this = self, let videoPlayerVC = toViewController as? DetailVideoViewController else { return }
-            if let initialFrame = this.videoPlayerViewControllerInitialFrame {
+            if let initialFrame = this.initialFrame {
                 videoPlayerVC.view.frame = initialFrame
-                this.videoPlayerViewControllerInitialFrame = nil
+                this.initialFrame = nil
             }
 
-            guard let thumbnail = this.thumbnailVideoContainerView else { return }
+            guard let thumbnail = this.thumbnailView else { return }
             let startXScale = thumbnail.bounds.width / containerView.bounds.width
             let startYScale = thumbnail.bounds.height * 3 / containerView.bounds.height
             let xScale = startXScale + ((1 - startXScale) * percentage)
@@ -143,7 +152,7 @@ class DraggalbeVideoManager {
 
             guard let this = self,
                 let videoPlayerVC = fromViewController as? DetailVideoViewController,
-                let thumbnail = this.thumbnailVideoContainerView else { return }
+                let thumbnail = this.thumbnailView else { return }
 
             let videoPlayerBounds = videoPlayerVC.view.bounds
 
@@ -170,42 +179,40 @@ class DraggalbeVideoManager {
     }
 
     func addActionToView() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(presentFromThumbnailAction))
-        thumbnailVideoContainerView?.addGestureRecognizer(tap)
-
-        //        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePresentPan))
-        //        thumbnailVideoContainerView.addGestureRecognizer(pan)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(presentFromThumbnail))
+        thumbnailView?.addGestureRecognizer(tap)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(pan(gesture:)))
+        thumbnailView?.addGestureRecognizer(pan)
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(exitPLayerVideo))
-        thumbnailVideoContainerView?.addGestureRecognizer(longPress)
-
+        thumbnailView?.addGestureRecognizer(longPress)
     }
 
-    @objc private func presentFromThumbnailAction(sender: UITapGestureRecognizer? = nil) {
-        guard videoPlayerViewController.parent != nil,
-            let thumbnail = thumbnailVideoContainerView else { return }
-        videoPlayerViewControllerInitialFrame = thumbnail.convert(videoPlayerViewController.view.frame, to: parentVC.view)
-        videoPlayerViewController.removeFromParentViewController()
-        parentVC.present(videoPlayerViewController, animated: true, completion: nil)
+    @objc private func presentFromThumbnail(sender: UITapGestureRecognizer? = nil) {
+        guard videoPlayerVC.parent != nil,
+            let thumbnail = thumbnailView else { return }
+        initialFrame = thumbnail.convert(videoPlayerVC.view.frame, to: parentVC.view)
+        videoPlayerVC.removeFromParentViewController()
+        parentVC.present(videoPlayerVC, animated: true, completion: nil)
     }
 
     @objc private func handlePresentPan(panGestureRecozgnizer: UIPanGestureRecognizer) {
-        guard videoPlayerViewController.parent != nil || delegate.isPresenting else {
+        guard videoPlayerVC.parent != nil || delegate.isPresenting else {
             return
         }
 
-        guard let thumbnail = thumbnailVideoContainerView else { return }
+        guard let thumbnail = thumbnailView else { return }
         let translatedPoint = panGestureRecozgnizer.translation(in: parentVC.view)
 
         switch panGestureRecozgnizer.state {
         case .began:
-            videoPlayerViewControllerInitialFrame = thumbnail.convert(videoPlayerViewController.view.frame, to: parentVC.view)
-            videoPlayerViewController.removeFromParentViewController()
-            delegate.beginPresenting(viewController: videoPlayerViewController, fromViewController: parentVC)
-            videoPlayerViewControllerInitialFrame = thumbnail.convert(videoPlayerViewController.view.frame, to: parentVC.view)
-            guard let initialFrame = videoPlayerViewControllerInitialFrame else { return }
+            initialFrame = thumbnail.convert(videoPlayerVC.view.frame, to: parentVC.view)
+            videoPlayerVC.removeFromParentViewController()
+            delegate.beginPresenting(viewController: videoPlayerVC, fromViewController: parentVC)
+            initialFrame = thumbnail.convert(videoPlayerVC.view.frame, to: parentVC.view)
+            guard let initialFrame = initialFrame else { return }
             lastVideoPlayerOriginY = initialFrame.origin.y
         case .changed:
-            guard let thumbnail = thumbnailVideoContainerView else { return }
+            guard let thumbnail = thumbnailView else { return }
             let ratio = max(min(((lastVideoPlayerOriginY + translatedPoint.y) / thumbnail.frame.minY), 1), 0)
             lastPanRatio = 1 - ratio
             delegate.update(lastPanRatio)
@@ -216,29 +223,63 @@ class DraggalbeVideoManager {
         }
     }
 
+    @objc private func pan(gesture: UIPanGestureRecognizer) {
+        guard let thumbnail = thumbnailView else { return }
+        let point = gesture.location(in: thumbnail)
+        let velocity = gesture.velocity(in: thumbnail)
+
+        switch gesture.state {
+        case .began:
+            lastPoint = point
+        case .changed:
+            thumbnail.center.x += point.x - lastPoint.x
+            thumbnail.center.y += point.y - lastPoint.y
+        case .ended , .cancelled:
+            let rect = thumbnail.frame
+            let center = thumbnail.center
+
+            let size = UIScreen.main.bounds
+            let halfSize = size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
+
+//            if center.x < halfSize.width && center.y < halfSize.height {
+//                self.setFrameWith(quadrant: .leftTop, dismissVideo: velocity.x < 0 && rect.origin.x < 0)
+//            } else if center.x > halfSize.width && center.y < halfSize.height {
+//                self.setFrameWith(quadrant: .rightTop, dismissVideo: velocity.x > 0 && rect.maxX > size.width)
+//            } else if center.x < halfSize.width && center.y > halfSize.height {
+//                self.setFrameWith(quadrant: .leftBottom, dismissVideo: velocity.x < 0 && rect.origin.x < 0)
+//            } else if center.x > halfSize.width && center.y > halfSize.height{
+//                self.setFrameWith(quadrant: .rightBottom, dismissVideo: velocity.x > 0 && rect.maxX > size.width)
+//            }
+            lastPoint = .zero
+        default:
+            break
+        }
+    }
+
     @objc private func exitPLayerVideo(swipeGesture: UISwipeGestureRecognizer) {
         let alert = UIAlertController(title: "Youtube", message: "Would you like to exit play video", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.videoPlayerViewController.playerVideoVC?.moviePlayer.pause()
-            self.videoPlayerViewController.view.removeFromSuperview()
-            self.videoPlayerViewController.removeFromParentViewController()
+            self.videoPlayerVC.playerVideoVC?.moviePlayer.pause()
+            self.videoPlayerVC.view.removeFromSuperview()
+            self.videoPlayerVC.removeFromParentViewController()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         parentVC.present(alert, animated: true, completion: nil)
     }
 
-    func prensetDetailVideoController(video: Video) {
-        if videoPlayerViewController.parent != nil {
-            videoPlayerViewControllerInitialFrame = thumbnailVideoContainerView?.convert(videoPlayerViewController.view.frame, to: parentVC.view)
-            videoPlayerViewController.removeFromParentViewController()
+    func prensentDetailVideoVC(video: Video) {
+        if videoPlayerVC.parent != nil {
+            initialFrame = thumbnailView?.convert(videoPlayerVC.view.frame, to: parentVC.view)
+            videoPlayerVC.removeFromParentViewController()
         }
-        videoPlayerViewController.viewModel.video = video
-//        videoPlayerViewController.oldVideo = video
-//        videoPlayerViewController.loadData()
-//        videoPlayerViewController.prepareToPlayVideo(video.idVideo)
+        videoPlayerVC.viewModel.video = video
+        videoPlayerVC.loadData()
+        videoPlayerVC.prepareForPlay()
+        videoPlayerVC.viewModel.checkFavorite()
+
 //        videoPlayerViewController.checkFavorite(video.idVideo)
 //        videoPlayerViewController.setImageForFavoriteButton()
 //        History.addVideoToHistory(video)
-        parentVC.present(videoPlayerViewController, animated: true, completion: nil)
+        parentVC.present(videoPlayerVC, animated: true, completion: nil)
     }
 }
