@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="backgroundView" destination="I68-F1-cbv" id="EK9-O9-iGK"/>
                 <outlet property="contentView" destination="N92-HX-7it" id="JUf-Dj-PD8"/>
+                <outlet property="controlView" destination="lhF-cw-oag" id="GDc-Sh-t4N"/>
                 <outlet property="dismissButton" destination="hwV-Rc-gj7" id="WvY-Kr-taF"/>
                 <outlet property="favoriteButton" destination="eJd-JI-kYE" id="X4d-IM-kV1"/>
                 <outlet property="tableView" destination="sha-Md-3Io" id="hbR-sm-LkN"/>
@@ -77,6 +78,35 @@
                                 <constraint firstItem="hwV-Rc-gj7" firstAttribute="centerY" secondItem="Dpk-P2-UKA" secondAttribute="centerY" id="phO-5J-tiS"/>
                             </constraints>
                         </view>
+                        <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhF-cw-oag">
+                            <rect key="frame" x="0.0" y="172" width="375" height="39"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRf-Ki-3e6">
+                                    <rect key="frame" x="321" y="4" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Full">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="fullScreenButtonTapped:" destination="-1" eventType="touchUpInside" id="1us-vC-me4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-1m-MlW">
+                                    <rect key="frame" x="25" y="8" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Play">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="playButtonTapped:" destination="-1" eventType="touchUpInside" id="XIG-PD-ney"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="39" id="Zcu-F3-Hk1"/>
+                            </constraints>
+                        </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sha-Md-3Io">
                             <rect key="frame" x="0.0" y="211" width="375" height="436"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -91,9 +121,12 @@
                         <constraint firstItem="N92-HX-7it" firstAttribute="leading" secondItem="Dpk-P2-UKA" secondAttribute="leading" id="1we-x4-9CN"/>
                         <constraint firstItem="N92-HX-7it" firstAttribute="leading" secondItem="I68-F1-cbv" secondAttribute="leading" id="4ZY-hw-Fl8"/>
                         <constraint firstAttribute="bottom" secondItem="sha-Md-3Io" secondAttribute="bottom" constant="20" id="FST-bM-2b7"/>
+                        <constraint firstItem="lhF-cw-oag" firstAttribute="leading" secondItem="N92-HX-7it" secondAttribute="leading" id="KkZ-ue-xNi"/>
                         <constraint firstItem="N92-HX-7it" firstAttribute="top" secondItem="Dpk-P2-UKA" secondAttribute="top" id="L3M-pR-zfW"/>
                         <constraint firstItem="N92-HX-7it" firstAttribute="trailing" secondItem="sha-Md-3Io" secondAttribute="trailing" id="RIh-cG-xz4"/>
+                        <constraint firstItem="lhF-cw-oag" firstAttribute="trailing" secondItem="N92-HX-7it" secondAttribute="trailing" id="ReS-Io-VxO"/>
                         <constraint firstItem="N92-HX-7it" firstAttribute="leading" secondItem="sha-Md-3Io" secondAttribute="leading" id="eeb-Mq-Jro"/>
+                        <constraint firstItem="lhF-cw-oag" firstAttribute="bottom" secondItem="N92-HX-7it" secondAttribute="bottom" id="gnw-w0-QaW"/>
                         <constraint firstItem="N92-HX-7it" firstAttribute="trailing" secondItem="Dpk-P2-UKA" secondAttribute="trailing" id="noc-6Z-n1w"/>
                         <constraint firstItem="N92-HX-7it" firstAttribute="top" secondItem="I68-F1-cbv" secondAttribute="top" id="oTK-Xe-r21"/>
                         <constraint firstAttribute="trailing" secondItem="N92-HX-7it" secondAttribute="trailing" id="xRs-gc-eGI"/>

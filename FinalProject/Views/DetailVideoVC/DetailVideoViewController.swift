@@ -19,12 +19,14 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var controlView: UIView!
     
     // MARK: - Properties
     var viewModel = DetailVideoViewModel()
     var playerVideoVC: XCDYouTubeVideoPlayerViewController?
     private var viewPlayer = UIView()
     var stateLabel = true
+    var isPlaying = true
 
     var handlePan: ((_ panGestureRecognizer: UIPanGestureRecognizer) -> Void)?
 
@@ -115,18 +117,21 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     @objc private func moviePlayerLoadStateDidChange(notification: NSNotification) {
         guard let state = playerVideoVC?.moviePlayer.playbackState else { return }
         switch state {
-        case .stopped, .interrupted, .seekingForward, .seekingBackward, .paused, .playing:
-            break
+        case .stopped, .interrupted, .seekingForward, .seekingBackward, .paused: break
+        case.playing:
+            controlView.alpha = 0
         }
     }
 
     @objc private func moviePlayerPlaybackDidChange(notification: NSNotification) {
         guard let state = playerVideoVC?.moviePlayer.playbackState else { return }
+        print(state)
         switch state {
         case .stopped, .interrupted, .seekingForward, .seekingBackward, .paused:
             break
         case .playing:
             print("readyy")
+            controlView.alpha = 0
 //            indicator.stopAnimating()
 //            playButton.setImage(UIImage(named: "bt_pause"), forState: .Normal)
 //            changStatusButton(false)
@@ -200,7 +205,6 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
 
     // MARK: - Actions
     @IBAction private func dismissButtonTapped(sender: UIButton) {
-//        playerVideoVC?.moviePlayer.pause()
         dismiss(animated: true, completion: nil)
     }
 
@@ -216,12 +220,26 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         } else {
             let addToFavoriteListVC = AddToFavoriteListViewController()
             addToFavoriteListVC.viewModel = AddToFavoriteListViewModel(video: video)
-            guard let window = AppDelegate.shared.window else { return }
-            addToFavoriteListVC.showPopup(inView: window, controller: self, delegate: self)
+            addToFavoriteListVC.showPopup(inView: self.view, controller: self, delegate: self)
         }
     }
     @IBAction func handlePanAction(_ sender: UIPanGestureRecognizer) {
         handlePan?(sender)
+    }
+    
+    @IBAction func fullScreenButtonTapped(_ sender: UIButton) {
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIView.animate(withDuration: 0.5, animations: {
+            UIDevice.current.setValue(value, forKey: "orientation")
+        }) { (_) in
+            self.contentView.frame = CGRect(x: 0, y: 0, width: SwifterSwift.screenHeight, height: SwifterSwift.screenWidth)
+        }
+
+    }
+    
+    @IBAction func playButtonTapped(_ sender: UIButton) {
+        _ = isPlaying ? playerVideoVC?.moviePlayer.pause() : playerVideoVC?.moviePlayer.play()
+        isPlaying = !isPlaying
     }
 }
 

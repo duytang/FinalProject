@@ -60,17 +60,23 @@ final class SearchViewModel: ViewModel {
             case .success(let data):
                 if let object = data as? JSObject,
                     let videos = Mapper<Video>().mapArray(JSONObject: object["items"]), !videos.isEmpty {
-                    let channelInput = ChannelInput(id: videos[0].idVideo)
-                    Services.channelService.channelDetail(input: channelInput, completion: { (result) in
-                        switch result {
-                        case .success(let channels):
-                            if let channels = channels as? [Channel], !channels.isEmpty {
-                                videos[0].channelThumnail = channels[0].imageUrl
+                    for video in videos {
+                        let videoInput = InfoVideoInput(id: video.idVideo)
+                        Services.videoService.videoList(input: videoInput, completion: { (result) in
+                            switch result {
+                            case .success(let data):
+                                if let object = data as? JSObject,
+                                    let videos = Mapper<Video>().mapArray(JSONObject: object["items"]),
+                                    !videos.isEmpty {
+                                    video.duration = videos[0].duration
+                                    video.numberView = videos[0].numberView
+//                                    completion(.success)
+                                }
+                            case .failure(let error):
+                                completion(.failure(error))
                             }
-                        case .failure(let error):
-                            completion(.failure(error))
-                        }
-                    })
+                        })
+                    }
                     self.videos = videos
                     completion(.success)
                 }

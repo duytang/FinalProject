@@ -20,6 +20,11 @@ class FavoriteViewController: ViewController, AlertViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
+    }
+
     // MARK: - Setup UI
     override func setupUI() {
         super.setupUI()

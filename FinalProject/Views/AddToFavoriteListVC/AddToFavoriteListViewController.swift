@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol AddToFavoriteListViewControllerDelegate: class {
     func favoriteList(controller: AddToFavoriteListViewController, nameList: String)
@@ -113,7 +114,6 @@ extension AddToFavoriteListViewController: UITableViewDataSource {
 extension AddToFavoriteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let video = viewModel.video else { return }
-        viewModel.getData()
         if !viewModel.checkExist(id: video.idVideo,
                                 videos: Array(viewModel.favoriteList[indexPath.row].listVideo)) {
             RealmManager.shared.write { (_) in

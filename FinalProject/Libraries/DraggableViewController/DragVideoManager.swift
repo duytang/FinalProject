@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwifterSwift
 
 enum VideoPositionType {
     case leftTop
@@ -226,31 +227,17 @@ class DraggalbeVideoManager {
     @objc private func pan(gesture: UIPanGestureRecognizer) {
         guard let thumbnail = thumbnailView else { return }
         let point = gesture.location(in: thumbnail)
-        let velocity = gesture.velocity(in: thumbnail)
-
         switch gesture.state {
         case .began:
             lastPoint = point
         case .changed:
             thumbnail.center.x += point.x - lastPoint.x
-            thumbnail.center.y += point.y - lastPoint.y
         case .ended , .cancelled:
-            let rect = thumbnail.frame
-            let center = thumbnail.center
-
-            let size = UIScreen.main.bounds
-            let halfSize = size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
-
-//            if center.x < halfSize.width && center.y < halfSize.height {
-//                self.setFrameWith(quadrant: .leftTop, dismissVideo: velocity.x < 0 && rect.origin.x < 0)
-//            } else if center.x > halfSize.width && center.y < halfSize.height {
-//                self.setFrameWith(quadrant: .rightTop, dismissVideo: velocity.x > 0 && rect.maxX > size.width)
-//            } else if center.x < halfSize.width && center.y > halfSize.height {
-//                self.setFrameWith(quadrant: .leftBottom, dismissVideo: velocity.x < 0 && rect.origin.x < 0)
-//            } else if center.x > halfSize.width && center.y > halfSize.height{
-//                self.setFrameWith(quadrant: .rightBottom, dismissVideo: velocity.x > 0 && rect.maxX > size.width)
-//            }
-            lastPoint = .zero
+            if thumbnail.center.x <= 50.scaling {
+                videoPlayerVC.playerVideoVC?.moviePlayer.pause()
+                videoPlayerVC.view.removeFromSuperview()
+                videoPlayerVC.removeFromParentViewController()
+            }
         default:
             break
         }
@@ -275,7 +262,7 @@ class DraggalbeVideoManager {
         videoPlayerVC.viewModel.video = video
         videoPlayerVC.loadData()
         videoPlayerVC.prepareForPlay()
-        videoPlayerVC.viewModel.checkFavorite()
+        videoPlayerVC.viewModel.isFavorite = videoPlayerVC.viewModel.checkFavorite()
 
 //        videoPlayerViewController.checkFavorite(video.idVideo)
 //        videoPlayerViewController.setImageForFavoriteButton()

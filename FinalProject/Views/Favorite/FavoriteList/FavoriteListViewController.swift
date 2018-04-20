@@ -15,10 +15,16 @@ final class FavoriteListViewController: ViewController, AlertViewController {
 
     // MARK: - Property
     var viewModel = FavoriteListViewModel()
+    var dragVideo: DraggalbeVideoManager!
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let tabBarController = tabBarController {
+            dragVideo = DraggalbeVideoManager(rootViewController: tabBarController)
+            dragVideo.draggbleProgress()
+            dragVideo.addActionToView()
+        }
     }
 
     // MARK: - Setup Data
@@ -66,6 +72,8 @@ extension FavoriteListViewController: UITableViewDataSource {
 
 extension FavoriteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        let detailVideoVC = DetailVideoViewController()
+        detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
+        dragVideo.prensentDetailVideoVC(video: viewModel.videos[indexPath.row])
     }
 }
