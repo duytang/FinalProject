@@ -36,7 +36,9 @@ final class FavoriteListViewController: ViewController, AlertViewController {
     override func setupUI() {
         super.setupUI()
         setUpNavigation()
-        title = viewModel.title
+        if let favorite = viewModel.favorite {
+            title = favorite.name
+        }
         tableView.registerCell(aClass: FavoriteListCell.self)
         tableView.rowHeight = 72
         addRightBarButton(image: #imageLiteral(resourceName: "ic_delete"), action: #selector(deleteAll))
@@ -49,7 +51,6 @@ final class FavoriteListViewController: ViewController, AlertViewController {
     // MARK: - Private func
     @objc private func deleteAll() {
         showAlertView(title: "Note", message: "Do you wanna delete all videos?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, cancelAction: nil) { (_) in
-            print("Delete All")
         }
     }
     @objc private func loadData() {

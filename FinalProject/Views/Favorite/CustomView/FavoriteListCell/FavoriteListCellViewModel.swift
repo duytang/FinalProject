@@ -10,10 +10,15 @@ import Foundation
 
 final class FavoriteListCellViewModel {
     var video: Video?
+    var history: History?
 
     init() { }
 
     init(video: Video) {
         self.video = video
+    }
+
+    init(history: History) {
+        self.history = history
     }
 }

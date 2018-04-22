@@ -18,7 +18,6 @@ target 'FinalProject' do
     pod 'MVVM-Swift', '~> 1.1.0'
     pod 'RealmSwift'
     pod 'Realm'
-    pod 'XCDYouTubeKit', '~> 2.5'
     pod 'PureLayout'
 
   target 'FinalProjectTests' do

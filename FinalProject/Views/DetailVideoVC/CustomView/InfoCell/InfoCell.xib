@@ -84,8 +84,8 @@
             <connections>
                 <outlet property="channelImageView" destination="E18-O8-Bfx" id="7Ab-NN-TgJ"/>
                 <outlet property="channelNameLabel" destination="74P-hv-yOs" id="UU3-Bw-1oN"/>
-                <outlet property="numberSubscribeLabel" destination="cPb-lS-bQB" id="XQ7-NQ-00K"/>
                 <outlet property="numberViewLabel" destination="ffJ-vZ-fc4" id="BLz-Jb-kxd"/>
+                <outlet property="publicTimeLabel" destination="cPb-lS-bQB" id="w4O-4L-4VA"/>
                 <outlet property="videoNameLabel" destination="5wG-XG-XaG" id="tsl-2z-HOg"/>
             </connections>
             <point key="canvasLocation" x="34" y="87.5"/>

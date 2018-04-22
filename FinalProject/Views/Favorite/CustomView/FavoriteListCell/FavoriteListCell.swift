@@ -27,9 +27,16 @@ final class FavoriteListCell: TableViewCell {
 
     // MARK: - Private func
     private func updateUI() {
-        guard let video = viewModel.video else { return }
-        videoImageView.downloadImage(fromURL: video.thumbnail, placeHolder: #imageLiteral(resourceName: "ic_chanel"))
-        videoNameLabel.text = video.name
-        channelLabel.text = video.channelName
+        if let video = viewModel.video {
+            videoImageView.downloadImage(fromURL: video.thumbnail, placeHolder: #imageLiteral(resourceName: "ic_chanel"))
+            videoNameLabel.text = video.name
+            channelLabel.text = video.channelName
+        }
+
+        if let history = viewModel.history {
+            videoImageView.downloadImage(fromURL: history.thumbnail, placeHolder: #imageLiteral(resourceName: "ic_selectchanel"))
+            videoNameLabel.text = history.name
+            channelLabel.text = history.channelName
+        }
     }
 }

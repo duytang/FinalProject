@@ -14,7 +14,7 @@ class InfoCell: TableViewCell {
     @IBOutlet private weak var videoNameLabel: UILabel!
     @IBOutlet private weak var numberViewLabel: UILabel!
     @IBOutlet private weak var channelNameLabel: UILabel!
-    @IBOutlet private weak var numberSubscribeLabel: UILabel!
+    @IBOutlet private weak var publicTimeLabel: UILabel!
     @IBOutlet private weak var channelImageView: UIImageView!
 
     // MARK: - Property
@@ -29,6 +29,6 @@ class InfoCell: TableViewCell {
         numberViewLabel.text = viewModel.numberView.convertNumberView()
         channelImageView.downloadImage(fromURL: viewModel.channelImage, placeHolder: #imageLiteral(resourceName: "ic_chanel"))
         channelNameLabel.text = viewModel.channelName
-        numberSubscribeLabel.text = viewModel.publicAt
+        publicTimeLabel.text = viewModel.publicAt
     }
 }

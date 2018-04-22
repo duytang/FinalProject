@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XCDYouTubeKit
 import PureLayout
 import SwifterSwift
 
@@ -121,7 +120,7 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         guard let video = viewModel.video else { return }
         viewModel.isFavorite = viewModel.checkFavorite()
         favoriteButton.image = viewModel.isFavorite ? #imageLiteral(resourceName: "icon-heart-select") : #imageLiteral(resourceName: "ic-heart")
-        player?.loadVideo(videoID: video.idVideo, startSeconds: 0, suggestedQuality: .large)
+        player?.loadVideo(videoID: video.idVideo, startSeconds: 0)
     }
 
     func showButton(alpha: CGFloat) {
@@ -186,6 +185,9 @@ extension DetailVideoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row >= 3 {
             let video = viewModel.relatedVideos[indexPath.row - 3]
+            let time = Helper.getCurrentTime()
+            let history = History(video: video, time: time.day, day: time.time)
+            RealmManager.shared.add(object: history)
             viewModel.getDetailVideo(id: video.idVideo, completion: { [weak self](result) in
                 guard let this = self else { return }
                 switch result {

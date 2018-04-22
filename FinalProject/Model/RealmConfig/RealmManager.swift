@@ -36,14 +36,16 @@ class RealmManager {
         return realm.objects(type)
     }
 
-//    func objects<T: Object>(_ type: T.Type) -> [T] {
-//        return Array(realm.objects(type))
-//    }
-
     func video(from id: String) -> Video? {
         let videos = Array(realm.objects(Video.self).filter("idVideo=%@", id))
         guard !videos.isEmpty, let video = videos.first else { return nil }
         return video
+    }
+
+    func favorite(from id: String) -> FavoriteList? {
+        let favorites = Array(realm.objects(FavoriteList.self).filter("id=%@", id))
+        guard !favorites.isEmpty, let favorite = favorites.first else { return nil }
+        return favorite
     }
 
     func add(object: Object) {

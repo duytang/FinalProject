@@ -31,10 +31,6 @@ final class HomeViewController: ViewController, AlertViewController, LoadingView
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return false
-    }
     
     // MARK: - Setup UI
     override func setupUI() {

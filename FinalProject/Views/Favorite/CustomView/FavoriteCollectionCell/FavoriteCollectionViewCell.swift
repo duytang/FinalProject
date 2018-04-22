@@ -38,6 +38,8 @@ final class FavoriteCollectionViewCell: CollectionViewCell {
             if count > 0 {
                 let text = count == 1 ? "+1 video": "+\(count) videos"
                  moreVideoLabel.text = text
+            } else {
+                moreVideoLabel.isHidden = true
             }
         }
     }

@@ -10,19 +10,25 @@ import Foundation
 import MVVM
 
 final class FavoriteListViewModel: ViewModel {
-    var title = ""
+    var favorite: FavoriteList?
     var videos: [Video] = []
 
-    init(title: String = "Favorite", videos: [Video] = []) {
-        self.title = title
-        self.videos = videos
+    init() {}
+
+    init(favorite: FavoriteList) {
+        self.favorite = favorite
+        self.videos = Array(favorite.listVideo)
     }
 
     func numberOfItems(inSection section: Int) -> Int {
-        return videos.count
+        guard let favorite = favorite else { return 0 }
+        return favorite.listVideo.count
     }
 
     func viewModelForItem(at indexPath: IndexPath) -> FavoriteListCellViewModel {
+        guard favorite != nil else {
+            fatalError("Cannot load favorite list")
+        }
         let viewModel = FavoriteListCellViewModel(video: videos[indexPath.row])
         return viewModel
     }

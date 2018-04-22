@@ -63,7 +63,7 @@ extension FavoriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let favoriteListVC = FavoriteListViewController()
         let favorite = viewModel.favoriteList[indexPath.row]
-        favoriteListVC.viewModel = FavoriteListViewModel(title: favorite.name, videos: Array(favorite.listVideo))
+        favoriteListVC.viewModel = FavoriteListViewModel(favorite: favorite)
         push(viewController: favoriteListVC)
     }
 }

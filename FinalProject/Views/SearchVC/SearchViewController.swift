@@ -56,6 +56,7 @@ final class SearchViewController: ViewController {
     // MARK: - Action
     @IBAction private func deleteButtonTapped(sender: UIButton) {
         keyword = ""
+        searchBar.clear()
         loadListKey(keyword: keyword)
     }
 

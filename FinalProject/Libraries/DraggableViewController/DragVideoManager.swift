@@ -265,8 +265,6 @@ class DraggalbeVideoManager {
         let time = Helper.getCurrentTime()
         let history = History(video: video, time: time.day, day: time.time)
         RealmManager.shared.add(object: history)
-//        videoPlayerViewController.setImageForFavoriteButton()
-//        History.addVideoToHistory(video)
         videoPlayerVC.modalPresentationCapturesStatusBarAppearance = true
         parentVC.present(videoPlayerVC, animated: true, completion: nil)
     }

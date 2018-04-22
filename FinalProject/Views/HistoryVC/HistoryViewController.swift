@@ -56,10 +56,19 @@ extension HistoryViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(aClass: FavoriteListCell.self)
-        guard let video = viewModel.histories[indexPath.row].video else {
-            fatalError("Cannot load video")
-        }
-        cell.viewModel = FavoriteListCellViewModel(video: video)
+        let history = viewModel.histories[indexPath.row]
+        cell.viewModel = FavoriteListCellViewModel(history: history)
         return cell
+    }
+}
+
+extension HistoryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "Delete") { action, index in
+            self.showAlertView(title: "Youtube", message: "Do you want delete this video from the history?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, otherAction: { (_) in
+                print("delete")
+            })
+        }
+        return [delete]
     }
 }
