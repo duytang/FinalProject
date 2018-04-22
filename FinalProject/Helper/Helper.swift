@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AudioToolbox
+import SwifterSwift
 
 let kUserDefault = UserDefaults.standard
 let kNotification = NotificationCenter.default
@@ -94,5 +95,12 @@ class Helper {
 
     class func convertAccountToString(string: String) -> String {
         return string.replacingOccurrences(of: " ", with: "")
+    }
+
+    class func getCurrentTime() -> (day: String, time: String) {
+        let date = Date()
+        let currentDay = "\(date.month)-\(date.day)-\(date.year)"
+        let currentTime = "\(date.hour):\(date.minute)"
+        return (currentDay, currentTime)
     }
 }

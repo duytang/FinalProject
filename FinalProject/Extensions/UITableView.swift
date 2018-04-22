@@ -22,17 +22,25 @@ extension UITableView {
     }
 
     func removeHeaderTableView() {
-        tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: kScreen.bounds.width, height: CGFloat.leastNonzeroMagnitude))
+        tableHeaderView = UIView(frame: CGRect(x: 0,
+                                               y: 0,
+                                               width: kScreen.bounds.width,
+                                               height: CGFloat.leastNonzeroMagnitude))
     }
 
     func removeFooterTableView() {
-        tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: kScreen.bounds.width, height: CGFloat.leastNonzeroMagnitude))
+        tableFooterView = UIView(frame: CGRect(x: 0,
+                                               y: 0,
+                                               width: kScreen.bounds.width,
+                                               height: CGFloat.leastNonzeroMagnitude))
     }
 
     func addEmptyView(string: String =
         "No data is currently available. Please pull down to refresh.") {
-        let label = UILabel(frame: CGRect(x: 0, y: 0,
-                                          width: frame.width, height: frame.height))
+        let label = UILabel(frame: CGRect(x: 0,
+                                          y: 0,
+                                          width: frame.width,
+                                          height: frame.height))
         label.text = string
         label.textColor = UIColor.black
         label.numberOfLines = 0

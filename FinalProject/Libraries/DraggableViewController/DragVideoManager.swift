@@ -234,7 +234,7 @@ class DraggalbeVideoManager {
             thumbnail.center.x += point.x - lastPoint.x
         case .ended , .cancelled:
             if thumbnail.center.x <= 50.scaling {
-                videoPlayerVC.playerVideoVC?.moviePlayer.pause()
+                self.videoPlayerVC.player?.pauseVideo()
                 videoPlayerVC.view.removeFromSuperview()
                 videoPlayerVC.removeFromParentViewController()
             }
@@ -246,7 +246,7 @@ class DraggalbeVideoManager {
     @objc private func exitPLayerVideo(swipeGesture: UISwipeGestureRecognizer) {
         let alert = UIAlertController(title: "Youtube", message: "Would you like to exit play video", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            self.videoPlayerVC.playerVideoVC?.moviePlayer.pause()
+            self.videoPlayerVC.player?.pauseVideo()
             self.videoPlayerVC.view.removeFromSuperview()
             self.videoPlayerVC.removeFromParentViewController()
         }))
@@ -262,11 +262,12 @@ class DraggalbeVideoManager {
         videoPlayerVC.viewModel.video = video
         videoPlayerVC.loadData()
         videoPlayerVC.prepareForPlay()
-        videoPlayerVC.viewModel.isFavorite = videoPlayerVC.viewModel.checkFavorite()
-
-//        videoPlayerViewController.checkFavorite(video.idVideo)
+        let time = Helper.getCurrentTime()
+        let history = History(video: video, time: time.day, day: time.time)
+        RealmManager.shared.add(object: history)
 //        videoPlayerViewController.setImageForFavoriteButton()
 //        History.addVideoToHistory(video)
+        videoPlayerVC.modalPresentationCapturesStatusBarAppearance = true
         parentVC.present(videoPlayerVC, animated: true, completion: nil)
     }
 }

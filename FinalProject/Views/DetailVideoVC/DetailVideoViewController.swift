@@ -20,13 +20,11 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     @IBOutlet weak var dismissButton: UIButton!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var controlView: UIView!
+    weak var player: YTSwiftyPlayer?
     
     // MARK: - Properties
     var viewModel = DetailVideoViewModel()
-    var playerVideoVC: XCDYouTubeVideoPlayerViewController?
-    private var viewPlayer = UIView()
     var stateLabel = true
-    var isPlaying = true
 
     var handlePan: ((_ panGestureRecognizer: UIPanGestureRecognizer) -> Void)?
 
@@ -35,20 +33,44 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         super.viewDidLoad()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+//    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+//        return .slide
+//    }
+//
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        UIView.animate(withDuration: 0.5) {
+//            self.setNeedsStatusBarAppearanceUpdate()
+//        }
+//    }
 
     deinit {
         kNotification.removeObserver(self)
     }
 
+
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
-        prepareForPlay()
-        loadData()
+        guard let video = viewModel.video else { return }
+        let player = YTSwiftyPlayer(
+            frame: CGRect(x: 0, y: 0,
+                          width: SwifterSwift.screenWidth,
+                          height: SwifterSwift.screenWidth * 2.4 / 4),
+            playerVars: [.autoplay(true),
+                         .playsInline(true),
+                         .loopVideo(true),
+                         .showRelatedVideo(false),
+                         .videoID(video.idVideo)
+                        ])
+        self.player = player
+        self.player?.delegate = self
+        player.loadPlayer()
+        contentView.addSubview(player)
     }
 
     // MARK: - Setup UI
@@ -79,128 +101,32 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     }
 
     private func configNotification() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(moviePlayerNowPlayingMovieDidChange),
-                                               name: .MPMoviePlayerNowPlayingMovieDidChange,
-                                               object: playerVideoVC?.moviePlayer)
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(moviePlayerLoadStateDidChange),
-                                               name: .MPMoviePlayerLoadStateDidChange,
-                                               object: playerVideoVC?.moviePlayer)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(moviePlayerPlaybackDidChange),
-                                               name: .MPMoviePlayerPlaybackStateDidChange,
-                                               object: playerVideoVC?.moviePlayer)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(moviePlayerPlayBackDidFinish),
-                                               name: .MPMoviePlayerPlaybackDidFinish,
-                                               object: playerVideoVC?.moviePlayer)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(movieEnterScreen),
-                                               name: .MPMoviePlayerDidEnterFullscreen,
-                                               object: playerVideoVC?.moviePlayer)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(movieExitFullScreen),
-                                               name: .MPMoviePlayerDidExitFullscreen,
-                                               object: playerVideoVC?.moviePlayer)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(changeVideo),
-                                               name: .XCDYouTubeVideoPlayerViewControllerDidReceiveVideo,
-                                               object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     // MARK: - Notification for Movie player
-    @objc private func moviePlayerNowPlayingMovieDidChange(notification: Notification) { }
-
-    @objc private func moviePlayerLoadStateDidChange(notification: NSNotification) {
-        guard let state = playerVideoVC?.moviePlayer.playbackState else { return }
-        switch state {
-        case .stopped, .interrupted, .seekingForward, .seekingBackward, .paused: break
-        case.playing:
-            controlView.alpha = 0
-        }
-    }
-
-    @objc private func moviePlayerPlaybackDidChange(notification: NSNotification) {
-        guard let state = playerVideoVC?.moviePlayer.playbackState else { return }
-        print(state)
-        switch state {
-        case .stopped, .interrupted, .seekingForward, .seekingBackward, .paused:
-            break
-        case .playing:
-            print("readyy")
-            controlView.alpha = 0
-//            indicator.stopAnimating()
-//            playButton.setImage(UIImage(named: "bt_pause"), forState: .Normal)
-//            changStatusButton(false)
-            break
-        }
-    }
-
-    @objc private func moviePlayerPlayBackDidFinish(notification: NSNotification) {
-//        handleNext()
-    }
-
-    @objc private func movieEnterScreen() {
-        playerVideoVC?.moviePlayer.setFullscreen(true, animated: true)
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-    }
-
-    @objc private func movieExitFullScreen() {
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
-        playerVideoVC?.moviePlayer.isFullscreen = false
-    }
-
-    @objc private func changeVideo(notification: NSNotification) {
-        DispatchQueue.main.async {
-            self.playerVideoVC?.moviePlayer.prepareToPlay()
-        }
-    }
-
     @objc private func rotatedDevice() {
         let orientation = UIDevice.current.orientation
         if orientation == .landscapeLeft || orientation == .landscapeRight || orientation == .portraitUpsideDown {
-            contentView.frame = CGRect(x: 0, y: 0, width: SwifterSwift.screenHeight, height: SwifterSwift.screenWidth)
-            playerVideoVC?.moviePlayer.setFullscreen(true, animated: true)
         } else {
             if orientation == .portrait {
-                playerVideoVC?.moviePlayer.setFullscreen(false, animated: true)
             } else if orientation == .faceDown {
-                playerVideoVC?.moviePlayer.pause()
             } else {
-                playerVideoVC?.moviePlayer.play()
             }
         }
     }
 
     // MARK: - Private func
     func prepareForPlay() {
-        viewPlayer = UIView(frame: CGRect(x: 0, y: 0,
-                                          width: SwifterSwift.screenWidth,
-                                          height: SwifterSwift.screenWidth * 2.25 / 4))
-        playerVideoVC?.view.removeFromSuperview()
         guard let video = viewModel.video else { return }
-        playerVideoVC = XCDYouTubeVideoPlayerViewController(videoIdentifier: video.idVideo)
-        guard let playerVideoVC = playerVideoVC else { return }
-        playerVideoVC.present(in: viewPlayer)
-
-        playerVideoVC.moviePlayer.controlStyle = .none
-        playerVideoVC.moviePlayer.play()
-        contentView.addSubview(viewPlayer)
+        viewModel.isFavorite = viewModel.checkFavorite()
+        favoriteButton.image = viewModel.isFavorite ? #imageLiteral(resourceName: "icon-heart-select") : #imageLiteral(resourceName: "ic-heart")
+        player?.loadVideo(videoID: video.idVideo, startSeconds: 0, suggestedQuality: .large)
     }
 
     func showButton(alpha: CGFloat) {
         backgroundView.alpha = 1.0
         topView.alpha = alpha
-//        dismissButton.alpha = alpha
-//        favoriteButton.alpha = alpha
-//        playButton.alpha = alpha
-//        nextButton.alpha = alpha
-//        previousButton.alpha = alpha
     }
 
     // MARK: - Actions
@@ -225,21 +151,6 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
     }
     @IBAction func handlePanAction(_ sender: UIPanGestureRecognizer) {
         handlePan?(sender)
-    }
-    
-    @IBAction func fullScreenButtonTapped(_ sender: UIButton) {
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
-        UIView.animate(withDuration: 0.5, animations: {
-            UIDevice.current.setValue(value, forKey: "orientation")
-        }) { (_) in
-            self.contentView.frame = CGRect(x: 0, y: 0, width: SwifterSwift.screenHeight, height: SwifterSwift.screenWidth)
-        }
-
-    }
-    
-    @IBAction func playButtonTapped(_ sender: UIButton) {
-        _ = isPlaying ? playerVideoVC?.moviePlayer.pause() : playerVideoVC?.moviePlayer.play()
-        isPlaying = !isPlaying
     }
 }
 
@@ -296,7 +207,7 @@ extension DetailVideoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
-            return 120
+            return 110
         case 1:
             if stateLabel {
                 return 70
@@ -342,5 +253,43 @@ extension DetailVideoViewController: AddToFavoriteListViewControllerDelegate {
         showAlertView(title: "YouTube", message: "The video has been saved to the \(nameList) list", cancelButton: "OK")
         kNotification.post(name: NSNotification.Name(NoticationName.reloadFavoriteList),
                            object: nil)
+    }
+}
+
+extension DetailVideoViewController: YTSwiftyPlayerDelegate {
+    func playerReady(_ player: YTSwiftyPlayer) {
+        print(#function)
+    }
+
+    func player(_ player: YTSwiftyPlayer, didUpdateCurrentTime currentTime: Double) {
+        print("\(#function):\(currentTime)")
+    }
+
+    func player(_ player: YTSwiftyPlayer, didChangeState state: YTSwiftyPlayerState) {
+        print("\(#function):\(state)")
+    }
+
+    func player(_ player: YTSwiftyPlayer, didChangePlaybackRate playbackRate: Double) {
+        print("\(#function):\(playbackRate)")
+    }
+
+    func player(_ player: YTSwiftyPlayer, didReceiveError error: YTSwiftyPlayerError) {
+        print("\(#function):\(error)")
+    }
+
+    func player(_ player: YTSwiftyPlayer, didChangeQuality quality: YTSwiftyVideoQuality) {
+        print("\(#function):\(quality)")
+    }
+
+    func apiDidChange(_ player: YTSwiftyPlayer) {
+        print(#function)
+    }
+
+    func youtubeIframeAPIReady(_ player: YTSwiftyPlayer) {
+        print(#function)
+    }
+
+    func youtubeIframeAPIFailedToLoad(_ player: YTSwiftyPlayer) {
+        print(#function)
     }
 }
