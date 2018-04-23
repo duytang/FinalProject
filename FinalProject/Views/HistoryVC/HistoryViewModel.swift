@@ -10,15 +10,31 @@ import Foundation
 import MVVM
 
 final class HistoryViewModel: ViewModel {
-    var histories: [History] = []
+    var histories: [[History]] = []
+    var dates: [String] = []
 
     func getData() {
-        let histories = RealmManager.shared.objects(History.self)
-        self.histories = Array(histories)
+        let histories = Array(RealmManager.shared.objects(History.self))
+        guard let item = histories.first else { return }
+        var day = item.time
+        dates.append(day)
+        for history in histories {
+            if history.time != day {
+                dates.append(history.time)
+                day = history.time
+            }
+        }
+
+        for date in dates.reversed() {
+            let videos = histories.filter({ (history) -> Bool in
+                return history.time == date
+            })
+            self.histories.append(videos.reversed())
+        }
     }
 
     func numberOfItems(inSection section: Int) -> Int {
-        return histories.count
+        return histories[section].count
     }
 
     func viewModelForItem(at indexPath: IndexPath) -> FavoriteListCellViewModel {

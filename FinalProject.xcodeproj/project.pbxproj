@@ -134,6 +134,7 @@
 		F3B11C5C206F77B7001FE066 /* VideoInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B11C5B206F77B7001FE066 /* VideoInput.swift */; };
 		F3BD514C208C293000534F94 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD514B208C293000534F94 /* History.swift */; };
 		F3BD514E208C316600534F94 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BD514D208C316600534F94 /* Font.swift */; };
+		F3CE19EA208E455B00955D4C /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CE19E9208E455B00955D4C /* SearchHistory.swift */; };
 		F3DD8430207D01BC001F570B /* AddToFavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD842E207D01BC001F570B /* AddToFavoriteListViewController.swift */; };
 		F3DD8431207D01BC001F570B /* AddToFavoriteListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3DD842F207D01BC001F570B /* AddToFavoriteListViewController.xib */; };
 		F3DD843F207D0993001F570B /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3DD8433207D0993001F570B /* Roboto-Black.ttf */; };
@@ -305,6 +306,7 @@
 		F3B11C5B206F77B7001FE066 /* VideoInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoInput.swift; sourceTree = "<group>"; };
 		F3BD514B208C293000534F94 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		F3BD514D208C316600534F94 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		F3CE19E9208E455B00955D4C /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 		F3DD842E207D01BC001F570B /* AddToFavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavoriteListViewController.swift; sourceTree = "<group>"; };
 		F3DD842F207D01BC001F570B /* AddToFavoriteListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToFavoriteListViewController.xib; sourceTree = "<group>"; };
 		F3DD8433207D0993001F570B /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				F37EAD57206FDB3300A64D8C /* Channel.swift */,
 				F3F725B520711E19004DE373 /* FavoriteList.swift */,
 				F3BD514B208C293000534F94 /* History.swift */,
+				F3CE19E9208E455B00955D4C /* SearchHistory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1205,6 +1208,7 @@
 				F3457F2F20791C2B00DA9BBA /* RelateVideoCellModel.swift in Sources */,
 				F34E00BA20693078002D783D /* DispatchQueue.swift in Sources */,
 				F34E00C220693078002D783D /* Regex.swift in Sources */,
+				F3CE19EA208E455B00955D4C /* SearchHistory.swift in Sources */,
 				F3B11C5C206F77B7001FE066 /* VideoInput.swift in Sources */,
 				F3B11C54206F2E00001FE066 /* Constant.swift in Sources */,
 				F305E704206BF44F00DE5495 /* Category.swift in Sources */,

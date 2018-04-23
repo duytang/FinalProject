@@ -20,13 +20,18 @@ final class HistoryViewController: ViewController, AlertViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getData()
+    }
+
     // MARK: - Setup UI
     override func setupUI() {
         super.setupUI()
         title = Title.history
         tableView.registerCell(aClass: FavoriteListCell.self)
         tableView.rowHeight = 72
-        tableView.removeHeaderTableView()
+        tableView.removeFooterTableView()
         addRightBarButton(image: #imageLiteral(resourceName: "ic_delete"), action: #selector(deleteAll))
     }
 
@@ -50,13 +55,21 @@ final class HistoryViewController: ViewController, AlertViewController {
 
 // MARK: - Extension
 extension HistoryViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.dates.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems(inSection: section)
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.dates.reversed()[section]
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(aClass: FavoriteListCell.self)
-        let history = viewModel.histories[indexPath.row]
+        let history = viewModel.histories[indexPath.section][indexPath.row]
         cell.viewModel = FavoriteListCellViewModel(history: history)
         return cell
     }
@@ -70,5 +83,9 @@ extension HistoryViewController: UITableViewDelegate {
             })
         }
         return [delete]
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 }

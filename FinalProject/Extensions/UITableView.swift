@@ -25,14 +25,14 @@ extension UITableView {
         tableHeaderView = UIView(frame: CGRect(x: 0,
                                                y: 0,
                                                width: kScreen.bounds.width,
-                                               height: CGFloat.leastNonzeroMagnitude))
+                                               height: .leastNonzeroMagnitude))
     }
 
     func removeFooterTableView() {
         tableFooterView = UIView(frame: CGRect(x: 0,
                                                y: 0,
                                                width: kScreen.bounds.width,
-                                               height: CGFloat.leastNonzeroMagnitude))
+                                               height: .leastNonzeroMagnitude))
     }
 
     func addEmptyView(string: String =

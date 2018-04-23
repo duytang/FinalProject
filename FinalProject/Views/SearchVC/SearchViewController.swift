@@ -45,19 +45,22 @@ final class SearchViewController: ViewController {
         }
         keywordTableView.rowHeight = 40.scaling
         tableView.rowHeight = 90.scaling
+        keywordTableView.removeHeaderTableView()
     }
 
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
-        loadListKey(keyword: keyword)
+        viewModel.getData()
     }
 
     // MARK: - Action
     @IBAction private func deleteButtonTapped(sender: UIButton) {
         keyword = ""
         searchBar.clear()
-        loadListKey(keyword: keyword)
+        viewModel.getData()
+        keywordTableView.isHidden = false
+        keywordTableView.reloadData()
     }
 
     // MARK: - Private func
@@ -95,7 +98,13 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == keywordTableView {
-            viewModel.searchVideo(from: viewModel.suggestKeys[indexPath.row], nextPage: viewModel.nextPage, completion: { (data) in
+            let keyword = viewModel.suggestKeys[indexPath.row]
+            let time = Helper.getCurrentTime()
+            let searchObj = SearchHistory(name: keyword,
+                                          time: time.day + "-" + time.time)
+            RealmManager.shared.add(object: searchObj)
+            viewModel.searchVideo(from: keyword,
+                                  nextPage: viewModel.nextPage, completion: { (data) in
                 switch data {
                 case .success:
                     self.tableView.reloadData()
@@ -115,8 +124,14 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         deleteButton.isHidden = searchText.isEmpty ? true : false
-        keyword = searchText
-        keywordTableView.isHidden = false
-        loadListKey(keyword: keyword)
+        if searchText.isEmpty {
+            viewModel.getData()
+            keywordTableView.isHidden = false
+            keywordTableView.reloadData()
+        } else {
+            keyword = searchText
+            keywordTableView.isHidden = false
+            loadListKey(keyword: keyword)
+        }
     }
 }

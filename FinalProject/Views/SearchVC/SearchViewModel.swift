@@ -20,6 +20,14 @@ final class SearchViewModel: ViewModel {
 
     var searchRequest: Alamofire.Request?
 
+    func getData() {
+        suggestKeys.removeAll()
+        let data = Array(RealmManager.shared.objects(SearchHistory.self)).reversed()
+        data.forEach {
+            self.suggestKeys.append($0.name)
+        }
+    }
+
     func searchVideoName(keyword: String, completion: @escaping DataResultCompletion) {
         let parameter: [String: String] = ["q": keyword]
         let api = APIPath.API.completeSearch
