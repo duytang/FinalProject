@@ -82,7 +82,6 @@
 		F34E00CB20693078002D783D /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008020693077002D783D /* UILabel.swift */; };
 		F34E00CC20693078002D783D /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008120693077002D783D /* UINavigationController.swift */; };
 		F34E00CD20693078002D783D /* UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008220693077002D783D /* UINib.swift */; };
-		F34E00CE20693078002D783D /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008320693077002D783D /* UIScrollView.swift */; };
 		F34E00CF20693078002D783D /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008420693077002D783D /* UIStoryboard.swift */; };
 		F34E00D020693078002D783D /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008520693077002D783D /* UITableView.swift */; };
 		F34E00D120693078002D783D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E008620693077002D783D /* UITextField.swift */; };
@@ -250,7 +249,6 @@
 		F34E008020693077002D783D /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		F34E008120693077002D783D /* UINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		F34E008220693077002D783D /* UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINib.swift; sourceTree = "<group>"; };
-		F34E008320693077002D783D /* UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		F34E008420693077002D783D /* UIStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		F34E008520693077002D783D /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		F34E008620693077002D783D /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -559,7 +557,6 @@
 				F34E008020693077002D783D /* UILabel.swift */,
 				F34E008120693077002D783D /* UINavigationController.swift */,
 				F34E008220693077002D783D /* UINib.swift */,
-				F34E008320693077002D783D /* UIScrollView.swift */,
 				F34E008420693077002D783D /* UIStoryboard.swift */,
 				F34E008520693077002D783D /* UITableView.swift */,
 				F34E008620693077002D783D /* UITextField.swift */,
@@ -1039,6 +1036,7 @@
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 			);
@@ -1054,6 +1052,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 			);
@@ -1166,7 +1165,6 @@
 				F34E00F120693078002D783D /* RealmConfig.swift in Sources */,
 				F34E00B620693078002D783D /* CGRect.swift in Sources */,
 				F34E00C820693078002D783D /* UIColor.swift in Sources */,
-				F34E00CE20693078002D783D /* UIScrollView.swift in Sources */,
 				F34E00CB20693078002D783D /* UILabel.swift in Sources */,
 				F305E714206C026D00DE5495 /* HistoryViewModel.swift in Sources */,
 				F3B11C5A206F6B1A001FE066 /* RealmManager.swift in Sources */,

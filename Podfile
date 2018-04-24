@@ -19,6 +19,7 @@ target 'FinalProject' do
     pod 'RealmSwift'
     pod 'Realm'
     pod 'PureLayout'
+    pod 'SVPullToRefresh', '0.4.1'
 
   target 'FinalProjectTests' do
     inherit! :search_paths

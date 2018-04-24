@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVPullToRefresh
 
 final class HomeViewController: ViewController, AlertViewController, LoadingViewController {
     // MARK: - Outlets
@@ -39,6 +40,11 @@ final class HomeViewController: ViewController, AlertViewController, LoadingView
         tableView.registerCell(aClass: ContentTableViewCell.self)
         if !viewModel.categories.isEmpty, let firstCategory = viewModel.categories.first {
             categoryNameLabel.text = firstCategory.name
+        }
+        tableView.addPullToRefresh {
+            self.viewModel.nextPage = ""
+            self.tableView.pullToRefreshView.stopAnimating()
+            self.loadVideo()
         }
     }
 

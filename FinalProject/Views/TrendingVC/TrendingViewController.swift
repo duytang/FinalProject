@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVPullToRefresh
 
 class TrendingViewController: ViewController, AlertViewController, LoadingViewController {
     // MARK: - Outlets
@@ -32,6 +33,11 @@ class TrendingViewController: ViewController, AlertViewController, LoadingViewCo
         title = Title.trending
         tableView.rowHeight = 240
         tableView.registerCell(aClass: ContentTableViewCell.self)
+        tableView.addPullToRefresh {
+            self.viewModel.nextPage = ""
+            self.tableView.pullToRefreshView.stopAnimating()
+            self.getListTrendingVideo()
+        }
     }
 
     // MARK: - Setup Data
