@@ -20,4 +20,5 @@ struct App {
 
 struct NoticationName {
     static let reloadFavoriteList = "ReloadFavoriteList"
+    static let addHistory = "addHistory"
 }

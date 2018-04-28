@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteViewController: ViewController, AlertViewController {
+final class FavoriteViewController: ViewController, AlertViewController {
     // MARK: - Outlets
     @IBOutlet private  weak var collectionView: UICollectionView!
 
@@ -18,11 +18,6 @@ class FavoriteViewController: ViewController, AlertViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadData()
     }
 
     // MARK: - Setup UI
@@ -39,6 +34,7 @@ class FavoriteViewController: ViewController, AlertViewController {
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
+        loadData()
     }
 
    @objc private func loadData() {
@@ -47,6 +43,7 @@ class FavoriteViewController: ViewController, AlertViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension FavoriteViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems(inSection: section)
@@ -59,6 +56,7 @@ extension FavoriteViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension FavoriteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let favoriteListVC = FavoriteListViewController()
@@ -68,6 +66,7 @@ extension FavoriteViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2 - 8, height: collectionView.frame.width / 2 + 32 )

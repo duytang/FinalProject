@@ -42,7 +42,7 @@ class RealmManager {
         return video
     }
 
-    func favorite(from id: String) -> FavoriteList? {
+    func favorite(from id: Int) -> FavoriteList? {
         let favorites = Array(realm.objects(FavoriteList.self).filter("id=%@", id))
         guard !favorites.isEmpty, let favorite = favorites.first else { return nil }
         return favorite

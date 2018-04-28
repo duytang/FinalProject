@@ -32,20 +32,9 @@ final class DetailVideoViewController: ViewController, AlertViewController, Load
         super.viewDidLoad()
     }
 
-//    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-//        return .slide
-//    }
-//
     override var prefersStatusBarHidden: Bool {
         return true
     }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        UIView.animate(withDuration: 0.5) {
-//            self.setNeedsStatusBarAppearanceUpdate()
-//        }
-//    }
 
     deinit {
         kNotification.removeObserver(self)
@@ -260,7 +249,7 @@ extension DetailVideoViewController: AddToFavoriteListViewControllerDelegate {
 
 extension DetailVideoViewController: YTSwiftyPlayerDelegate {
     func playerReady(_ player: YTSwiftyPlayer) {
-        print(#function)
+        showButton(alpha: 0)
     }
 
     func player(_ player: YTSwiftyPlayer, didUpdateCurrentTime currentTime: Double) {

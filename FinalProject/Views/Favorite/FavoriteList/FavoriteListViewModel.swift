@@ -20,6 +20,13 @@ final class FavoriteListViewModel: ViewModel {
         self.videos = Array(favorite.listVideo)
     }
 
+    func getFavoriteList() -> FavoriteList? {
+        guard let favorite = favorite else { return nil }
+        let data = RealmManager.shared.favorite(from: favorite.id)
+        guard let favoriteList = data else { return nil }
+       return favoriteList
+    }
+
     func numberOfItems(inSection section: Int) -> Int {
         guard let favorite = favorite else { return 0 }
         return favorite.listVideo.count

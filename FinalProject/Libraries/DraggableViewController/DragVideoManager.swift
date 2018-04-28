@@ -234,9 +234,12 @@ class DraggalbeVideoManager {
             thumbnail.center.x += point.x - lastPoint.x
         case .ended , .cancelled:
             if thumbnail.center.x <= 50.scaling {
-                self.videoPlayerVC.player?.pauseVideo()
+                videoPlayerVC.player?.pauseVideo()
                 videoPlayerVC.view.removeFromSuperview()
                 videoPlayerVC.removeFromParentViewController()
+                if let initialFrame = initialFrame {
+                    thumbnailView?.frame = initialFrame
+                }
             }
         default:
             break
@@ -254,7 +257,7 @@ class DraggalbeVideoManager {
         parentVC.present(alert, animated: true, completion: nil)
     }
 
-    func prensentDetailVideoVC(video: Video) {
+    func prensentDetailVideoVC(video: Video, videos: [Video] = []) {
         if videoPlayerVC.parent != nil {
             initialFrame = thumbnailView?.convert(videoPlayerVC.view.frame, to: parentVC.view)
             videoPlayerVC.removeFromParentViewController()
@@ -263,8 +266,9 @@ class DraggalbeVideoManager {
         videoPlayerVC.loadData()
         videoPlayerVC.prepareForPlay()
         let time = Helper.getCurrentTime()
-        let history = History(video: video, time: time.day, day: time.time)
+        let history = History(video: video, time: time.time, day: time.day)
         RealmManager.shared.add(object: history)
+        kNotification.post(name: NSNotification.Name(rawValue: NoticationName.addHistory), object: nil)
         videoPlayerVC.modalPresentationCapturesStatusBarAppearance = true
         parentVC.present(videoPlayerVC, animated: true, completion: nil)
     }

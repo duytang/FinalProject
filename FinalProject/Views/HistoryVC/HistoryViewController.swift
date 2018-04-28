@@ -9,20 +9,15 @@
 import UIKit
 
 final class HistoryViewController: ViewController, AlertViewController {
-    // MARK: - Outlets
+    // MARK: - Outlet
     @IBOutlet private weak var tableView: UITableView!
 
-    // MARK: - Properties
+    // MARK: - Property
     var viewModel = HistoryViewModel()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.getData()
     }
 
     // MARK: - Setup UI
@@ -33,12 +28,21 @@ final class HistoryViewController: ViewController, AlertViewController {
         tableView.rowHeight = 72
         tableView.removeFooterTableView()
         addRightBarButton(image: #imageLiteral(resourceName: "ic_delete"), action: #selector(deleteAll))
+        kNotification.addObserver(self,
+                                  selector: #selector(loadData),
+                                  name: NSNotification.Name(rawValue: NoticationName.addHistory),
+                                  object: nil)
     }
 
     // MARK: - Setup Data
     override func setupData() {
         super.setupData()
+        loadData()
+    }
+
+    @objc private func loadData() {
         viewModel.getData()
+        tableView.reloadData()
     }
 
     // MARK: - Private func
@@ -53,7 +57,7 @@ final class HistoryViewController: ViewController, AlertViewController {
     }
 }
 
-// MARK: - Extension
+// MARK: - UITableViewDataSource
 extension HistoryViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.dates.count
@@ -75,6 +79,7 @@ extension HistoryViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "Delete") { action, index in

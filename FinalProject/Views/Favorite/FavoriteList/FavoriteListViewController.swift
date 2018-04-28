@@ -27,11 +27,6 @@ final class FavoriteListViewController: ViewController, AlertViewController {
         }
     }
 
-    // MARK: - Setup Data
-    override func setupData() {
-        super.setupData()
-    }
-
     // MARK: - Setup UI
     override func setupUI() {
         super.setupUI()
@@ -51,14 +46,24 @@ final class FavoriteListViewController: ViewController, AlertViewController {
     // MARK: - Private func
     @objc private func deleteAll() {
         showAlertView(title: "Note", message: "Do you wanna delete all videos?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, cancelAction: nil) { (_) in
+            guard let list = self.viewModel.getFavoriteList() else { return }
+            RealmManager.shared.write(action: { (_) in
+                list.listVideo.removeAll()
+                self.tableView.reloadData()
+                self.showAlertView(title: "Note", message: "Do you wanna delete this favorite list?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, cancelAction: nil, otherAction: { (_) in
+                    RealmManager.shared.delete(object: list)
+                    self.back()
+                })
+            })
         }
     }
     @objc private func loadData() {
-        print("-----------------reload")
+        guard let favoriteList = viewModel.getFavoriteList() else { return }
+        viewModel.videos = Array(favoriteList.listVideo)
+        tableView.reloadData()
     }
 }
-// MARK: - Extensions
-
+// MARK: - UITableViewDataSource
 extension FavoriteListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfItems(inSection: section)
@@ -71,6 +76,7 @@ extension FavoriteListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension FavoriteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVideoVC = DetailVideoViewController()
