@@ -19,13 +19,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FavoriteCollectionViewCell" customModule="FinalProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="128" height="160"/>
+            <rect key="frame" x="0.0" y="0.0" width="128" height="177"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="128" height="160"/>
+                <rect key="frame" x="0.0" y="0.0" width="128" height="177"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iYF-7g-qYe">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chanel" translatesAutoresizingMaskIntoConstraints="NO" id="iYF-7g-qYe">
                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="iYF-7g-qYe" secondAttribute="height" multiplier="1:1" id="gKh-zu-Rwy"/>
@@ -43,16 +43,16 @@
                             <constraint firstAttribute="height" constant="0.5" id="5wn-3L-MTV"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7r5-Ct-Wx9">
-                        <rect key="frame" x="3" y="133.5" width="122" height="21.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7r5-Ct-Wx9">
+                        <rect key="frame" x="5" y="133.5" width="118" height="21.5"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGc-gZ-VBj">
-                        <rect key="frame" x="38.5" y="44" width="51" height="40"/>
-                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="30"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGc-gZ-VBj">
+                        <rect key="frame" x="5" y="155" width="118" height="21.5"/>
+                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -61,19 +61,19 @@
             <constraints>
                 <constraint firstItem="iYF-7g-qYe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="06n-Vp-R0d"/>
                 <constraint firstItem="iYF-7g-qYe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1C6-RC-PqO"/>
-                <constraint firstAttribute="bottom" secondItem="7r5-Ct-Wx9" secondAttribute="bottom" constant="5" id="Cxe-c5-pf8"/>
-                <constraint firstItem="tGc-gZ-VBj" firstAttribute="centerX" secondItem="iYF-7g-qYe" secondAttribute="centerX" id="Fle-nf-7ef"/>
+                <constraint firstItem="tGc-gZ-VBj" firstAttribute="top" secondItem="7r5-Ct-Wx9" secondAttribute="bottom" id="Cmt-c9-EAK"/>
                 <constraint firstItem="7r5-Ct-Wx9" firstAttribute="top" secondItem="s8k-qb-sax" secondAttribute="bottom" id="GnO-54-u3x"/>
                 <constraint firstItem="7r5-Ct-Wx9" firstAttribute="centerX" secondItem="iYF-7g-qYe" secondAttribute="centerX" id="MrG-sl-cdh"/>
-                <constraint firstItem="tGc-gZ-VBj" firstAttribute="centerY" secondItem="iYF-7g-qYe" secondAttribute="centerY" id="Q0n-IP-YIi"/>
-                <constraint firstAttribute="trailing" secondItem="7r5-Ct-Wx9" secondAttribute="trailing" constant="3" id="S9D-3s-oZL"/>
-                <constraint firstItem="7r5-Ct-Wx9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="aUK-J1-27U"/>
+                <constraint firstItem="tGc-gZ-VBj" firstAttribute="width" secondItem="7r5-Ct-Wx9" secondAttribute="width" id="S77-rl-JdU"/>
+                <constraint firstAttribute="trailing" secondItem="7r5-Ct-Wx9" secondAttribute="trailing" constant="5" id="S9D-3s-oZL"/>
+                <constraint firstItem="tGc-gZ-VBj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Zdd-EM-rKT"/>
                 <constraint firstAttribute="trailing" secondItem="s8k-qb-sax" secondAttribute="trailing" constant="5" id="kqh-Rh-wN4"/>
                 <constraint firstItem="iYF-7g-qYe" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="nxg-sO-khc"/>
+                <constraint firstItem="s8k-qb-sax" firstAttribute="top" secondItem="iYF-7g-qYe" secondAttribute="bottom" constant="5" id="oNN-zb-jlN"/>
                 <constraint firstItem="s8k-qb-sax" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="xKX-aa-FXe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="128" height="160"/>
+            <size key="customSize" width="128" height="177"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                     <real key="value" value="5"/>
@@ -84,7 +84,10 @@
                 <outlet property="firstVideoImageView" destination="iYF-7g-qYe" id="kRC-ce-FS4"/>
                 <outlet property="moreVideoLabel" destination="tGc-gZ-VBj" id="Y1w-Kl-GWw"/>
             </connections>
-            <point key="canvasLocation" x="-9" y="83"/>
+            <point key="canvasLocation" x="-85" y="-21.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_chanel" width="33" height="33"/>
+    </resources>
 </document>

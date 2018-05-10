@@ -83,4 +83,13 @@ extension FavoriteListViewController: UITableViewDelegate {
         detailVideoVC.viewModel = DetailVideoViewModel(video: viewModel.videos[indexPath.row])
         dragVideo.prensentDetailVideoVC(video: viewModel.videos[indexPath.row])
     }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "Delete") { action, index in
+            self.showAlertView(title: "Youtube", message: "Do you want delete this video from the favorite list?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, otherAction: { (_) in
+                print("delete")
+            })
+        }
+        return [delete]
+    }
 }

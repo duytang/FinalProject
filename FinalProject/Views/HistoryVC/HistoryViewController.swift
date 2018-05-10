@@ -84,7 +84,14 @@ extension HistoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "Delete") { action, index in
             self.showAlertView(title: "Youtube", message: "Do you want delete this video from the history?", cancelButton: "Cancel", otherButtons: ["OK"], type: .alert, otherAction: { (_) in
-                print("delete")
+                let data = self.viewModel.histories[indexPath.section][indexPath.row]
+                if let history = RealmManager.shared.history(from: data.id),
+                    history.day == data.day,
+                    history.time == data.time {
+                    RealmManager.shared.delete(object: history)
+                    self.viewModel.getData()
+                    self.tableView.reloadData()
+                }
             })
         }
         return [delete]

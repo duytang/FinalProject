@@ -69,6 +69,6 @@ extension FavoriteViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2 - 8, height: collectionView.frame.width / 2 + 32 )
+        return CGSize(width: collectionView.frame.width / 2 - 8, height: collectionView.frame.width / 2 + 50 )
     }
 }

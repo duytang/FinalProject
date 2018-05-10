@@ -11,7 +11,7 @@
 		D268B0CF40CEF3D3B6E78F83 /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCDA376CA627469CDA2EDB63 /* Pods_FinalProject.framework */; };
 		F305E6DF206BCD3F00DE5495 /* TrendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E6DE206BCD3F00DE5495 /* TrendingViewModel.swift */; };
 		F305E6EA206BD41F00DE5495 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E6E7206BD41E00DE5495 /* HomeViewModel.swift */; };
-		F305E6EB206BD41F00DE5495 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E6E8206BD41E00DE5495 /* HomeViewController.swift */; };
+		F305E6EB206BD41F00DE5495 /* ios.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E6E8206BD41E00DE5495 /* ios.swift */; };
 		F305E6EC206BD41F00DE5495 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F305E6E9206BD41F00DE5495 /* HomeViewController.xib */; };
 		F305E6F0206BE21A00DE5495 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F305E6EE206BE21A00DE5495 /* SearchViewController.swift */; };
 		F305E6F1206BE21A00DE5495 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F305E6EF206BE21A00DE5495 /* SearchViewController.xib */; };
@@ -178,7 +178,7 @@
 		CCDA376CA627469CDA2EDB63 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F305E6DE206BCD3F00DE5495 /* TrendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewModel.swift; sourceTree = "<group>"; };
 		F305E6E7206BD41E00DE5495 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		F305E6E8206BD41E00DE5495 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F305E6E8206BD41E00DE5495 /* ios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ios.swift; sourceTree = "<group>"; };
 		F305E6E9206BD41F00DE5495 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		F305E6EE206BE21A00DE5495 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F305E6EF206BE21A00DE5495 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -678,7 +678,7 @@
 			isa = PBXGroup;
 			children = (
 				F349210E207FC135001B8E31 /* ContentCell */,
-				F305E6E8206BD41E00DE5495 /* HomeViewController.swift */,
+				F305E6E8206BD41E00DE5495 /* ios.swift */,
 				F305E6E9206BD41F00DE5495 /* HomeViewController.xib */,
 				F305E6E7206BD41E00DE5495 /* HomeViewModel.swift */,
 			);
@@ -1246,7 +1246,7 @@
 				F3492104207FC0CE001B8E31 /* FavoriteListCell.swift in Sources */,
 				F3B11C56206F2E92001FE066 /* CategoryService.swift in Sources */,
 				F34E00BF20693078002D783D /* NSObject.swift in Sources */,
-				F305E6EB206BD41F00DE5495 /* HomeViewController.swift in Sources */,
+				F305E6EB206BD41F00DE5495 /* ios.swift in Sources */,
 				F3F6668C206A693E00FCC803 /* HistoryViewController.swift in Sources */,
 				F34E00B820693078002D783D /* Date.swift in Sources */,
 				F34E00ED20693078002D783D /* PullTableView.swift in Sources */,

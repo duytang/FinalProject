@@ -249,7 +249,7 @@ extension DetailVideoViewController: AddToFavoriteListViewControllerDelegate {
 
 extension DetailVideoViewController: YTSwiftyPlayerDelegate {
     func playerReady(_ player: YTSwiftyPlayer) {
-        showButton(alpha: 0)
+//        showButton(alpha: 0)
     }
 
     func player(_ player: YTSwiftyPlayer, didUpdateCurrentTime currentTime: Double) {

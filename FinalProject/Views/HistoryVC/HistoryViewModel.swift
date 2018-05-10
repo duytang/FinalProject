@@ -14,20 +14,22 @@ final class HistoryViewModel: ViewModel {
     var dates: [String] = []
 
     func getData() {
+        self.histories.removeAll()
+        dates.removeAll()
         let histories = Array(RealmManager.shared.objects(History.self))
         guard let item = histories.first else { return }
-        var day = item.time
+        var day = item.day
         dates.append(day)
         for history in histories {
-            if history.time != day {
-                dates.append(history.time)
-                day = history.time
+            if history.day != day {
+                dates.append(history.day)
+                day = history.day
             }
         }
 
         for date in dates.reversed() {
             let videos = histories.filter({ (history) -> Bool in
-                return history.time == date
+                return history.day == date
             })
             self.histories.append(videos.reversed())
         }

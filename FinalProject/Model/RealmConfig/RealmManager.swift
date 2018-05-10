@@ -48,6 +48,12 @@ class RealmManager {
         return favorite
     }
 
+    func history(from id: String) -> History? {
+        let histories = Array(realm.objects(History.self).filter("id=%@", id))
+        guard !histories.isEmpty, let history = histories.first else { return nil }
+        return history
+    }
+
     func add(object: Object) {
         do {
             try realm.write {
